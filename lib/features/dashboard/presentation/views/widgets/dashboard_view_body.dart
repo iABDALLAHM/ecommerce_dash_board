@@ -1,5 +1,6 @@
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_button.dart';
+import 'package:ecommerce_dash_board/features/add_product/presentation/views/add_product_view.dart';
 import 'package:flutter/material.dart';
 
 class DashboardViewBody extends StatelessWidget {
@@ -16,7 +17,12 @@ class DashboardViewBody extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               height: 60,
-              child: CustomButton(text: "إضافة المنتج", onPressed: () {}),
+              child: CustomButton(
+                text: "إضافة المنتج",
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AddProductView.routeName);
+                },
+              ),
             ),
           ),
         ],

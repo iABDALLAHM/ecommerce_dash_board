@@ -9,7 +9,7 @@ void showSnackBar(BuildContext context, {required String message}) {
       elevation: 0,
       backgroundColor: AppColors.primaryColor,
       behavior: SnackBarBehavior.floating,
-      content: Text(message, style: AppStyles.textStyle16Bold),
+      content: Center(child: Text(message, style: AppStyles.textStyle16Bold)),
     ),
   );
 }

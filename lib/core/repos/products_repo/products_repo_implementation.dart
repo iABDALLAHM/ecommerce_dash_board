@@ -22,7 +22,7 @@ class ProductsRepoImplementation implements ProductsRepo {
       );
       return Right(null);
     } catch (e) {
-      log("this error happend in ProductsRepoImplementation in addProduct");
+      log("this error happend in ProductsRepoImplementation in addProduct $e");
       return Left(
         ServerFailure(errorMessage: "لقد حدث خطأ ما اثناء رفع بيانات المنتج"),
       );

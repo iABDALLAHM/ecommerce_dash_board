@@ -39,6 +39,7 @@ class ProductModel {
       "description": discription,
       "isFeatured": isFeatured,
       "imageUrl": imageUrl,
+      "isOrganic": "isOrganic",
     };
   }
 }

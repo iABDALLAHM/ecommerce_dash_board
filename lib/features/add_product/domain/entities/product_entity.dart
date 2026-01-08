@@ -7,7 +7,7 @@ class ProductEntity {
   final String code;
   final String discription;
   final bool isFeatured;
-  final String? imageUrl;
+   String? imageUrl;
 
   ProductEntity({
     required this.name,

@@ -18,7 +18,7 @@ class DashboardViewBody extends StatelessWidget {
               width: double.infinity,
               height: 60,
               child: CustomButton(
-                text: "إضافة المنتج",
+                text: "إضافة منتج",
                 onPressed: () {
                   Navigator.of(context).pushNamed(AddProductView.routeName);
                 },

@@ -4,15 +4,17 @@ import 'package:ecommerce_dash_board/features/add_product/presentation/views/wid
 import 'package:flutter/material.dart';
 
 class IsProductFeatured extends StatelessWidget {
-  const IsProductFeatured({super.key});
-
+  const IsProductFeatured({super.key, required this.onChange});
+  final ValueChanged<bool> onChange;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text("منتج مميز؟", style: AppStyles.textStyle16Bold),
-        CustomCheckBox(onChange: (value) {}),
+        CustomCheckBox(onChange: (value) {
+          onChange(value);
+        }),
       ],
     );
   }

@@ -15,6 +15,7 @@ class ProductModel {
   final int numberOfCalories;
   final int unitAmount;
   final num averageRating, ratingCount;
+  final int sellingCount;
   final List<ReviewModel> reviews;
   ProductModel({
     required this.name,
@@ -31,6 +32,7 @@ class ProductModel {
     required this.averageRating,
     required this.ratingCount,
     required this.reviews,
+    this.sellingCount = 0,
   });
 
   factory ProductModel.fromEntity({required ProductEntity productEntity}) {
@@ -58,6 +60,7 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "sellingCount": sellingCount,
       "reviews": reviews.map((reviewModel) => reviewModel.toMap()).toList(),
       "ratingCount": ratingCount,
       "averageRating": averageRating,

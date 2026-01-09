@@ -21,8 +21,7 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  bool? isFeatured;
-  bool? isOrganic;
+  bool? isFeatured, isOrganic;
   File? imageFile;
   String? productName, productCode, productDescrition;
   num? productPrice;
@@ -54,15 +53,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
               const SizedBox(height: 8),
               CustomTextFormField(
-
                 hintText: "كود المنتج",
                 onSaved: (value) {
-                  productCode = value!;
+                  productCode = value!.toLowerCase();
                 },
               ),
               const SizedBox(height: 8),
               CustomTextFormField(
-                          inputType: TextInputType.number,
+                inputType: TextInputType.number,
                 hintText: "صلاحية المنتج",
                 onSaved: (value) {
                   expirationMonths = int.parse(value!);
@@ -70,7 +68,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
               const SizedBox(height: 8),
               CustomTextFormField(
-                          inputType: TextInputType.number,
+                inputType: TextInputType.number,
                 hintText: "عدد الكالوريز",
                 onSaved: (value) {
                   numberOfCalories = int.parse(value!);
@@ -78,7 +76,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
               const SizedBox(height: 8),
               CustomTextFormField(
-                          inputType: TextInputType.number,
+                inputType: TextInputType.number,
                 hintText: "الكمية",
                 onSaved: (value) {
                   quantity = int.parse(value!);
@@ -117,22 +115,26 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 child: CustomButton(
                   text: "اضافة",
                   onPressed: () {
-                    validateTextFormFields();
-
-                    formKey.currentState!.save();
-
-                    final productEntity = ProductEntity(
-                      name: productName!,
-                      price: productPrice!,
-                      image: imageFile!,
-                      code: productCode!,
-                      discription: productDescrition!,
-                      isFeatured: isFeatured!,
-                    );
-
-                    triggerAddProductCubit(productEntity: productEntity);
-
-                    checkOtherFields();
+                    if (formKey.currentState!.validate()) {
+                      checkOtherFields();
+                      formKey.currentState!.save();
+                      ProductEntity productEntity = ProductEntity(
+                        isOrganic: isOrganic!,
+                        name: productName!,
+                        price: productPrice!,
+                        image: imageFile!,
+                        code: productCode!,
+                        discription: productDescrition!,
+                        isFeatured: isFeatured!,
+                        expirationMonths: expirationMonths!,
+                        numberOfCalories: numberOfCalories!,
+                        unitAmount: quantity!,
+                      );
+                      triggerAddProductCubit(productEntity: productEntity);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
                   },
                 ),
               ),
@@ -144,22 +146,15 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
     );
   }
 
-  void validateTextFormFields() {
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-    } else {
-      autovalidateMode = AutovalidateMode.always;
-      setState(() {});
-    }
-  }
-
   void triggerAddProductCubit({required ProductEntity productEntity}) {
     context.read<AddProductCubit>().addProduct(productEntity: productEntity);
   }
 
-  void checkOtherFields() {
+  bool checkOtherFields() {
     if (isFeatured == null || isOrganic == null || imageFile == null) {
       showSnackBar(context, message: "من فضلك اكمل تعبئة الحقول");
+      return false;
     }
+    return true;
   }
 }

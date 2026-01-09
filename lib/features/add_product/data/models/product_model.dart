@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ecommerce_dash_board/features/add_product/data/models/review_model.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity.dart';
 
 class ProductModel {
@@ -14,7 +15,7 @@ class ProductModel {
   final int numberOfCalories;
   final int unitAmount;
   final num averageRating, ratingCount;
-
+  final List<ReviewModel> reviews;
   ProductModel({
     required this.name,
     required this.price,
@@ -29,10 +30,17 @@ class ProductModel {
     required this.unitAmount,
     required this.averageRating,
     required this.ratingCount,
+    required this.reviews,
   });
 
   factory ProductModel.fromEntity({required ProductEntity productEntity}) {
     return ProductModel(
+      reviews: productEntity.reviews
+          .map(
+            (reviewEntity) =>
+                ReviewModel.fromEntity(reviewEntity: reviewEntity),
+          )
+          .toList(),
       isOrganic: productEntity.isOrganic,
       name: productEntity.name,
       price: productEntity.price,
@@ -50,6 +58,7 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "reviews": reviews.map((reviewModel) => reviewModel.toMap()).toList(),
       "ratingCount": ratingCount,
       "averageRating": averageRating,
       "unitAmount": unitAmount,

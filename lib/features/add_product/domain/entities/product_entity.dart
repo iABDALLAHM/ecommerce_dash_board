@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:ecommerce_dash_board/features/add_product/domain/entities/review_entity.dart';
+
 class ProductEntity {
   final String name;
   final num price;
@@ -13,6 +15,7 @@ class ProductEntity {
   final int numberOfCalories;
   final int unitAmount;
   final num averageRating, ratingCount;
+  final List<ReviewEntity> reviews;
 
   ProductEntity({
     required this.name,
@@ -28,5 +31,6 @@ class ProductEntity {
     required this.unitAmount,
     this.averageRating = 0,
     this.ratingCount = 0,
+    required this.reviews,
   });
 }

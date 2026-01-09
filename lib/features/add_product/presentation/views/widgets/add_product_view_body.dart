@@ -4,6 +4,7 @@ import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_button.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/entities/review_entity.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/is_product_featured.dart';
@@ -129,6 +130,22 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         expirationMonths: expirationMonths!,
                         numberOfCalories: numberOfCalories!,
                         unitAmount: quantity!,
+                        reviews: [
+                          ReviewEntity(
+                            name: "",
+                            image: "",
+                            rating: "",
+                            date: "",
+                            reviewDescription: "",
+                          ),
+                          ReviewEntity(
+                            name: "",
+                            image: "",
+                            rating: "",
+                            date: "",
+                            reviewDescription: "",
+                          ),
+                        ],
                       );
                       triggerAddProductCubit(productEntity: productEntity);
                     } else {

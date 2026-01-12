@@ -1,3 +1,5 @@
+import 'package:ecommerce_dash_board/constants.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/filter_section.dart';
 import 'package:flutter/material.dart';
 
 class OrdersViewBody extends StatelessWidget {
@@ -5,10 +7,9 @@ class OrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: Column(children: [const SizedBox(height: 25), FilterSection()]),
     );
   }
 }

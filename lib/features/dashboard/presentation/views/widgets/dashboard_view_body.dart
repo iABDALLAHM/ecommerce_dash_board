@@ -26,6 +26,7 @@ class DashboardViewBody extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 20),
           Center(
             child: SizedBox(
               width: double.infinity,

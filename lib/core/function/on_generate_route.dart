@@ -1,5 +1,6 @@
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/add_product_view.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/dashboard_view.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/orders_view.dart';
 import 'package:flutter/material.dart';
 
 Route onGenerateRoute(RouteSettings setting) {
@@ -8,6 +9,8 @@ Route onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(builder: (context) => DashboardView());
     case AddProductView.routeName:
       return MaterialPageRoute(builder: (context) => AddProductView());
+    case OrdersView.routeName:
+      return MaterialPageRoute(builder: (context) => OrdersView());
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());
   }

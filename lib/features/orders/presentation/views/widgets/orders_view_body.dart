@@ -1,5 +1,7 @@
 import 'package:ecommerce_dash_board/constants.dart';
+import 'package:ecommerce_dash_board/core/function/get_dummy_data.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/filter_section.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 
 class OrdersViewBody extends StatelessWidget {
@@ -9,7 +11,19 @@ class OrdersViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: Column(children: [const SizedBox(height: 25), FilterSection()]),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                const SizedBox(height: 25),
+                FilterSection(),
+                OrderItem(order: dummyOrder),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

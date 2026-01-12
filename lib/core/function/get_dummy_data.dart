@@ -18,14 +18,14 @@ final dummyOrder = OrderEntity(
     OrderProductEntity(
       name: 'T-Shirt',
       code: 'TSHIRT_001',
-      imageUrl: 'https://via.placeholder.com/150',
+      imageUrl: '',
       price: 100,
       quantity: 2,
     ),
     OrderProductEntity(
       name: 'Shoes',
       code: 'SHOES_002',
-      imageUrl: 'https://via.placeholder.com/150',
+      imageUrl: '',
       price: 100,
       quantity: 1,
     ),

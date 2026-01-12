@@ -39,7 +39,7 @@ class _OrdersViewBodyState extends State<OrdersViewBody> {
                     } else if (state is FailureGetOrdersState) {
                       return Text(state.errorMessage);
                     } else {
-                      return Text("state.errorMessage");
+                      return Text("جاري التحميل");
                     }
                   },
                 ),

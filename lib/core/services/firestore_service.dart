@@ -24,7 +24,7 @@ class FirestoreService implements DatabaseService {
       return data.data();
     } else {
       var data = await firestore.collection(path).get();
-      return data.docs.map((doc) => doc.data()) as Map<String, dynamic>;
+      return data.docs.map((doc) => doc.data()).toList();
     }
   }
 }

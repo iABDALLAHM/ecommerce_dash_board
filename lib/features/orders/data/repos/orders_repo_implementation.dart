@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/services/database_service.dart';
@@ -10,15 +11,22 @@ class OrdersRepoImplementation implements OrdersRepo {
   final DatabaseService databaseService;
   OrdersRepoImplementation({required this.databaseService});
   @override
-  Future<Either<Failure, OrderEntity>> getOrders() async {
+  Future<Either<Failure, List<OrderEntity>>> getOrders() async {
     try {
       var data = await databaseService.getData(
         path: BackendEndPoints.getProducts,
       );
-      OrderEntity orderEntity = OrderModel.fromJson(data).toEntity();
-      return Right(orderEntity);
+      var orders = (data as List<dynamic>)
+          .map((ele) => OrderModel.fromJson(ele).toEntity())
+          .toList();
+      return Right(orders);
     } catch (e) {
-      return Left(ServerFailure(errorMessage: "حدث خطأ"));
+      log(
+        "error happend in OrdersRepoImplementation in getOrders and the error is $e",
+      );
+      return Left(
+        ServerFailure(errorMessage: "error happend when fetch orders"),
+      );
     }
   }
 }

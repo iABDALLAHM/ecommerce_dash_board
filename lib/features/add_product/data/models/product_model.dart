@@ -3,30 +3,30 @@ import 'package:ecommerce_dash_board/features/add_product/data/models/review_mod
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity.dart';
 
 class ProductModel {
-  final String name;
-  final num price;
-  final File? image;
-  final String code;
-  final String discription;
-  final bool isFeatured;
-  final String? imageUrl;
-  final bool isOrganic;
-  final int expirationMonths;
+  final String productName;
+  final num productPrice;
+  final File? productImage;
+  final String productCode;
+  final String productDiscription;
+  final bool isFeaturedProduct;
+  final String? productImageUrl;
+  final bool isOrganicProduct;
+  final int expirationYears;
   final int numberOfCalories;
   final int unitAmount;
   final num averageRating, ratingCount;
   final int sellingCount;
   final List<ReviewModel> reviews;
   ProductModel({
-    required this.name,
-    required this.price,
-    this.image,
-    required this.code,
-    required this.discription,
-    required this.isFeatured,
-    required this.imageUrl,
-    required this.isOrganic,
-    required this.expirationMonths,
+    required this.productName,
+    required this.productPrice,
+    this.productImage,
+    required this.productCode,
+    required this.productDiscription,
+    required this.isFeaturedProduct,
+    required this.productImageUrl,
+    required this.isOrganicProduct,
+    required this.expirationYears,
     required this.numberOfCalories,
     required this.unitAmount,
     required this.averageRating,
@@ -43,14 +43,14 @@ class ProductModel {
                 ReviewModel.fromEntity(reviewEntity: reviewEntity),
           )
           .toList(),
-      isOrganic: productEntity.isOrganic,
-      name: productEntity.name,
-      price: productEntity.price,
-      code: productEntity.code,
-      discription: productEntity.discription,
-      isFeatured: productEntity.isFeatured,
-      imageUrl: productEntity.imageUrl,
-      expirationMonths: productEntity.expirationMonths,
+      isOrganicProduct: productEntity.isOrganicProduct,
+      productName: productEntity.productName,
+      productPrice: productEntity.productPrice,
+      productCode: productEntity.productCode,
+      productDiscription: productEntity.productDiscription,
+      isFeaturedProduct: productEntity.isFeaturedProduct,
+      productImageUrl: productEntity.productImageUrl,
+      expirationYears: productEntity.expirationYears,
       numberOfCalories: productEntity.numberOfCalories,
       unitAmount: productEntity.unitAmount,
       averageRating: productEntity.averageRating,
@@ -66,14 +66,14 @@ class ProductModel {
       "averageRating": averageRating,
       "unitAmount": unitAmount,
       "numberOfCalories": numberOfCalories,
-      "expirationMonths": expirationMonths,
-      "name": name,
-      "price": price,
-      "code": code,
-      "description": discription,
-      "isFeatured": isFeatured,
-      "imageUrl": imageUrl,
-      "isOrganic": isOrganic,
+      "expirationYears": expirationYears,
+      "productName": productName,
+      "productPrice": productPrice,
+      "productCode": productCode,
+      "productDiscription": productDiscription,
+      "isFeaturedProduct": isFeaturedProduct,
+      "productImageUrl": productImageUrl,
+      "isOrganicProduct": isOrganicProduct,
     };
   }
 }

@@ -120,14 +120,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       checkOtherFields();
                       formKey.currentState!.save();
                       ProductEntity productEntity = ProductEntity(
-                        isOrganic: isOrganic!,
-                        name: productName!,
-                        price: productPrice!,
-                        image: imageFile!,
-                        code: productCode!,
-                        discription: productDescrition!,
-                        isFeatured: isFeatured!,
-                        expirationMonths: expirationMonths!,
+                        isOrganicProduct: isOrganic!,
+                        productName: productName!,
+                        productPrice: productPrice!,
+                        productImage: imageFile!,
+                        productCode: productCode!,
+                        productDiscription: productDescrition!,
+                        isFeaturedProduct: isFeatured!,
+                        expirationYears: expirationMonths!,
                         numberOfCalories: numberOfCalories!,
                         unitAmount: quantity!,
                         reviews: [

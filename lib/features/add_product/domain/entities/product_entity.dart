@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/review_entity.dart';
 
 class ProductEntity {
@@ -29,8 +28,8 @@ class ProductEntity {
     required this.expirationYears,
     required this.numberOfCalories,
     required this.unitAmount,
-    this.averageRating = 0,
-    this.ratingCount = 0,
+    this.averageRating = 200,
+    this.ratingCount = 300,
     required this.reviews,
   });
 }

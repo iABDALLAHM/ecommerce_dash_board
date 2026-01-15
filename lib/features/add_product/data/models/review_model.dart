@@ -3,7 +3,7 @@ import 'package:ecommerce_dash_board/features/add_product/domain/entities/review
 class ReviewModel {
   final String name;
   final String image;
-  final String rating;
+  final double rating;
   final String date;
   final String reviewDescription;
 

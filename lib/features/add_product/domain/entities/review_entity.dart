@@ -1,7 +1,7 @@
 class ReviewEntity {
   final String name;
   final String image;
-  final String rating;
+  final double rating;
   final String date;
   final String reviewDescription;
 

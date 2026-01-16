@@ -47,8 +47,6 @@ class _AddNotificationViewBodyState extends State<AddNotificationViewBody> {
             inputType: TextInputType.number,
           ),
           const SizedBox(height: 20),
-          CustomTextFormField(hintText: "التفاصيل", onSaved: (value) {}),
-          const SizedBox(height: 20),
           ImageField(onChange: (value) {}),
           const SizedBox(height: 20),
           SizedBox(

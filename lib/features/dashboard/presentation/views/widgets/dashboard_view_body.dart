@@ -1,5 +1,6 @@
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_button.dart';
+import 'package:ecommerce_dash_board/features/add_notification/presentation/views/add_notification_view.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/add_product_view.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/orders_view.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,21 @@ class DashboardViewBody extends StatelessWidget {
                 text: "عرض المنتجات",
                 onPressed: () {
                   Navigator.of(context).pushNamed(OrdersView.routeName);
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Center(
+            child: SizedBox(
+              width: double.infinity,
+              height: 60,
+              child: CustomButton(
+                text: "إضافة اشعار",
+                onPressed: () {
+                  Navigator.of(
+                    context,
+                  ).pushNamed(AddNotificationView.routeName);
                 },
               ),
             ),

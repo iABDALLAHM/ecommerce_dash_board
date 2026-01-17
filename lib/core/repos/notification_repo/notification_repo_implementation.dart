@@ -17,7 +17,7 @@ class NotificationRepoImplementation implements NotificationRepo {
   }) async {
     try {
       await databaseService.addData(
-        path: BackendEndPoints.addNotification,
+        path: BackendEndPoints.notification,
         data: NotificationModel.fromEntity(
           notificationEntity: notification,
         ).toMap(),

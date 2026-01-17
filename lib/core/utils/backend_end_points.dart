@@ -3,5 +3,5 @@ class BackendEndPoints {
   static const String imagesPath = "images";
   static const String addProducts = "products";
   static const String getProducts = "orders";
-  static const String addNotification = "notifications";
+  static const String addNotification = "notifications_images";
 }

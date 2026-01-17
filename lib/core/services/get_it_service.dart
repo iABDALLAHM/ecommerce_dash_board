@@ -1,5 +1,7 @@
 import 'package:ecommerce_dash_board/core/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_dash_board/core/repos/images_repo/images_repo_implementation.dart';
+import 'package:ecommerce_dash_board/core/repos/notification_repo/notification_repo.dart';
+import 'package:ecommerce_dash_board/core/repos/notification_repo/notification_repo_implementation.dart';
 import 'package:ecommerce_dash_board/core/repos/products_repo/products_repo.dart';
 import 'package:ecommerce_dash_board/core/repos/products_repo/products_repo_implementation.dart';
 import 'package:ecommerce_dash_board/core/services/database_service.dart';
@@ -16,6 +18,9 @@ void initGetIt() {
   getIt.registerSingleton<StorageService>(SupabaseStorageService());
   getIt.registerSingleton<OrdersRepo>(
     OrdersRepoImplementation(databaseService: getIt<DatabaseService>()),
+  );
+  getIt.registerSingleton<NotificationRepo>(
+    NotificationRepoImplementation(databaseService: getIt<DatabaseService>()),
   );
   getIt.registerSingleton<ProductsRepo>(
     ProductsRepoImplementation(databaseService: getIt<DatabaseService>()),

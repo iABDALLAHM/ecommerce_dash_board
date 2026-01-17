@@ -3,18 +3,23 @@ import 'package:ecommerce_dash_board/features/add_notification/domain/entities/n
 class NotificationModel {
   final String? notificationTitle;
   final String? notificationBody;
-  final String? discountPercentage;
-
+  final int? discountPercentage;
+  final String? notificationImageUrl;
+  final DateTime? date;
   NotificationModel({
     required this.notificationTitle,
     required this.notificationBody,
     required this.discountPercentage,
+    required this.notificationImageUrl,
+    required this.date,
   });
 
   factory NotificationModel.fromEntity({
     required NotificationEntity notificationEntity,
   }) {
     return NotificationModel(
+      date: notificationEntity.date,
+      notificationImageUrl: notificationEntity.notificationImageUrl,
       notificationTitle: notificationEntity.notificationTitle,
       notificationBody: notificationEntity.notificationBody,
       discountPercentage: notificationEntity.discountPercentage,
@@ -23,6 +28,8 @@ class NotificationModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "date": DateTime.now(),
+      "notificationimageUrl": notificationImageUrl,
       "notificationTitle": notificationTitle,
       "notificationBody": notificationBody,
       "discountPercentage": discountPercentage,

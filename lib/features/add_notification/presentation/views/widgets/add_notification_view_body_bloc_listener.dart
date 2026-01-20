@@ -1,4 +1,5 @@
 import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
+import 'package:ecommerce_dash_board/core/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/manager/add_notification_cubit/add_notification_cubit.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/manager/add_notification_cubit/add_notification_state.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class AddNotificationViewBodyBlocListener extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AddNotificationCubit, AddNotificationStates>(
+    return BlocConsumer<AddNotificationCubit, AddNotificationStates>(
       listener: (context, state) {
         if (state is SuccessAddNotificationState) {
           Navigator.pop(context);
@@ -18,7 +19,13 @@ class AddNotificationViewBodyBlocListener extends StatelessWidget {
           showSnackBar(context, message: state.errorMessage);
         }
       },
-      child: child,
+      builder: (context, state) {
+        if (state is LoadingAddNotificationState) {
+          return CustomProgressWidget(state: true, child: child);
+        } else {
+          return child;
+        }
+      },
     );
   }
 }

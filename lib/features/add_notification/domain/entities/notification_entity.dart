@@ -6,14 +6,14 @@ class NotificationEntity {
   final int? discountPercentage;
   final File? image;
   String? notificationImageUrl;
-    final DateTime date;
-
+  final DateTime date;
 
   NotificationEntity({
     required this.notificationTitle,
     required this.notificationBody,
     required this.discountPercentage,
     required this.image,
-    this.notificationImageUrl, required this.date,
+    this.notificationImageUrl,
+    required this.date,
   });
 }

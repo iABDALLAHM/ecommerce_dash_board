@@ -18,8 +18,6 @@ The dashboard focuses on **structured architecture**, **reusable components**, *
   <br><br>
   <img src="assets/images/130058.png"  width="100%"/>
   <br><br>
-  <img src="assets/images/130114.png"  width="100%"/>
-  <br><br>
     <img src="assets/images/130126.png"  width="100%"/>
   <br><br>
 </p>

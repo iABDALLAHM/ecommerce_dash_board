@@ -1,16 +1,39 @@
-# ecommerce_dash_board
+# FruitHub Dashboard 
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Descriptions
 
-A few resources to get you started if this is your first Flutter project:
+**FruitHub Dashboard** is a modern **Flutter-based admin dashboard** built using **Clean Architecture** principles to ensure scalability, maintainability, and clear separation of concerns. It provides administrators with an efficient interface to manage products, monitor data, and control different aspects of the FruitHub application.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The dashboard focuses on **structured architecture**, **reusable components**, **and clean project organization**, making it easy to extend and maintain. This project demonstrates how to build a **scalable and production-ready admin panel** using Flutter while following modern development best practices.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## ScreenShots
+
+<p>
+  <img src="assets/images/130037.png"  width="100%"/>
+  <br><br>
+  <img src="assets/images/130051.png"  width="100%"/>
+  <br><br>
+  <img src="assets/images/130058.png"  width="100%"/>
+  <br><br>
+  <img src="assets/images/130114.png"  width="100%"/>
+  <br><br>
+    <img src="assets/images/130126.png"  width="100%"/>
+  <br><br>
+</p>
+
+
+
+## Connect With Me
+
+[![LinkedIn](https://img.shields.io/badge/-Project_Post_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)]()
+
+[![X (Twitter)](https://img.shields.io/badge/-Follow_on_X-000000?style=for-the-badge&logo=twitter&logoColor=white)]()
+
+[![Gmail](https://img.shields.io/badge/-Email_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)]()
+
+[![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)]()
+
+

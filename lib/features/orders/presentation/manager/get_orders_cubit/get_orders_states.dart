@@ -4,6 +4,9 @@ abstract class GetOrdersStates {}
 
 final class LoadingGetOrdersState extends GetOrdersStates {}
 
+final class EmptyOrdersState extends GetOrdersStates {}
+
+
 final class SuccessGetOrdersState extends GetOrdersStates {
   final List<OrderEntity> orders;
   SuccessGetOrdersState({required this.orders});

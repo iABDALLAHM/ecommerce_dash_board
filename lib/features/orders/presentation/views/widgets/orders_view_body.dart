@@ -21,12 +21,6 @@ class _OrdersViewBodyState extends State<OrdersViewBody> {
   }
 
   @override
-  void dispose() {
-    context.read<GetOrdersCubit>().close();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
@@ -45,6 +39,8 @@ class _OrdersViewBodyState extends State<OrdersViewBody> {
                       return Text(state.errorMessage);
                     } else if (state is LoadingGetOrdersState) {
                       return CircularProgressIndicator();
+                    } else if (state is EmptyOrdersState) {
+                      return Text("لا يوجد منتجات");
                     }
                     return Text("انتظر التحميل");
                   },

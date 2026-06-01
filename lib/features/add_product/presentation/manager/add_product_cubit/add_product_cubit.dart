@@ -15,7 +15,16 @@ class AddProductCubit extends Cubit<AddProductStates> {
 
   Future<void> addProduct({required ProductEntity productEntity}) async {
     emit(LoadingAddProductState());
+
+
+
+    if (!productEntity.isFeaturedProduct || !productEntity.isOrganicProduct) {
+      emit(FailureAddProductState(errorMessage: "اكمل الحقول"));
+      return;
+    }
+    
     final File image = File(productEntity.productImage);
+
     var result = await imagesRepo.uploadImage(
       file: image,
       path: BackendEndPoints.imagesPath,
@@ -29,12 +38,6 @@ class AddProductCubit extends Cubit<AddProductStates> {
         final updatedProduct = productEntity.copyWith(
           productImageUrl: imageUrl,
         );
-
-        if (!productEntity.isFeaturedProduct ||
-            !productEntity.isOrganicProduct) {
-          emit(FailureAddProductState(errorMessage: "اكمل الحقول"));
-          return;
-        }
 
         var result = await productsRepo.addProduct(
           productEntity: updatedProduct,

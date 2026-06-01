@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GetOrdersCubit extends Cubit<GetOrdersStates> {
   GetOrdersCubit({required this.ordersRepo}) : super(LoadingGetOrdersState());
-  
+
   final OrdersRepo ordersRepo;
 
   Future fetchOrders() async {
@@ -14,7 +14,11 @@ class GetOrdersCubit extends Cubit<GetOrdersStates> {
         emit(FailureGetOrdersState(errorMessage: failure.errorMessage));
       },
       (orders) {
-        emit(SuccessGetOrdersState(orders: orders));
+        if (orders.isEmpty) {
+          emit(EmptyOrdersState());
+        } else {
+          emit(SuccessGetOrdersState(orders: orders));
+        }
       },
     );
   }

@@ -1,10 +1,9 @@
-import 'dart:io';
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/review_entity.dart';
 
 class ProductEntity {
   final String productName;
   final num productPrice;
-  final File productImage;
+  final String productImage;
   final String productCode;
   final String productDiscription;
   final bool isFeaturedProduct;
@@ -32,4 +31,21 @@ class ProductEntity {
     this.ratingCount = 300,
     required this.reviews,
   });
+
+  ProductEntity copyWith({String? productImageUrl}) {
+    return ProductEntity(
+      productName: productName,
+      productPrice: productPrice,
+      productImage: productImage,
+      productCode: productCode,
+      productImageUrl: productImageUrl ?? this.productImageUrl,
+      productDiscription: productDiscription,
+      isFeaturedProduct: isFeaturedProduct,
+      isOrganicProduct: isOrganicProduct,
+      expirationYears: expirationYears,
+      numberOfCalories: numberOfCalories,
+      unitAmount: unitAmount,
+      reviews: reviews,
+    );
+  }
 }

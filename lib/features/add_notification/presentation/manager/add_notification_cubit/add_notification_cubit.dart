@@ -1,5 +1,5 @@
-import 'package:ecommerce_dash_board/core/repos/images_repo/images_repo.dart';
-import 'package:ecommerce_dash_board/core/repos/notification_repo/notification_repo.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
+import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/manager/add_notification_cubit/add_notification_state.dart';

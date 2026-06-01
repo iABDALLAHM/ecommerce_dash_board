@@ -12,11 +12,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
-  Bloc.observer = SimpleBlocObserver();
-  await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseApiKey);
   WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseApiKey);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   initGetIt();
+  Bloc.observer = SimpleBlocObserver();
   runApp(const EcommerceDashboard());
 }
 

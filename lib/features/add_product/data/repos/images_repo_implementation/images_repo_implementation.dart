@@ -2,12 +2,15 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
-import 'package:ecommerce_dash_board/core/repos/images_repo/images_repo.dart';
+import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service.dart';
 
 class ImagesRepoImplementation implements ImagesRepo {
   final StorageService storageService;
+
   ImagesRepoImplementation({required this.storageService});
+
   @override
   Future<Either<Failure, String>> uploadImage({
     required File file,

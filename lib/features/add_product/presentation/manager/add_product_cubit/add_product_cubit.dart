@@ -30,6 +30,12 @@ class AddProductCubit extends Cubit<AddProductStates> {
           productImageUrl: imageUrl,
         );
 
+        if (!productEntity.isFeaturedProduct ||
+            !productEntity.isOrganicProduct) {
+          emit(FailureAddProductState(errorMessage: "اكمل الحقول"));
+          return;
+        }
+
         var result = await productsRepo.addProduct(
           productEntity: updatedProduct,
         );

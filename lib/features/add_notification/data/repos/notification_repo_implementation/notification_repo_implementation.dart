@@ -10,7 +10,7 @@ import 'package:ecommerce_dash_board/features/add_notification/domain/entities/n
 
 class NotificationRepoImplementation implements NotificationRepo {
   final DatabaseService databaseService;
-  
+
   NotificationRepoImplementation({required this.databaseService});
 
   @override

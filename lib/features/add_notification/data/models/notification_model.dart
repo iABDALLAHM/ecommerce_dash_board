@@ -1,11 +1,11 @@
 import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity.dart';
 
 class NotificationModel {
-  final String? notificationTitle;
-  final String? notificationBody;
-  final int? discountPercentage;
+  final String notificationTitle;
+  final String notificationBody;
+  final int discountPercentage;
   final String? notificationImageUrl;
-  final DateTime? date;
+  final DateTime date;
   NotificationModel({
     required this.notificationTitle,
     required this.notificationBody,

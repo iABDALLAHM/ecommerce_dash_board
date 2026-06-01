@@ -134,7 +134,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       text: "اضافة",
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          checkOtherFields();
                           formKey.currentState!.save();
                           final ProductEntity productEntity = ProductEntity(
                             isOrganicProduct: isOrganic,
@@ -169,13 +168,5 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
 
   void triggerAddProductCubit({required ProductEntity productEntity}) {
     context.read<AddProductCubit>().addProduct(productEntity: productEntity);
-  }
-
-  bool checkOtherFields() {
-    if (!isFeatured || !isOrganic) {
-      showSnackBar(context, message: "من فضلك اكمل تعبئة الحقول");
-      return false;
-    }
-    return true;
   }
 }

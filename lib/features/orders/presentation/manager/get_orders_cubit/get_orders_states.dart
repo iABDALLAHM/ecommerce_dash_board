@@ -2,8 +2,6 @@ import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entit
 
 abstract class GetOrdersStates {}
 
-final class InitialGetOrdersState extends GetOrdersStates {}
-
 final class LoadingGetOrdersState extends GetOrdersStates {}
 
 final class SuccessGetOrdersState extends GetOrdersStates {

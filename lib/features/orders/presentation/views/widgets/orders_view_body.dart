@@ -3,7 +3,6 @@ import 'package:ecommerce_dash_board/features/orders/presentation/manager/get_or
 import 'package:ecommerce_dash_board/features/orders/presentation/manager/get_orders_cubit/get_orders_states.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/filter_section.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_item.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +18,12 @@ class _OrdersViewBodyState extends State<OrdersViewBody> {
   void initState() {
     context.read<GetOrdersCubit>().fetchOrders();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    context.read<GetOrdersCubit>().close();
+    super.dispose();
   }
 
   @override
@@ -38,9 +43,10 @@ class _OrdersViewBodyState extends State<OrdersViewBody> {
                       return OrderItem(order: state.orders[0]);
                     } else if (state is FailureGetOrdersState) {
                       return Text(state.errorMessage);
-                    } else {
-                      return Text("جاري التحميل");
+                    } else if (state is LoadingGetOrdersState) {
+                      return CircularProgressIndicator();
                     }
+                    return Text("انتظر التحميل");
                   },
                 ),
               ],

@@ -8,9 +8,8 @@ class OrdersView extends StatelessWidget {
   static const String routeName = "orders";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(context),
-      body: GetOrdersBlocProvider(child: OrdersViewBody()),
+    return GetOrdersBlocProvider(
+      child: Scaffold(appBar: buildAppBar(context), body: OrdersViewBody()),
     );
   }
 

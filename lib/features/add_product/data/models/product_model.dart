@@ -17,6 +17,7 @@ class ProductModel {
   final num averageRating, ratingCount;
   final int sellingCount;
   final List<ReviewModel> reviews;
+  
   ProductModel({
     required this.productName,
     required this.productPrice,

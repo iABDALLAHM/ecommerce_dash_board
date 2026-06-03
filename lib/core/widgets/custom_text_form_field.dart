@@ -20,7 +20,7 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       onSaved: onSaved,
       validator: (value) {
-        if (value != null && value.isEmpty) {
+        if (value == null || value.isEmpty) {
           return "";
         } else {
           return null;

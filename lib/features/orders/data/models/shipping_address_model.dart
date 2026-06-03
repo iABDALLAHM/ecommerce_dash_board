@@ -1,12 +1,12 @@
 import 'package:ecommerce_dash_board/features/orders/domain/entities/shipping_address_entity.dart';
 
 class ShippingAddressModel {
-  String? name;
-  String? email;
-  String? phone;
-  String? address;
-  String? addressDetails;
-  String? city;
+  final String name;
+  final String email;
+  final String phone;
+  final String address;
+  final String addressDetails;
+  final String city;
 
   ShippingAddressModel({
     required this.name,

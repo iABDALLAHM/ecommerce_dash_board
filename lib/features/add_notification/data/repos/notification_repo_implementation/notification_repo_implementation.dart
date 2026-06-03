@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
@@ -25,13 +26,11 @@ class NotificationRepoImplementation implements NotificationRepo {
         ).toMap(),
       );
       return Right(null);
-    } catch (e) {
+    } on CustomException catch (e) {
       log(
         "error happend in NotificationRepoImplementation in addNotification $e",
       );
-      return Left(
-        ServerFailure(errorMessage: "لقد حدث خطأ ما اثناء اضافة الإشعار"),
-      );
+      return Left(ServerFailure(errorMessage: e.exceptionMeassge));
     }
   }
 }

@@ -1,10 +1,10 @@
 class ShippingAddressEntity {
-  String? name;
-  String? email;
-  String? phone;
-  String? address;
-  String? addressDetails;
-  String? city;
+  final String name;
+  final String email;
+  final String phone;
+  final String address;
+  final String addressDetails;
+  final String city;
 
   ShippingAddressEntity({
     required this.name,
@@ -14,5 +14,4 @@ class ShippingAddressEntity {
     required this.addressDetails,
     required this.city,
   });
-
 }

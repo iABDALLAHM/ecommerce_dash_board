@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/repos/products_repo/products_repo.dart';
@@ -24,11 +25,9 @@ class ProductsRepoImplementation implements ProductsRepo {
         data: ProductModel.fromEntity(productEntity: productEntity).toMap(),
       );
       return Right(null);
-    } catch (e) {
+    } on CustomException catch (e) {
       log("this error happend in ProductsRepoImplementation in addProduct $e");
-      return Left(
-        ServerFailure(errorMessage: "لقد حدث خطأ ما اثناء رفع بيانات المنتج"),
-      );
+      return Left(ServerFailure(errorMessage: e.exceptionMeassge));
     }
   }
 }

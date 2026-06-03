@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
@@ -19,13 +20,9 @@ class ImagesRepoImplementation implements ImagesRepo {
     try {
       String imageUrl = await storageService.uploadFile(file: file, path: path);
       return Right(imageUrl);
-    } catch (e) {
+    } on CustomException catch (e) {
       log("error happend in ImagesRepoImplementation in uploadImage $e");
-      return Left(
-        ServerFailure(
-          errorMessage: "لقد حدث خطأ مااثناء رفع الصورة حاول مرة آخرى",
-        ),
-      );
+      return Left(ServerFailure(errorMessage: e.exceptionMeassge));
     }
   }
 }

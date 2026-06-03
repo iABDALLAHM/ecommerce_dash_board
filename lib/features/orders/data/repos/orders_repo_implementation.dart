@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/core/services/database_service.dart';
@@ -12,7 +13,7 @@ class OrdersRepoImplementation implements OrdersRepo {
   final DatabaseService databaseService;
 
   OrdersRepoImplementation({required this.databaseService});
-  
+
   @override
   Future<Either<Failure, List<OrderEntity>>> getOrders() async {
     try {
@@ -23,13 +24,11 @@ class OrdersRepoImplementation implements OrdersRepo {
           .map((ele) => OrderModel.fromJson(ele).toEntity())
           .toList();
       return Right(orders);
-    } catch (e) {
+    } on CustomException catch (e) {
       log(
         "error happend in OrdersRepoImplementation in getOrders and the error is $e",
       );
-      return Left(
-        ServerFailure(errorMessage: "error happend when fetch orders"),
-      );
+      return Left(ServerFailure(errorMessage: e.exceptionMeassge));
     }
   }
 }

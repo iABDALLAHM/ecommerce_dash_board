@@ -1,23 +1,17 @@
 import 'dart:io';
+import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_dash_board/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ImageField extends StatefulWidget {
-  const ImageField({super.key, required this.onChange});
-  final ValueChanged<File> onChange;
-
-  @override
-  State<ImageField> createState() => _ImageFieldState();
-}
-
-class _ImageFieldState extends State<ImageField> {
-  File? imageFile;
-  bool isLoading = false;
+class ImageField extends StatelessWidget {
+  const ImageField({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String imagePath = context.watch<GetImageCubit>().state.image;
+    bool isLoading = context.watch<GetImageCubit>().state.isLoading;
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
 
@@ -25,14 +19,8 @@ class _ImageFieldState extends State<ImageField> {
       containersColor: AppColors.primaryColor,
       enabled: isLoading,
       child: GestureDetector(
-        onTap: () async {
-          setState(() {
-            isLoading = true;
-          });
-          await _pickImageFromgallery();
-          setState(() {
-            isLoading = false;
-          });
+        onTap: () {
+          context.read<GetImageCubit>().pickImage();
         },
         child: Stack(
           children: [
@@ -42,19 +30,19 @@ class _ImageFieldState extends State<ImageField> {
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.grey),
               ),
-              child: imageFile != null
+              child: imagePath.isNotEmpty
                   ? SizedBox(
                       height: height * 0.4,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(16),
-                        child: Image.file(imageFile!),
+                        child: Image.file(File(imagePath)),
                       ),
                     )
                   : Icon(Icons.image_outlined, size: 180),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 5, top: 5),
-              child: imageFile == null
+              child: imagePath.isNotEmpty
                   ? null
                   : IconButton(
                       padding: EdgeInsets.zero,
@@ -63,9 +51,7 @@ class _ImageFieldState extends State<ImageField> {
                         color: AppColors.primaryColor,
                       ),
                       onPressed: () {
-                        setState(() {
-                          imageFile = null;
-                        });
+                        context.read<GetImageCubit>().removeImage();
                       },
                     ),
             ),
@@ -73,12 +59,5 @@ class _ImageFieldState extends State<ImageField> {
         ),
       ),
     );
-  }
-
-  Future<void> _pickImageFromgallery() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    imageFile = File(image!.path);
-    widget.onChange(imageFile!);
   }
 }

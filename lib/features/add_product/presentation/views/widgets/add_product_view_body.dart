@@ -1,4 +1,5 @@
 import 'package:ecommerce_dash_board/constants.dart';
+import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_button.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_progress_widget.dart';
@@ -6,7 +7,7 @@ import 'package:ecommerce_dash_board/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_states.dart';
-import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/image_field.dart';
+import 'package:ecommerce_dash_board/core/widgets/image_field.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/is_product_featured.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/is_product_organic.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   int numberOfCalories = 0;
   int quantity = 0;
   int expirationMonths = 0;
-  String imagePath = "";
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   CustomTextFormField(
                     hintText: "اسم المنتج",
                     onSaved: (value) {
-                      productName = value!;
+                      productName = value ?? "";
                     },
                   ),
                   const SizedBox(height: 8),
@@ -73,7 +73,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   CustomTextFormField(
                     hintText: "كود المنتج",
                     onSaved: (value) {
-                      productCode = value!.toLowerCase();
+                      productCode = value?.toLowerCase() ?? "";
                     },
                   ),
                   const SizedBox(height: 8),
@@ -104,7 +104,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   CustomTextFormField(
                     hintText: "وصف المنتج",
                     onSaved: (value) {
-                      productDescrition = value!;
+                      productDescrition = value ?? "";
                     },
                     maxLines: 5,
                   ),
@@ -121,11 +121,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  ImageField(
-                    onChange: (value) {
-                      imagePath = value.path;
-                    },
-                  ),
+                  ImageField(),
                   const SizedBox(height: 16),
                   SizedBox(
                     height: 60,
@@ -133,6 +129,10 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     child: CustomButton(
                       text: "اضافة",
                       onPressed: () {
+                        String imagePath = context
+                            .read<GetImageCubit>()
+                            .state
+                            .image;
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           final ProductEntity productEntity = ProductEntity(

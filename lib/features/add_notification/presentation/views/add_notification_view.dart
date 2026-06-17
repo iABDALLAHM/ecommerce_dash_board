@@ -2,10 +2,11 @@ import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/views/widgets/add_notification_view_bloc_provider.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/views/widgets/add_notification_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AddNotificationView extends StatelessWidget {
   const AddNotificationView({super.key});
-  static const String routeName = "AddNotification";
+  
   @override
   Widget build(BuildContext context) {
     return AddNotificationViewBlocProvider(
@@ -20,7 +21,7 @@ class AddNotificationView extends StatelessWidget {
     return AppBar(
       leading: GestureDetector(
         onTap: () {
-          Navigator.of(context).pop();
+          context.pop();
         },
         child: Icon(Icons.arrow_back_ios_new),
       ),

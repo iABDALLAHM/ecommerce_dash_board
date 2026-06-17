@@ -42,7 +42,7 @@ class ImageField extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 5, top: 5),
-              child: imagePath.isNotEmpty
+              child: imagePath.isEmpty
                   ? null
                   : IconButton(
                       padding: EdgeInsets.zero,

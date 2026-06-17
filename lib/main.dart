@@ -1,8 +1,7 @@
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
-import 'package:ecommerce_dash_board/core/function/on_generate_route.dart';
 import 'package:ecommerce_dash_board/core/services/get_it_service.dart';
-import 'package:ecommerce_dash_board/features/dashboard/presentation/views/dashboard_view.dart';
+import 'package:ecommerce_dash_board/core/utils/app_routes.dart';
 import 'package:ecommerce_dash_board/firebase_options.dart';
 import 'package:ecommerce_dash_board/generated/l10n.dart';
 import 'package:ecommerce_dash_board/simple_bloc_observer.dart';
@@ -28,13 +27,12 @@ class EcommerceDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetImageCubit(),
-      child: MaterialApp(
+      child: MaterialApp.router(
         theme: ThemeData(
           fontFamily: "Cairo",
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         ),
-        onGenerateRoute: onGenerateRoute,
-        initialRoute: DashboardView.routeName,
+        routerConfig: AppRoutes.router,
         debugShowCheckedModeBanner: false,
         locale: const Locale("ar"),
         localizationsDelegates: [

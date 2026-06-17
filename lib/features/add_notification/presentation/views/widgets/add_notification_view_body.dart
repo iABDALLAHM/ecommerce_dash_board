@@ -10,6 +10,7 @@ import 'package:ecommerce_dash_board/features/add_notification/presentation/mana
 import 'package:ecommerce_dash_board/core/widgets/image_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AddNotificationViewBody extends StatefulWidget {
   const AddNotificationViewBody({super.key});
@@ -30,7 +31,7 @@ class _AddNotificationViewBodyState extends State<AddNotificationViewBody> {
     return BlocConsumer<AddNotificationCubit, AddNotificationStates>(
       listener: (context, state) {
         if (state is SuccessAddNotificationState) {
-          Navigator.pop(context);
+          context.pop();
           showSnackBar(context, message: "تم إضافة إشعار  بنجاح");
         } else if (state is FailureAddNotificationState) {
           showSnackBar(context, message: state.errorMessage);

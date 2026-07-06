@@ -1,11 +1,11 @@
-class OrderProductEntity {
+class ProductItemEntity {
   final String name;
   final String code;
   final String imageUrl;
   final num price;
   final int quantity;
 
-  OrderProductEntity({
+  ProductItemEntity({
     required this.name,
     required this.code,
     required this.imageUrl,

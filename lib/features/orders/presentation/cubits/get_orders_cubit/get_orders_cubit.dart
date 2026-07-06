@@ -1,23 +1,25 @@
 import 'package:ecommerce_dash_board/features/orders/domain/repos/orders_repo.dart';
-import 'package:ecommerce_dash_board/features/orders/presentation/manager/get_orders_cubit/get_orders_states.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/CUBITS/get_orders_cubit/get_orders_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GetOrdersCubit extends Cubit<GetOrdersStates> {
-  GetOrdersCubit({required this.ordersRepo}) : super(LoadingGetOrdersState());
+  GetOrdersCubit({required this.ordersRepo}) : super(InitialGetOrdersState());
 
   final OrdersRepo ordersRepo;
 
-  Future fetchOrders() async {
+  Future getAllOrders() async {
+    emit(LoadingGetOrdersState());
     var result = await ordersRepo.getOrders();
+
     result.fold(
       (failure) {
         emit(FailureGetOrdersState(errorMessage: failure.errorMessage));
       },
-      (orders) {
-        if (orders.isEmpty) {
+      (result) {
+        if (result.isEmpty) {
           emit(EmptyOrdersState());
         } else {
-          emit(SuccessGetOrdersState(orders: orders));
+          emit(SuccessGetOrdersState(orders: result));
         }
       },
     );

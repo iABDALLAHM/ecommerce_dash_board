@@ -21,7 +21,7 @@ class DashboardViewBody extends StatelessWidget {
               child: CustomButton(
                 text: "إضافة منتج",
                 onPressed: () {
-                  context.go(AppRoutes.addProduct);
+                  context.push(AppRoutes.addProduct);
                 },
               ),
             ),
@@ -34,7 +34,7 @@ class DashboardViewBody extends StatelessWidget {
               child: CustomButton(
                 text: "عرض المنتجات",
                 onPressed: () {
-                  context.go(AppRoutes.orders);
+                  context.push(AppRoutes.orders);
                 },
               ),
             ),
@@ -47,7 +47,7 @@ class DashboardViewBody extends StatelessWidget {
               child: CustomButton(
                 text: "إضافة اشعار",
                 onPressed: () {
-                  context.go(AppRoutes.addNotification);
+                  context.push(AppRoutes.addNotification);
                 },
               ),
             ),

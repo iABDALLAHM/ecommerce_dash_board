@@ -1,13 +1,13 @@
-import 'package:ecommerce_dash_board/features/orders/domain/entities/order_product_entity.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/entities/product_item_entity.dart/product_item_entity.dart';
 
-class OrderProductModel {
+class ProductItemModel {
   final String name;
   final String code;
   final String imageUrl;
   final num price;
   final int quantity;
 
-  OrderProductModel({
+  ProductItemModel({
     required this.name,
     required this.code,
     required this.imageUrl,
@@ -15,8 +15,8 @@ class OrderProductModel {
     required this.quantity,
   });
 
-  factory OrderProductModel.fromJson(Map<String, dynamic> json) {
-    return OrderProductModel(
+  factory ProductItemModel.fromJson(Map<String, dynamic> json) {
+    return ProductItemModel(
       name: json["name"],
       code: json["code"],
       imageUrl: json["imageUrl"],
@@ -24,9 +24,8 @@ class OrderProductModel {
       quantity: json["quantity"],
     );
   }
-
-  OrderProductEntity toEntity() {
-    return OrderProductEntity(
+  ProductItemEntity toEntity() {
+    return ProductItemEntity(
       name: name,
       code: code,
       imageUrl: imageUrl,
@@ -34,4 +33,5 @@ class OrderProductModel {
       quantity: quantity,
     );
   }
+
 }

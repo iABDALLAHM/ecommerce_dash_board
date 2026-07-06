@@ -1,121 +1,116 @@
-import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/entities/order_product_entity.dart';
+import 'package:ecommerce_dash_board/core/function/get_specific_date.dart';
+import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_user_entity/order_and_user_entity.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_address_details_widget.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_product_details_widget.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_user_info_widget.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/see_less_widget.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/see_more_widget.dart';
 import 'package:flutter/material.dart';
 
-class OrderItem extends StatelessWidget {
-  const OrderItem({super.key, required this.order});
-
-  final OrderEntity order;
+class OrderItem extends StatefulWidget {
+  const OrderItem({super.key, required this.orderAndUserEntity});
+  final OrderAndUserEntity orderAndUserEntity;
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Container(
-        color: const Color.fromARGB(21, 128, 74, 70),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /// ===== Order Info =====
-            Text('Order Info', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 8),
-            Text('User ID: ${order.uId}'),
-            Text('Payment Method: ${order.paymentMethod}'),
-            Text('Total Price: ${order.totalPrice}'),
-            const Divider(height: 32),
-
-            /// ===== Shipping Address =====
-            Text(
-              'Shipping Address',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            _AddressItem(label: 'Name', value: order.shippingAddressModel.name),
-            _AddressItem(
-              label: 'Email',
-              value: order.shippingAddressModel.email,
-            ),
-            _AddressItem(
-              label: 'Phone',
-              value: order.shippingAddressModel.phone,
-            ),
-            _AddressItem(
-              label: 'Address',
-              value: order.shippingAddressModel.address,
-            ),
-            _AddressItem(
-              label: 'Details',
-              value: order.shippingAddressModel.addressDetails,
-            ),
-            _AddressItem(label: 'City', value: order.shippingAddressModel.city),
-            const Divider(height: 32),
-
-            /// ===== Products =====
-            Text('Products', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 8),
-
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: order.orderProducts.length,
-              separatorBuilder: (_, __) => const Divider(),
-              itemBuilder: (context, index) {
-                final product = order.orderProducts[index];
-                return _OrderProductItem(product: product);
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  State<OrderItem> createState() => _OrderItemState();
 }
 
-class _AddressItem extends StatelessWidget {
-  const _AddressItem({required this.label, required this.value});
-
-  final String label;
-  final String? value;
-
+class _OrderItemState extends State<OrderItem> {
+  bool seeMore = false;
   @override
   Widget build(BuildContext context) {
-    if (value == null || value!.isEmpty) return const SizedBox.shrink();
-
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4),
-      child: Text('$label: $value'),
-    );
-  }
-}
-
-class _OrderProductItem extends StatelessWidget {
-  const _OrderProductItem({required this.product});
-
-  final OrderProductEntity product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.network(
-          product.imageUrl,
-          width: 50,
-          height: 50,
-          fit: BoxFit.cover,
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(product.name),
-              Text('Code: ${product.code}'),
-              Text('Price: ${product.price}'),
-              Text('Quantity: ${product.quantity}'),
-            ],
+    return Container(
+      margin: EdgeInsets.only(bottom: 10, top: 10, right: 10, left: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: .555,
+            blurRadius: 6,
+            offset: Offset(0, 1),
+            color: Colors.grey,
           ),
-        ),
-      ],
+        ],
+      ),
+      padding: EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.more_vert),
+          const SizedBox(height: 10),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: "الرقم الخاص بالمستخدم:  ",
+                  style: AppStyles.textStyle13Bold,
+                ),
+              ],
+            ),
+          ),
+
+          Text(
+            "${widget.orderAndUserEntity.userEntity.uId} ",
+            maxLines: 3,
+            style: TextStyle(color: Color(0xff64748B)),
+          ),
+
+          const SizedBox(height: 10),
+          CustomUserInfoWidget(orderAndUserEntity: widget.orderAndUserEntity),
+          const SizedBox(height: 10),
+
+          Text(
+            "رقم الأوردر: ${widget.orderAndUserEntity.myOrderEntity.orderNumber}",
+            style: AppStyles.textStyle13Bold,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "السعر الكلي: ${widget.orderAndUserEntity.myOrderEntity.totalPrice.round()}",
+            style: AppStyles.textStyle13Bold,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "الدفع كاش: ${widget.orderAndUserEntity.myOrderEntity.payWithCash}",
+            style: AppStyles.textStyle13Bold,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "تاريخ الأوردر: ${getSpecificDate(date: widget.orderAndUserEntity.myOrderEntity.date)}",
+            style: AppStyles.textStyle13Bold,
+          ),
+          const SizedBox(height: 10),
+
+          seeMore == true
+              ? Column(
+                  children: [
+                    CustomAddressDetailsWidget(
+                      orderAndUserEntity: widget.orderAndUserEntity,
+                    ),
+
+                    CustomProductDetailsWidget(
+                      orderAndUserEntity: widget.orderAndUserEntity,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        seeMore = false;
+                        setState(() {});
+                      },
+                      child: SeeLessWidget(),
+                    ),
+                  ],
+                )
+              : GestureDetector(
+                  onTap: () {
+                    seeMore = true;
+                    setState(() {});
+                  },
+                  child: SeeMoreWidget(),
+                ),
+        ],
+      ),
     );
   }
 }

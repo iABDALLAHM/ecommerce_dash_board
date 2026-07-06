@@ -8,11 +8,9 @@ import 'package:ecommerce_dash_board/features/add_product/domain/entities/produc
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_states.dart';
 import 'package:ecommerce_dash_board/core/widgets/image_field.dart';
-import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/is_product_featured.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/is_product_organic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -40,7 +38,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
       listener: (context, state) {
         if (state is SuccessAddProductState) {
           showSnackBar(context, message: "تم اضافة المنتج بنجاح");
-          context.pop();
         } else if (state is FailureAddProductState) {
           showSnackBar(context, message: state.errorMessage);
         }
@@ -110,12 +107,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     maxLines: 5,
                   ),
                   const SizedBox(height: 8),
-                  IsProductFeatured(
-                    onChange: (value) {
-                      isFeatured = value;
-                    },
-                  ),
-                  const SizedBox(height: 8),
                   IsProductOrganic(
                     onChange: (value) {
                       isOrganic = value;
@@ -143,11 +134,9 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                             productImage: imagePath,
                             productCode: productCode,
                             productDiscription: productDescrition,
-                            isFeaturedProduct: isFeatured,
                             expirationYears: expirationMonths,
                             numberOfCalories: numberOfCalories,
                             unitAmount: quantity,
-                            reviews: [],
                           );
                           triggerAddProductCubit(productEntity: productEntity);
                         } else {

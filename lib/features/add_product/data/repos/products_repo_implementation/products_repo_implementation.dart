@@ -20,9 +20,10 @@ class ProductsRepoImplementation implements ProductsRepo {
     required ProductEntity productEntity,
   }) async {
     try {
-      await databaseService.addData(
+      await databaseService.addSingleData(
         path: BackendEndPoints.addProducts,
         data: ProductModel.fromEntity(productEntity: productEntity).toMap(),
+        documentId: productEntity.productCode,
       );
       return Right(null);
     } on CustomException catch (e) {

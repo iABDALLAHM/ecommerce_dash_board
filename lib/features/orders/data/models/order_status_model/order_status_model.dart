@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_status_entity/order_status_entity.dart';
 
 class OrderStatusModel {
@@ -45,10 +46,18 @@ class OrderStatusModel {
       orderShipped: json["orderShipped"],
       outOfDelivery: json["outOfDelivery"],
       orderDelivered: json["orderDelivered"],
-      acceptedAt: json["acceptedAt"],
-      shippedAt: json["shippedAt"],
-      outOfDeliveryAt: json["outOfDeliveryAt"],
-      deliverdAt: json["deliverdAt"],
+      acceptedAt: json["acceptedAt"] != null
+          ? (json["acceptedAt"] as Timestamp).toDate()
+          : null,
+      shippedAt: json["shippedAt"] != null
+          ? (json["shippedAt"] as Timestamp).toDate()
+          : null,
+      outOfDeliveryAt: json["outOfDeliveryAt"] != null
+          ? (json["outOfDeliveryAt"] as Timestamp).toDate()
+          : null,
+      deliverdAt: json["deliverdAt"] != null
+          ? (json["deliverdAt"] as Timestamp).toDate()
+          : null,
     );
   }
 
@@ -64,5 +73,4 @@ class OrderStatusModel {
       deliverdAt: deliverdAt,
     );
   }
-
 }

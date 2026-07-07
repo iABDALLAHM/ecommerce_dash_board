@@ -9,8 +9,8 @@ import 'package:ecommerce_dash_board/core/services/database_service.dart';
 import 'package:ecommerce_dash_board/core/services/firestore_service.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service.dart';
 import 'package:ecommerce_dash_board/core/services/supabase_storage_service.dart';
-import 'package:ecommerce_dash_board/features/orders/data/repos/orders_repo_implementation.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/repos/orders_repo.dart';
+import 'package:ecommerce_dash_board/features/orders/data/repos/orders_repository_implementation.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/repos/orders_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -24,8 +24,8 @@ void initGetIt() {
     SupabaseStorageService(supabase: Supabase.instance),
   );
 
-  getIt.registerSingleton<OrdersRepo>(
-    OrdersRepoImplementation(databaseService: getIt<DatabaseService>()),
+  getIt.registerSingleton<OrderRepository>(
+    OrdersRepositoryImplementation(databaseService: getIt<DatabaseService>()),
   );
 
   getIt.registerSingleton<NotificationRepo>(

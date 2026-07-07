@@ -3,8 +3,14 @@ import 'package:ecommerce_dash_board/features/orders/domain/entities/product_ite
 import 'package:flutter/material.dart';
 
 class CustomProductWidget extends StatelessWidget {
-  const CustomProductWidget({super.key, required this.myOrderEntity});
+  const CustomProductWidget({
+    super.key,
+    required this.myOrderEntity,
+    required this.index,
+  });
   final ProductItemEntity myOrderEntity;
+  final int index;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,13 +18,14 @@ class CustomProductWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 10),
             Text(
-              "المطلوب: ",
+              "المطلوب $index",
               style: AppStyles.textStyle13Bold.copyWith(
                 color: Color(0xff78350F),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             Text.rich(
               TextSpan(
                 children: [
@@ -83,6 +90,7 @@ class CustomProductWidget extends StatelessWidget {
             ),
           ],
         ),
+
         Spacer(),
         ClipOval(
           child: Image.network(

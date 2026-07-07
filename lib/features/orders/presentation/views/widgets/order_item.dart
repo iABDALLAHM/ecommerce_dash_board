@@ -4,6 +4,7 @@ import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_u
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_address_details_widget.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_product_details_widget.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_user_info_widget.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_status_options.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/see_less_widget.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/see_more_widget.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,11 @@ class _OrderItemState extends State<OrderItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.more_vert),
+
+          OrderStatusOptions(
+            orderNumber: widget.orderAndUserEntity.myOrderEntity.orderNumber,
+          ),
+
           const SizedBox(height: 10),
           Text.rich(
             TextSpan(

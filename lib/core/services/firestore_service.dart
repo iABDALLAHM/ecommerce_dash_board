@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
+import 'package:ecommerce_dash_board/core/models/query_prams.dart';
 import 'package:ecommerce_dash_board/core/services/database_service.dart';
 
 class FirestoreService implements DatabaseService {
@@ -60,6 +61,57 @@ class FirestoreService implements DatabaseService {
       throw CustomException(
         exceptionMeassge: "حدث خطأ أثناء حفظ البيانات في المستند",
       );
+    }
+  }
+
+  @override
+  Future<String> getDocumentId({
+    required String path,
+    required QueryParams query,
+  }) async {
+    try {
+      Query<Map<String, dynamic>> data = firestore.collection(path);
+
+      final condition = query.condition;
+      if (condition != null) {
+        data = data.where(condition.field, isEqualTo: condition.isEqualTo);
+      }
+
+      if (condition != null) {
+        data = data.where(condition.field, whereIn: condition.whereIn);
+      }
+
+      if (condition != null) {
+        data = data.where(
+          condition.field,
+          arrayContains: condition.arrayContains,
+        );
+      }
+
+      final order = query.order;
+      if (order != null) {
+        data = data.orderBy(order.field, descending: order.descending);
+      }
+
+      var result = await data.get();
+      return result.docs.first.id;
+    } catch (e) {
+      throw CustomException(
+        exceptionMeassge: "حدث خطأ أثناء البحث عن البيانات $e",
+      );
+    }
+  }
+
+  @override
+  Future<void> updateData({
+    required String path,
+    required String documentId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await firestore.collection(path).doc(documentId).update(data);
+    } catch (e) {
+      throw CustomException(exceptionMeassge: "حدث خطأ اثناء تحديث البيانات");
     }
   }
 }

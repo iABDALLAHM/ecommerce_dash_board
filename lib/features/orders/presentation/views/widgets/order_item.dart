@@ -4,6 +4,7 @@ import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_u
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_address_details_widget.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_product_details_widget.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_user_info_widget.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_status_bloc_listener.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_status_options.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/see_less_widget.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/see_more_widget.dart';
@@ -19,102 +20,102 @@ class OrderItem extends StatefulWidget {
 
 class _OrderItemState extends State<OrderItem> {
   bool seeMore = false;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 10, top: 10, right: 10, left: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            spreadRadius: .555,
-            blurRadius: 6,
-            offset: Offset(0, 1),
-            color: Colors.grey,
-          ),
-        ],
-      ),
-      padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-
-          OrderStatusOptions(
-            orderNumber: widget.orderAndUserEntity.myOrderEntity.orderNumber,
-          ),
-
-          const SizedBox(height: 10),
-          Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: "الرقم الخاص بالمستخدم:  ",
-                  style: AppStyles.textStyle13Bold,
-                ),
-              ],
+    return OrderStatusBlocListener(
+      child: Container(
+        margin: EdgeInsets.only(bottom: 10, top: 10, right: 10, left: 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: .555,
+              blurRadius: 6,
+              offset: Offset(0, 1),
+              color: Colors.grey,
             ),
-          ),
+          ],
+        ),
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            OrderStatusOptions(orderAndUserEntity: widget.orderAndUserEntity),
 
-          Text(
-            "${widget.orderAndUserEntity.userEntity.uId} ",
-            maxLines: 3,
-            style: TextStyle(color: Color(0xff64748B)),
-          ),
+            const SizedBox(height: 10),
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: "الرقم الخاص بالمستخدم:  ",
+                    style: AppStyles.textStyle13Bold,
+                  ),
+                ],
+              ),
+            ),
 
-          const SizedBox(height: 10),
-          CustomUserInfoWidget(orderAndUserEntity: widget.orderAndUserEntity),
-          const SizedBox(height: 10),
+            Text(
+              "${widget.orderAndUserEntity.userEntity.uId} ",
+              maxLines: 3,
+              style: TextStyle(color: Color(0xff64748B)),
+            ),
 
-          Text(
-            "رقم الأوردر: ${widget.orderAndUserEntity.myOrderEntity.orderNumber}",
-            style: AppStyles.textStyle13Bold,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "السعر الكلي: ${widget.orderAndUserEntity.myOrderEntity.totalPrice.round()}",
-            style: AppStyles.textStyle13Bold,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "الدفع كاش: ${widget.orderAndUserEntity.myOrderEntity.payWithCash}",
-            style: AppStyles.textStyle13Bold,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "تاريخ الأوردر: ${getSpecificDate(date: widget.orderAndUserEntity.myOrderEntity.date)}",
-            style: AppStyles.textStyle13Bold,
-          ),
-          const SizedBox(height: 10),
+            const SizedBox(height: 10),
+            CustomUserInfoWidget(orderAndUserEntity: widget.orderAndUserEntity),
+            const SizedBox(height: 10),
 
-          seeMore == true
-              ? Column(
-                  children: [
-                    CustomAddressDetailsWidget(
-                      orderAndUserEntity: widget.orderAndUserEntity,
-                    ),
+            Text(
+              "رقم الأوردر: ${widget.orderAndUserEntity.myOrderEntity.orderNumber}",
+              style: AppStyles.textStyle13Bold,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              "السعر الكلي: ${widget.orderAndUserEntity.myOrderEntity.totalPrice.round()}",
+              style: AppStyles.textStyle13Bold,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              "الدفع كاش: ${widget.orderAndUserEntity.myOrderEntity.payWithCash}",
+              style: AppStyles.textStyle13Bold,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              "تاريخ الأوردر: ${getSpecificDate(date: widget.orderAndUserEntity.myOrderEntity.date)}",
+              style: AppStyles.textStyle13Bold,
+            ),
+            const SizedBox(height: 10),
 
-                    CustomProductDetailsWidget(
-                      orderAndUserEntity: widget.orderAndUserEntity,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        seeMore = false;
-                        setState(() {});
-                      },
-                      child: SeeLessWidget(),
-                    ),
-                  ],
-                )
-              : GestureDetector(
-                  onTap: () {
-                    seeMore = true;
-                    setState(() {});
-                  },
-                  child: SeeMoreWidget(),
-                ),
-        ],
+            seeMore == true
+                ? Column(
+                    children: [
+                      CustomAddressDetailsWidget(
+                        orderAndUserEntity: widget.orderAndUserEntity,
+                      ),
+
+                      CustomProductDetailsWidget(
+                        orderAndUserEntity: widget.orderAndUserEntity,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          seeMore = false;
+                          setState(() {});
+                        },
+                        child: SeeLessWidget(),
+                      ),
+                    ],
+                  )
+                : GestureDetector(
+                    onTap: () {
+                      seeMore = true;
+                      setState(() {});
+                    },
+                    child: SeeMoreWidget(),
+                  ),
+          ],
+        ),
       ),
     );
   }

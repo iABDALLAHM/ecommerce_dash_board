@@ -1,38 +1,39 @@
-import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity.dart';
+import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity/notification_entity.dart';
 
 class NotificationModel {
-  final String notificationTitle;
   final String notificationBody;
-  final int discountPercentage;
-  final String? notificationImageUrl;
+  final String notificationImageUrl;
   final DateTime date;
+  final List<String> readBy;
+  final String id;
+
   NotificationModel({
-    required this.notificationTitle,
     required this.notificationBody,
-    required this.discountPercentage,
     required this.notificationImageUrl,
     required this.date,
+    required this.readBy,
+    required this.id,
   });
 
   factory NotificationModel.fromEntity({
     required NotificationEntity notificationEntity,
   }) {
     return NotificationModel(
-      date: notificationEntity.date,
-      notificationImageUrl: notificationEntity.notificationImageUrl,
-      notificationTitle: notificationEntity.notificationTitle,
+      date: notificationEntity.notificationDate,
+      notificationImageUrl: notificationEntity.notificationImage,
       notificationBody: notificationEntity.notificationBody,
-      discountPercentage: notificationEntity.discountPercentage,
+      readBy: notificationEntity.readBy,
+      id: notificationEntity.id,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      "date": DateTime.now(),
-      "notificationimageUrl": notificationImageUrl,
-      "notificationTitle": notificationTitle,
+      "date": date,
+      "id": id,
+      "readBy": readBy,
+      "notificationImageUrl": notificationImageUrl,
       "notificationBody": notificationBody,
-      "discountPercentage": discountPercentage,
     };
   }
 }

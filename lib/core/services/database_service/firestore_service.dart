@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/models/query_prams.dart';
-import 'package:ecommerce_dash_board/core/services/database_service.dart';
+import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 
 class FirestoreService implements DatabaseService {
-  final FirebaseFirestore firestore;
+  final FirebaseFirestore _firestore;
 
-  FirestoreService({required this.firestore});
+  FirestoreService({required FirebaseFirestore firestore})
+    : _firestore = firestore;
 
   @override
   Future<void> addData({
@@ -14,7 +15,7 @@ class FirestoreService implements DatabaseService {
     required Map<String, dynamic> data,
   }) async {
     try {
-      await firestore.collection(path).add(data);
+      await _firestore.collection(path).add(data);
     } catch (e) {
       throw CustomException(
         exceptionMeassge: "حدث خطأ أثناء إضافة البيانات إلى قاعدة البيانات",
@@ -25,7 +26,7 @@ class FirestoreService implements DatabaseService {
   @override
   Future<dynamic> getData({required String path}) async {
     try {
-      var data = await firestore.collection(path).get();
+      var data = await _firestore.collection(path).get();
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
@@ -40,7 +41,7 @@ class FirestoreService implements DatabaseService {
     required String documentId,
   }) async {
     try {
-      var data = await firestore.collection(path).doc(documentId).get();
+      var data = await _firestore.collection(path).doc(documentId).get();
       return data.data();
     } catch (e) {
       throw CustomException(
@@ -56,7 +57,7 @@ class FirestoreService implements DatabaseService {
     required String documentId,
   }) async {
     try {
-      await firestore.collection(path).doc(documentId).set(data);
+      await _firestore.collection(path).doc(documentId).set(data);
     } catch (e) {
       throw CustomException(
         exceptionMeassge: "حدث خطأ أثناء حفظ البيانات في المستند",
@@ -70,7 +71,7 @@ class FirestoreService implements DatabaseService {
     required QueryParams query,
   }) async {
     try {
-      Query<Map<String, dynamic>> data = firestore.collection(path);
+      Query<Map<String, dynamic>> data = _firestore.collection(path);
 
       final condition = query.condition;
       if (condition != null) {
@@ -109,9 +110,40 @@ class FirestoreService implements DatabaseService {
     required Map<String, dynamic> data,
   }) async {
     try {
-      await firestore.collection(path).doc(documentId).update(data);
+      await _firestore.collection(path).doc(documentId).update(data);
     } catch (e) {
       throw CustomException(exceptionMeassge: "حدث خطأ اثناء تحديث البيانات");
+    }
+  }
+
+  @override
+  Stream<List<Map<String, dynamic>>> getStreamData({required String path}) {
+    try {
+      var result = _firestore.collection(path).snapshots();
+      return result.map((snapShot) {
+        return snapShot.docs.map((doc) => doc.data()).toList();
+      });
+    } catch (e) {
+      throw CustomException(
+        exceptionMeassge: "حدث خطأ أثناء جلب البيانات من قاعدة البيانات",
+      );
+    }
+  }
+
+  @override
+  Stream<Map<String, dynamic>?> getSingleStreamDate({
+    required String path,
+    required String documentId,
+  }) {
+    try {
+      var result = _firestore.collection(path).doc(documentId).snapshots();
+      return result.map((snapShot) {
+        return snapShot.data();
+      });
+    } catch (e) {
+      throw CustomException(
+        exceptionMeassge: "حدث خطأ أثناء جلب البيانات من قاعدة البيانات",
+      );
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/repos/products_repo/products_repo.dart';
-import 'package:ecommerce_dash_board/core/services/get_it_service.dart';
+import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

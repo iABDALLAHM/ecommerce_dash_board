@@ -5,7 +5,7 @@ import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/repos/products_repo/products_repo.dart';
-import 'package:ecommerce_dash_board/core/services/database_service.dart';
+import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_product/data/models/product_model.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity.dart';

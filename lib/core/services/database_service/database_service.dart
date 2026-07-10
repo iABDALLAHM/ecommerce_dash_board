@@ -14,6 +14,13 @@ abstract class DatabaseService {
 
   Future<dynamic> getData({required String path});
 
+  Stream<List<Map<String, dynamic>>> getStreamData({required String path});
+
+  Stream<Map<String, dynamic>?> getSingleStreamDate({
+    required String path,
+    required String documentId,
+  });
+
   Future<dynamic> getSingleData({
     required String path,
     required String documentId,
@@ -27,6 +34,6 @@ abstract class DatabaseService {
   Future<void> updateData({
     required String path,
     required String documentId,
-  required  Map<String, dynamic> data,
+    required Map<String, dynamic> data,
   });
 }

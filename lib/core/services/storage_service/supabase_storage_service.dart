@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
-import 'package:ecommerce_dash_board/core/services/storage_service.dart';
+import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart';
 import 'package:path/path.dart' as b;
 import 'package:supabase_flutter/supabase_flutter.dart';
 

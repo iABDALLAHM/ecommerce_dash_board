@@ -4,7 +4,7 @@ import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/core/models/query_prams.dart';
-import 'package:ecommerce_dash_board/core/services/database_service.dart';
+import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/orders/data/models/order_model/order_model.dart';
 import 'package:ecommerce_dash_board/features/orders/data/models/user_model/user_model.dart';
@@ -19,36 +19,28 @@ class OrdersRepositoryImplementation implements OrderRepository {
   OrdersRepositoryImplementation({required this.databaseService});
 
   @override
-  Future<Either<Failure, List<OrderAndUserEntity>>> getOrders() async {
-    try {
-      var result = await databaseService.getData(
-        path: BackendEndPoints.getOrders,
-      );
+  Stream<List<OrderAndUserEntity>> getStreamOrders() {
+    return databaseService
+        .getStreamData(path: BackendEndPoints.getOrders)
+        .asyncMap((ordersList) async {
+          List<OrderAndUserEntity> result = [];
 
-      List<OrderAndUserEntity> orderAndUserEntityList = [];
+          for (var orderJson in ordersList) {
+            MyOrderEntity order = OrderModel.fromJson(orderJson).toEntity();
 
-      for (var order in result) {
-        MyOrderEntity orderEntity = OrderModel.fromJson(order).toEntity();
+            var userData = await databaseService.getSingleData(
+              path: BackendEndPoints.addUserData,
+              documentId: order.uId,
+            );
 
-        var userData = await databaseService.getSingleData(
-          path: BackendEndPoints.addUserData,
-          documentId: orderEntity.uId,
-        );
+            UserEntity user = UserModel.fromJson(userData).toEntity();
 
-        UserEntity userEntity = UserModel.fromJson(userData).toEntity();
-
-        orderAndUserEntityList.add(
-          OrderAndUserEntity(
-            myOrderEntity: orderEntity,
-            userEntity: userEntity,
-          ),
-        );
-      }
-      return Right(orderAndUserEntityList);
-    } on CustomException catch (e) {
-      log("error happend in OrdersRepoImplementation in getOrders method");
-      return Left(ServerFailure(errorMessage: e.exceptionMeassge));
-    }
+            result.add(
+              OrderAndUserEntity(myOrderEntity: order, userEntity: user),
+            );
+          }
+          return result;
+        });
   }
 
   @override
@@ -57,11 +49,13 @@ class OrdersRepositoryImplementation implements OrderRepository {
     required String orderNumber,
   }) async {
     try {
-
       var result = await databaseService.getDocumentId(
         path: BackendEndPoints.getOrders,
         query: QueryParams(
-          condition: QueryCondition(field: "orderNumber", isEqualTo: orderNumber),
+          condition: QueryCondition(
+            field: "orderNumber",
+            isEqualTo: orderNumber,
+          ),
         ),
       );
 
@@ -72,7 +66,6 @@ class OrdersRepositoryImplementation implements OrderRepository {
       );
 
       return Right(null);
-
     } on CustomException catch (e) {
       log(
         "error happend in OrdersRepoImplementation in changeOrderStatus method",
@@ -81,5 +74,3 @@ class OrdersRepositoryImplementation implements OrderRepository {
     }
   }
 }
-
-

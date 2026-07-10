@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
-import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity.dart';
-import 'package:ecommerce_dash_board/features/add_notification/presentation/manager/add_notification_cubit/add_notification_state.dart';
+import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity/notification_entity.dart';
+import 'package:ecommerce_dash_board/features/add_notification/presentation/cubits/add_notification_cubit/add_notification_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddNotificationCubit extends Cubit<AddNotificationStates> {
@@ -18,7 +18,7 @@ class AddNotificationCubit extends Cubit<AddNotificationStates> {
   Future addNotification({required NotificationEntity notification}) async {
     emit(LoadingAddNotificationState());
     var response = await imagesRepo.uploadImage(
-      file: File(notification.image),
+      file: File(notification.notificationImage),
       path: BackendEndPoints.addNotification,
     );
 
@@ -27,7 +27,7 @@ class AddNotificationCubit extends Cubit<AddNotificationStates> {
           emit(FailureAddNotificationState(errorMessage: failure.errorMessage)),
       (imageUrl) async {
         final updatedNotification = notification.copyWith(
-          notificationImageUrl: imageUrl,
+          notificationImage: imageUrl,
         );
 
         var result = await notificationRepo.addNotification(

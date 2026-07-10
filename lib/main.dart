@@ -1,6 +1,6 @@
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
-import 'package:ecommerce_dash_board/core/services/get_it_service.dart';
+import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/core/utils/app_routes.dart';
 import 'package:ecommerce_dash_board/firebase_options.dart';
 import 'package:ecommerce_dash_board/generated/l10n.dart';

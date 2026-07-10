@@ -4,10 +4,10 @@ import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
-import 'package:ecommerce_dash_board/core/services/database_service.dart';
+import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_notification/data/models/notification_model.dart';
-import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity.dart';
+import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity/notification_entity.dart';
 
 class NotificationRepoImplementation implements NotificationRepo {
   final DatabaseService databaseService;
@@ -19,7 +19,8 @@ class NotificationRepoImplementation implements NotificationRepo {
     required NotificationEntity notification,
   }) async {
     try {
-      await databaseService.addData(
+      await databaseService.addSingleData(
+        documentId: notification.id,
         path: BackendEndPoints.notification,
         data: NotificationModel.fromEntity(
           notificationEntity: notification,

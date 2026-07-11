@@ -76,7 +76,7 @@ class _AddNotificationViewBodyState extends State<AddNotificationViewBody> {
                                   notificationDate: DateTime.now(),
                                   notificationImage: imagePath,
                                   notificationBody: notificationBody,
-                                  id: generateNotificationNumber(),
+                                  notificationId: generateNotificationNumber(),
                                 );
                             triggerAddNotificationCubit(
                               notification: notification,

@@ -3,37 +3,33 @@ import 'package:ecommerce_dash_board/features/add_notification/domain/entities/n
 class NotificationModel {
   final String notificationBody;
   final String notificationImageUrl;
-  final DateTime date;
-  final List<String> readBy;
-  final String id;
+  final DateTime notificationDate;
+  final String notificationId;
 
   NotificationModel({
     required this.notificationBody,
     required this.notificationImageUrl,
-    required this.date,
-    required this.readBy,
-    required this.id,
+    required this.notificationDate,
+    required this.notificationId,
   });
 
   factory NotificationModel.fromEntity({
     required NotificationEntity notificationEntity,
   }) {
     return NotificationModel(
-      date: notificationEntity.notificationDate,
+      notificationDate: notificationEntity.notificationDate,
       notificationImageUrl: notificationEntity.notificationImage,
       notificationBody: notificationEntity.notificationBody,
-      readBy: notificationEntity.readBy,
-      id: notificationEntity.id,
+      notificationId: notificationEntity.notificationId,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      "date": date,
-      "id": id,
-      "readBy": readBy,
       "notificationImageUrl": notificationImageUrl,
       "notificationBody": notificationBody,
+      "notificationDate": notificationDate,
+      "notificationId": notificationId,
     };
   }
 }

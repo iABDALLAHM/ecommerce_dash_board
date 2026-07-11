@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_dash_board/features/add_featured_product/data/repositories/featured_repository_implementation/featured_repository_implementation.dart';
+import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_product_repository/featured_product_repository.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_dash_board/features/add_product/data/repos/images_repo_implementation/images_repo_implementation.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
@@ -38,5 +40,9 @@ void initGetIt() {
 
   getIt.registerSingleton<ImagesRepo>(
     ImagesRepoImplementation(storageService: getIt<StorageService>()),
+  );
+  
+  getIt.registerSingleton<FeaturedProductRepository>(
+    FeaturedRepositoryImplementation(databaseService: getIt<DatabaseService>()),
   );
 }

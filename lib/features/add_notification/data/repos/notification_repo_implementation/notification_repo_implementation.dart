@@ -6,7 +6,7 @@ import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
-import 'package:ecommerce_dash_board/features/add_notification/data/models/notification_model.dart';
+import 'package:ecommerce_dash_board/features/add_notification/data/models/notification_model/notification_model.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity/notification_entity.dart';
 
 class NotificationRepoImplementation implements NotificationRepo {
@@ -20,7 +20,7 @@ class NotificationRepoImplementation implements NotificationRepo {
   }) async {
     try {
       await databaseService.addSingleData(
-        documentId: notification.id,
+        documentId: notification.notificationId,
         path: BackendEndPoints.notification,
         data: NotificationModel.fromEntity(
           notificationEntity: notification,
@@ -35,3 +35,4 @@ class NotificationRepoImplementation implements NotificationRepo {
     }
   }
 }
+  

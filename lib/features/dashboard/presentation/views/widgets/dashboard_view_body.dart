@@ -52,6 +52,19 @@ class DashboardViewBody extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 20),
+          Center(
+            child: SizedBox(
+              width: double.infinity,
+              height: 60,
+              child: CustomButton(
+                text: "إضافة المنتجات المميزة",
+                onPressed: () {
+                  context.push(AppRoutes.addFeaturedProduct);
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );

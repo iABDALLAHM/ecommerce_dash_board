@@ -1,3 +1,4 @@
+import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart';
@@ -7,7 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GetOrdersBlocProvider extends StatelessWidget {
   const GetOrdersBlocProvider({super.key, required this.child});
+
   final Widget child;
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -22,6 +25,7 @@ class GetOrdersBlocProvider extends StatelessWidget {
             orderRepository: getIt.get<OrderRepository>(),
           ),
         ),
+        BlocProvider(create: (context) => GetImageCubit()),
       ],
       child: child,
     );

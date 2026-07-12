@@ -1,5 +1,4 @@
 import 'package:ecommerce_dash_board/constants.dart';
-import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/core/utils/app_routes.dart';
 import 'package:ecommerce_dash_board/firebase_options.dart';
@@ -25,24 +24,21 @@ class EcommerceDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetImageCubit(),
-      child: MaterialApp.router(
-        theme: ThemeData(
-          fontFamily: "Cairo",
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        ),
-        routerConfig: AppRoutes.router,
-        debugShowCheckedModeBanner: false,
-        locale: const Locale("ar"),
-        localizationsDelegates: [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
+    return MaterialApp.router(
+      theme: ThemeData(
+        fontFamily: "Cairo",
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
+      routerConfig: AppRoutes.router,
+      debugShowCheckedModeBanner: false,
+      locale: const Locale("ar"),
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
     );
   }
 }

@@ -6,12 +6,12 @@ import 'package:ecommerce_dash_board/core/services/database_service/database_ser
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/data/models/featured_product_model/featured_product_model.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/domain/entities/featured_product_entity/featured_product_entity.dart';
-import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_product_repository/featured_product_repository.dart';
+import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_products_repository/featured_products_repository.dart';
 
-class FeaturedRepositoryImplementation implements FeaturedProductRepository {
+class FeaturedProductsRepositoryImplementation implements FeaturedProductsRepository {
   final DatabaseService _databaseService;
 
-  FeaturedRepositoryImplementation({required DatabaseService databaseService})
+  FeaturedProductsRepositoryImplementation({required DatabaseService databaseService})
     : _databaseService = databaseService;
 
   @override

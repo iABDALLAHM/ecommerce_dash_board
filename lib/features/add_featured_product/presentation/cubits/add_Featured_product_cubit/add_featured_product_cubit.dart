@@ -2,22 +2,22 @@ import 'dart:io';
 
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/domain/entities/featured_product_entity/featured_product_entity.dart';
-import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_product_repository/featured_product_repository.dart';
+import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_products_repository/featured_products_repository.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/presentation/cubits/add_Featured_product_cubit/add_featured_product_state.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddFeaturedProductCubit extends Cubit<AddFeaturedProductState> {
   AddFeaturedProductCubit({
-    required FeaturedProductRepository featuredProductRepository,
-    required ImagesRepo imageRepo,
+    required FeaturedProductsRepository featuredProductRepository,
+    required ImagesRepository imageRepo,
   }) : _featuredProductRepository = featuredProductRepository,
        _imagesRepo = imageRepo,
 
        super(InitialAddFeaturedProductState());
 
-  final FeaturedProductRepository _featuredProductRepository;
-  final ImagesRepo _imagesRepo;
+  final FeaturedProductsRepository _featuredProductRepository;
+  final ImagesRepository _imagesRepo;
 
   Future addFeaturedProduct({required FeaturedProductEntity product}) async {
     emit(LoadingAddFeaturedProductState());

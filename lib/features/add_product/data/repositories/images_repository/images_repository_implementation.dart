@@ -4,13 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart';
 
-class ImagesRepoImplementation implements ImagesRepo {
+class ImagesRepositoryImplementation implements ImagesRepository {
   final StorageService storageService;
 
-  ImagesRepoImplementation({required this.storageService});
+  ImagesRepositoryImplementation({required this.storageService});
 
   @override
   Future<Either<Failure, String>> uploadImage({

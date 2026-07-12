@@ -1,7 +1,7 @@
 import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
+import 'package:ecommerce_dash_board/features/add_notification/domain/repositories/notification_repository/notification_repository.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/cubits/add_notification_cubit/add_notification_cubit.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,8 +12,8 @@ class AddNotificationViewBlocProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddNotificationCubit(
-        notificationRepo: getIt.get<NotificationRepo>(),
-        imagesRepo: getIt.get<ImagesRepo>(),
+        notificationRepo: getIt.get<NotificationRepository>(),
+        imagesRepo: getIt.get<ImagesRepository>(),
       ),
       child:  child);
   }

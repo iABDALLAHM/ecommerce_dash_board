@@ -1,4 +1,4 @@
-import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity/product_entity.dart';
 
 class ProductModel {
   final String productName;

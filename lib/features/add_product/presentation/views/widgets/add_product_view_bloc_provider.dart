@@ -1,5 +1,5 @@
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/products_repo/products_repo.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/products_repository/products_repostory.dart';
 import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +12,8 @@ class AddProductViewBlocProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddProductCubit(
-        imagesRepo: getIt.get<ImagesRepo>(),
-        productsRepo: getIt.get<ProductsRepo>(),
+        imagesRepo: getIt.get<ImagesRepository>(),
+        productsRepo: getIt.get<ProductsRepostory>(),
       ),
       child: child,
     );

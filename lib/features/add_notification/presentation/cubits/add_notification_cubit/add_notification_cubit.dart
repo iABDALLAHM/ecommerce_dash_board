@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
-import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
+import 'package:ecommerce_dash_board/features/add_notification/domain/repositories/notification_repository/notification_repository.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity/notification_entity.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/cubits/add_notification_cubit/add_notification_state.dart';
@@ -12,8 +12,8 @@ class AddNotificationCubit extends Cubit<AddNotificationStates> {
     required this.imagesRepo,
   }) : super(InitialAddNotificationState());
 
-  final NotificationRepo notificationRepo;
-  final ImagesRepo imagesRepo;
+  final NotificationRepository notificationRepo;
+  final ImagesRepository imagesRepo;
 
   Future addNotification({required NotificationEntity notification}) async {
     emit(LoadingAddNotificationState());

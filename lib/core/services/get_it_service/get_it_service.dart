@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_dash_board/features/add_featured_product/data/repositories/featured_repository_implementation/featured_repository_implementation.dart';
-import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_product_repository/featured_product_repository.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/images_repo/images_repo.dart';
-import 'package:ecommerce_dash_board/features/add_product/data/repos/images_repo_implementation/images_repo_implementation.dart';
-import 'package:ecommerce_dash_board/features/add_notification/domain/repos/notification_repo/notification_repo.dart';
-import 'package:ecommerce_dash_board/features/add_notification/data/repos/notification_repo_implementation/notification_repo_implementation.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/products_repo/products_repo.dart';
-import 'package:ecommerce_dash_board/features/add_product/data/repos/products_repo_implementation/products_repo_implementation.dart';
+import 'package:ecommerce_dash_board/features/add_featured_product/data/repositories/featured_products_repository/featured_products_repository_implementation.dart';
+import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_products_repository/featured_products_repository.dart';
+import 'package:ecommerce_dash_board/features/add_notification/data/repositories/notification_repository/notification_repository_implementation.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
+import 'package:ecommerce_dash_board/features/add_product/data/repositories/images_repository/images_repository_implementation.dart';
+import 'package:ecommerce_dash_board/features/add_notification/domain/repositories/notification_repository/notification_repository.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/products_repository/products_repostory.dart';
+import 'package:ecommerce_dash_board/features/add_product/data/repositories/products_repository/products_repository_implementation.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/firestore_service.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service/supabase_storage_service.dart';
-import 'package:ecommerce_dash_board/features/orders/data/repos/orders_repository_implementation.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/repos/orders_repository.dart';
+import 'package:ecommerce_dash_board/features/orders/data/repositories/orders_repository/orders_repository_implementation.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -30,19 +30,20 @@ void initGetIt() {
     OrdersRepositoryImplementation(databaseService: getIt<DatabaseService>()),
   );
 
-  getIt.registerSingleton<NotificationRepo>(
-    NotificationRepoImplementation(databaseService: getIt<DatabaseService>()),
+  getIt.registerSingleton<NotificationRepository>(
+    NotificationRepositoryImplementation(databaseService: getIt<DatabaseService>()),
   );
 
-  getIt.registerSingleton<ProductsRepo>(
-    ProductsRepoImplementation(databaseService: getIt<DatabaseService>()),
+  getIt.registerSingleton<ProductsRepostory>(
+    ProductsRepositoryImplementation(databaseService: getIt<DatabaseService>()),
   );
 
-  getIt.registerSingleton<ImagesRepo>(
-    ImagesRepoImplementation(storageService: getIt<StorageService>()),
+  getIt.registerSingleton<ImagesRepository>(
+    ImagesRepositoryImplementation(storageService: getIt<StorageService>()),
   );
   
-  getIt.registerSingleton<FeaturedProductRepository>(
-    FeaturedRepositoryImplementation(databaseService: getIt<DatabaseService>()),
+  getIt.registerSingleton<FeaturedProductsRepository>(
+    FeaturedProductsRepositoryImplementation(databaseService: getIt<DatabaseService>()),
   );
 }
+

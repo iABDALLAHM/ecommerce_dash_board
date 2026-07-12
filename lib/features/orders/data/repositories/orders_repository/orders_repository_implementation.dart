@@ -10,8 +10,8 @@ import 'package:ecommerce_dash_board/features/orders/data/models/order_model/ord
 import 'package:ecommerce_dash_board/features/orders/data/models/user_model/user_model.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/my_order_entity/my_order_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_user_entity/order_and_user_entity.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/repos/orders_repository.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/user_entities/user_entity.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/entities/user_entity/user_entity.dart';
 
 class OrdersRepositoryImplementation implements OrderRepository {
   final DatabaseService databaseService;

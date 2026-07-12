@@ -4,16 +4,16 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/repos/products_repo/products_repo.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/repositories/products_repository/products_repostory.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
-import 'package:ecommerce_dash_board/features/add_product/data/models/product_model.dart';
-import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity.dart';
+import 'package:ecommerce_dash_board/features/add_product/data/models/product_model/product_model.dart';
+import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity/product_entity.dart';
 
-class ProductsRepoImplementation implements ProductsRepo {
+class ProductsRepositoryImplementation implements ProductsRepostory {
   final DatabaseService databaseService;
 
-  ProductsRepoImplementation({required this.databaseService});
+  ProductsRepositoryImplementation({required this.databaseService});
 
   @override
   Future<Either<Failure, void>> addProduct({

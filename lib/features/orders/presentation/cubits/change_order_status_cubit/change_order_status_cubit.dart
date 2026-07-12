@@ -1,4 +1,4 @@
-import 'package:ecommerce_dash_board/features/orders/domain/repos/orders_repository.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

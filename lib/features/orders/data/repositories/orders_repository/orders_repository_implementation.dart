@@ -21,7 +21,7 @@ class OrdersRepositoryImplementation implements OrderRepository {
   @override
   Stream<List<OrderAndUserEntity>> getStreamOrders() {
     return databaseService
-        .getStreamData(path: BackendEndPoints.getOrders)
+        .getStreamData(path: BackendEndPoints.ordersCollection)
         .asyncMap((ordersList) async {
           List<OrderAndUserEntity> result = [];
 
@@ -29,7 +29,7 @@ class OrdersRepositoryImplementation implements OrderRepository {
             MyOrderEntity order = OrderModel.fromJson(orderJson).toEntity();
 
             var userData = await databaseService.getSingleData(
-              path: BackendEndPoints.addUserData,
+              path: BackendEndPoints.usersCollection,
               documentId: order.uId,
             );
 
@@ -50,7 +50,7 @@ class OrdersRepositoryImplementation implements OrderRepository {
   }) async {
     try {
       var result = await databaseService.getDocumentId(
-        path: BackendEndPoints.getOrders,
+        path: BackendEndPoints.ordersCollection,
         query: QueryParams(
           condition: QueryCondition(
             field: "orderNumber",
@@ -60,7 +60,7 @@ class OrdersRepositoryImplementation implements OrderRepository {
       );
 
       await databaseService.updateData(
-        path: BackendEndPoints.getOrders,
+        path: BackendEndPoints.ordersCollection,
         documentId: result,
         data: data,
       );

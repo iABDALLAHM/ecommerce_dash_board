@@ -20,7 +20,7 @@ class FeaturedProductsRepositoryImplementation implements FeaturedProductsReposi
   }) async {
     try {
       await _databaseService.addData(
-        path: BackendEndPoints.featuredProducts,
+        path: BackendEndPoints.featuredProductsCollection,
         data: FeaturedProductModel.fromEntity(
           productEntity: featuredProduct,
         ).toMap(),

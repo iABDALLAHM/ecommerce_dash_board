@@ -24,7 +24,7 @@ class AddFeaturedProductCubit extends Cubit<AddFeaturedProductState> {
 
     var response = await _imagesRepo.uploadImage(
       file: File(product.image),
-      path: BackendEndPoints.featuredProducts,
+      path: BackendEndPoints.featuredProductsImagesCollection,
     );
 
     response.fold(

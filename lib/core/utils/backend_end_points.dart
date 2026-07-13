@@ -1,10 +1,18 @@
 class BackendEndPoints {
-  static const String addUserData = "users";
-  static const String imagesPath = "images";
-  static const String addProducts = "products";
-  static const String getOrders = "orders";
-  static const String addNotification = "notifications_images";
-  static const String notification = "notifications";
-  static const String featuredProducts = "featuredProducts";
+  // database collections
+  static const String usersCollection = "users";
+  static const String ordersCollection = "orders";
+  static const String productsCollection = "products";
+  static const String cardsCollection = "cards";
+  static const String favoriteProductsCollection = "favorite_prodcts";
+  static const String featuredProductsCollection = "featured_products";
+  static const String reviewsCollection = "reviews";
+  static const String notificationsCollection = "notifications";
 
+  // storage images collections
+  static const String usersImagesCollection = "users_images";
+  static const String notificationsImagesCollection = "notifications_images";
+  static const String productsImagesCollection = "products_images";
+  static const String featuredProductsImagesCollection =
+      "featured_products_images";
 }

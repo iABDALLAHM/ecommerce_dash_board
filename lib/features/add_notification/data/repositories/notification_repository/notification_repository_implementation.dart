@@ -21,7 +21,7 @@ class NotificationRepositoryImplementation implements NotificationRepository {
     try {
       await databaseService.addSingleData(
         documentId: notification.notificationId,
-        path: BackendEndPoints.notification,
+        path: BackendEndPoints.notificationsCollection,
         data: NotificationModel.fromEntity(
           notificationEntity: notification,
         ).toMap(),

@@ -21,7 +21,7 @@ class ProductsRepositoryImplementation implements ProductsRepostory {
   }) async {
     try {
       await databaseService.addSingleData(
-        path: BackendEndPoints.addProducts,
+        path: BackendEndPoints.productsCollection,
         data: ProductModel.fromEntity(productEntity: productEntity).toMap(),
         documentId: productEntity.productCode,
       );

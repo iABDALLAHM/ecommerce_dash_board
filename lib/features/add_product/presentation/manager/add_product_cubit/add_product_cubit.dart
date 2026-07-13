@@ -26,7 +26,7 @@ class AddProductCubit extends Cubit<AddProductStates> {
 
     var result = await imagesRepo.uploadImage(
       file: image,
-      path: BackendEndPoints.imagesPath,
+      path: BackendEndPoints.productsImagesCollection,
     );
 
     result.fold(

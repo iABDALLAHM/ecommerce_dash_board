@@ -19,7 +19,7 @@ class AddNotificationCubit extends Cubit<AddNotificationStates> {
     emit(LoadingAddNotificationState());
     var response = await imagesRepo.uploadImage(
       file: File(notification.notificationImage),
-      path: BackendEndPoints.addNotification,
+      path: BackendEndPoints.notificationsImagesCollection,
     );
 
     response.fold(

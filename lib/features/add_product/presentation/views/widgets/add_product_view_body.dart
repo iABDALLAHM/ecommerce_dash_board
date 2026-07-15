@@ -11,6 +11,7 @@ import 'package:ecommerce_dash_board/core/widgets/image_field.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/is_product_organic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -20,7 +21,6 @@ class AddProductViewBody extends StatefulWidget {
 }
 
 class _AddProductViewBodyState extends State<AddProductViewBody> {
-
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool isFeatured = false;
@@ -39,6 +39,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
       listener: (context, state) {
         if (state is SuccessAddProductState) {
           showSnackBar(context, message: "تم اضافة المنتج بنجاح");
+          context.pop();
         } else if (state is FailureAddProductState) {
           showSnackBar(context, message: state.errorMessage);
         }

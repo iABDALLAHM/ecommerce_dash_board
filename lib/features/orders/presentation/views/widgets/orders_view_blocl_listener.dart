@@ -1,16 +1,19 @@
+import 'dart:developer';
+
 import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OrderStatusBlocListener extends StatelessWidget {
-  const OrderStatusBlocListener({super.key, required this.child});
+class OrdersViewBlocListener extends StatelessWidget {
+  const OrdersViewBlocListener({super.key, required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {
     return BlocListener<ChangeOrderStatusCubit, ChangeOrderStatusStates>(
       listener: (context, state) {
+        log("message");
         if (state is AcceptedOrderStatusState) {
           showSnackBar(context, message: "OrderAccepted");
         } else if (state is ShippedOrderStatusState) {
@@ -21,6 +24,7 @@ class OrderStatusBlocListener extends StatelessWidget {
           showSnackBar(context, message: "OrderDeliverd");
         }
       },
+      child: child,
     );
   }
 }

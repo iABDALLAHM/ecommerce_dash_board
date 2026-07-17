@@ -39,7 +39,7 @@ class CustomAddressDetailsWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "${orderAndUserEntity.myOrderEntity.shippingAddressEntity.address} ",
+                              "${orderAndUserEntity.orderEntity.shippingAddressEntity.address} ",
                           style: TextStyle(color: Color(0xff64748B)),
                         ),
                       ],
@@ -57,7 +57,7 @@ class CustomAddressDetailsWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "${orderAndUserEntity.myOrderEntity.shippingAddressEntity.addressDetails} ",
+                              "${orderAndUserEntity.orderEntity.shippingAddressEntity.addressDetails} ",
                           style: TextStyle(color: Color(0xff64748B)),
                         ),
                       ],
@@ -75,7 +75,7 @@ class CustomAddressDetailsWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "${orderAndUserEntity.myOrderEntity.shippingAddressEntity.city} ",
+                              "${orderAndUserEntity.orderEntity.shippingAddressEntity.city} ",
                           style: TextStyle(color: Color(0xff64748B)),
                         ),
                       ],
@@ -92,7 +92,7 @@ class CustomAddressDetailsWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "${orderAndUserEntity.myOrderEntity.shippingAddressEntity.email} ",
+                              "${orderAndUserEntity.orderEntity.shippingAddressEntity.email} ",
                           style: TextStyle(color: Color(0xff64748B)),
                         ),
                       ],
@@ -109,7 +109,7 @@ class CustomAddressDetailsWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "${orderAndUserEntity.myOrderEntity.shippingAddressEntity.name} ",
+                              "${orderAndUserEntity.orderEntity.shippingAddressEntity.name} ",
                           style: TextStyle(color: Color(0xff64748B)),
                         ),
                       ],
@@ -126,7 +126,7 @@ class CustomAddressDetailsWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "${orderAndUserEntity.myOrderEntity.shippingAddressEntity.phone} ",
+                              "${orderAndUserEntity.orderEntity.shippingAddressEntity.phone} ",
                           style: TextStyle(color: Color(0xff64748B)),
                         ),
                       ],

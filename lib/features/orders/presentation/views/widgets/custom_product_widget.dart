@@ -1,14 +1,14 @@
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/entities/product_item_entity.dart/product_item_entity.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/entities/cart_item_entity/cart_item_entity.dart';
 import 'package:flutter/material.dart';
 
 class CustomProductWidget extends StatelessWidget {
   const CustomProductWidget({
     super.key,
-    required this.myOrderEntity,
+    required this.cartItemEntity,
     required this.index,
   });
-  final ProductItemEntity myOrderEntity;
+  final CartItemEntity cartItemEntity;
   final int index;
 
   @override
@@ -34,7 +34,7 @@ class CustomProductWidget extends StatelessWidget {
                     style: AppStyles.textStyle13Bold,
                   ),
                   TextSpan(
-                    text: "${myOrderEntity.code} ",
+                    text: "${cartItemEntity.productEntity.productCode} ",
                     style: TextStyle(color: Color(0xff64748B)),
                   ),
                 ],
@@ -50,7 +50,7 @@ class CustomProductWidget extends StatelessWidget {
                     style: AppStyles.textStyle13Bold,
                   ),
                   TextSpan(
-                    text: "${myOrderEntity.name} ",
+                    text: "${cartItemEntity.productEntity.productName} ",
                     style: TextStyle(color: Color(0xff64748B)),
                   ),
                 ],
@@ -66,7 +66,7 @@ class CustomProductWidget extends StatelessWidget {
                     style: AppStyles.textStyle13Bold,
                   ),
                   TextSpan(
-                    text: "${myOrderEntity.price} ",
+                    text: "${cartItemEntity.productEntity.productPrice} ",
                     style: TextStyle(color: Color(0xff64748B)),
                   ),
                 ],
@@ -82,7 +82,7 @@ class CustomProductWidget extends StatelessWidget {
                     style: AppStyles.textStyle13Bold,
                   ),
                   TextSpan(
-                    text: "${myOrderEntity.quantity} ",
+                    text: "${cartItemEntity.quantity} ",
                     style: TextStyle(color: Color(0xff64748B)),
                   ),
                 ],
@@ -95,7 +95,7 @@ class CustomProductWidget extends StatelessWidget {
         ClipOval(
           child: Image.network(
             fit: BoxFit.cover,
-            myOrderEntity.imageUrl,
+            cartItemEntity.productEntity.productImage,
             width: 50,
             height: 50,
           ),

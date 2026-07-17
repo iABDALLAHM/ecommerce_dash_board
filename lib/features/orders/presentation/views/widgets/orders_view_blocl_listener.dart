@@ -13,15 +13,18 @@ class OrdersViewBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<ChangeOrderStatusCubit, ChangeOrderStatusStates>(
       listener: (context, state) {
-        log("message");
         if (state is AcceptedOrderStatusState) {
           showSnackBar(context, message: "OrderAccepted");
+          log("OrderAccepted");
         } else if (state is ShippedOrderStatusState) {
           showSnackBar(context, message: "OrderShipped");
+          log("OrderShipped");
         } else if (state is OutOfDeliveryOrderStatusState) {
           showSnackBar(context, message: "OrderOutOfDeliverd");
+          log("OrderOutOfDeliverd");
         } else if (state is OrderDeliverdStatusState) {
           showSnackBar(context, message: "OrderDeliverd");
+          log("OrderDeliverd");
         }
       },
       child: child,

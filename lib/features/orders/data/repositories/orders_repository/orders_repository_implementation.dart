@@ -8,8 +8,8 @@ import 'package:ecommerce_dash_board/core/services/database_service/database_ser
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/orders/data/models/order_model/order_model.dart';
 import 'package:ecommerce_dash_board/features/orders/data/models/user_model/user_model.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/entities/my_order_entity/my_order_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_user_entity/order_and_user_entity.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/user_entity/user_entity.dart';
 
@@ -26,7 +26,7 @@ class OrdersRepositoryImplementation implements OrderRepository {
           List<OrderAndUserEntity> result = [];
 
           for (var orderJson in ordersList) {
-            MyOrderEntity order = OrderModel.fromJson(orderJson).toEntity();
+            OrderEntity order = OrderModel.fromJson(orderJson).toEntity();
 
             var userData = await databaseService.getSingleData(
               path: BackendEndPoints.usersCollection,
@@ -36,7 +36,7 @@ class OrdersRepositoryImplementation implements OrderRepository {
             UserEntity user = UserModel.fromJson(userData).toEntity();
 
             result.add(
-              OrderAndUserEntity(myOrderEntity: order, userEntity: user),
+              OrderAndUserEntity(orderEntity: order, userEntity: user),
             );
           }
           return result;

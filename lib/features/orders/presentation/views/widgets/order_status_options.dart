@@ -18,8 +18,8 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
 
   @override
   Widget build(BuildContext context) {
-    var orderNumber = widget.orderAndUserEntity.myOrderEntity.orderNumber;
-    var orderStatus = widget.orderAndUserEntity.myOrderEntity.orderStatusEntity;
+    var orderNumber = widget.orderAndUserEntity.orderEntity.orderNumber;
+    var orderStatus = widget.orderAndUserEntity.orderEntity.orderStatusEntity;
 
     return DropdownButton(
       value: selectedValue,

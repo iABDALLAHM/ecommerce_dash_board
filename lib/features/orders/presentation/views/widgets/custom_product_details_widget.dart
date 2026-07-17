@@ -29,11 +29,11 @@ class CustomProductDetailsWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  orderAndUserEntity.myOrderEntity.products.length,
+                  orderAndUserEntity.orderEntity.cartEntity.items.length,
                   (index) => CustomProductWidget(
                     index: index + 1,
-                    myOrderEntity:
-                        orderAndUserEntity.myOrderEntity.products[index],
+                    cartItemEntity:
+                        orderAndUserEntity.orderEntity.cartEntity.items[index],
                   ),
                 ),
               ),

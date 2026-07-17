@@ -1,10 +1,11 @@
+
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity/product_entity.dart';
 
 class ProductModel {
   final String productName;
   final num productPrice;
   final String productCode;
-  final String productDiscription;
+  final String description;
   final String productImageUrl;
   final bool isOrganicProduct;
   final int expirationYears;
@@ -15,7 +16,7 @@ class ProductModel {
     required this.productName,
     required this.productPrice,
     required this.productCode,
-    required this.productDiscription,
+    required this.description,
     required this.productImageUrl,
     required this.isOrganicProduct,
     required this.expirationYears,
@@ -23,13 +24,41 @@ class ProductModel {
     required this.unitAmount,
   });
 
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      productName: json["productName"],
+      productPrice: json["productPrice"],
+      productCode: json["productCode"],
+      description: json["productDiscription"],
+      isOrganicProduct: json["isOrganicProduct"],
+      expirationYears: json["expirationYears"],
+      numberOfCalories: json["numberOfCalories"],
+      unitAmount: json["unitAmount"],
+      productImageUrl: json["productImageUrl"],
+    );
+  }
+
+  ProductEntity toEntity() {
+    return ProductEntity(
+      productImage: productImageUrl,
+      productName: productName,
+      productPrice: productPrice,
+      productCode: productCode,
+      productDiscription: description,
+      isOrganicProduct: isOrganicProduct,
+      expirationYears: expirationYears,
+      numberOfCalories: numberOfCalories,
+      unitAmount: unitAmount,
+    );
+  }
+
   factory ProductModel.fromEntity({required ProductEntity productEntity}) {
     return ProductModel(
       isOrganicProduct: productEntity.isOrganicProduct,
       productName: productEntity.productName,
       productPrice: productEntity.productPrice,
       productCode: productEntity.productCode,
-      productDiscription: productEntity.productDiscription,
+      description: productEntity.productDiscription,
       productImageUrl: productEntity.productImage,
       expirationYears: productEntity.expirationYears,
       numberOfCalories: productEntity.numberOfCalories,
@@ -45,7 +74,7 @@ class ProductModel {
       "productName": productName,
       "productPrice": productPrice,
       "productCode": productCode,
-      "productDiscription": productDiscription,
+      "productDiscription": description,
       "productImageUrl": productImageUrl,
       "isOrganicProduct": isOrganicProduct,
     };

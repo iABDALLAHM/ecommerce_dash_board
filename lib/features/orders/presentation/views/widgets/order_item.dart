@@ -65,22 +65,22 @@ class _OrderItemState extends State<OrderItem> {
           const SizedBox(height: 10),
 
           Text(
-            "رقم الأوردر: ${widget.orderAndUserEntity.myOrderEntity.orderNumber}",
+            "رقم الأوردر: ${widget.orderAndUserEntity.orderEntity.orderNumber}",
             style: AppStyles.textStyle13Bold,
           ),
           const SizedBox(height: 10),
           Text(
-            "السعر الكلي: ${widget.orderAndUserEntity.myOrderEntity.totalPrice.round()}",
+            "السعر الكلي: ${widget.orderAndUserEntity.orderEntity.totalPrice.round()}",
             style: AppStyles.textStyle13Bold,
           ),
           const SizedBox(height: 10),
           Text(
-            "الدفع كاش: ${widget.orderAndUserEntity.myOrderEntity.payWithCash}",
+            "الدفع كاش: ${widget.orderAndUserEntity.orderEntity.payWithCash}",
             style: AppStyles.textStyle13Bold,
           ),
           const SizedBox(height: 10),
           Text(
-            "تاريخ الأوردر: ${getSpecificDate(date: widget.orderAndUserEntity.myOrderEntity.date)}",
+            "تاريخ الأوردر: ${getSpecificDate(date: widget.orderAndUserEntity.orderEntity.date)}",
             style: AppStyles.textStyle13Bold,
           ),
           const SizedBox(height: 10),

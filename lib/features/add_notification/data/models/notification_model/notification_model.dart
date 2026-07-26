@@ -5,12 +5,14 @@ class NotificationModel {
   final String notificationImageUrl;
   final DateTime notificationDate;
   final String notificationId;
+  final bool notificationSeen;
 
   NotificationModel({
     required this.notificationBody,
     required this.notificationImageUrl,
     required this.notificationDate,
     required this.notificationId,
+    required this.notificationSeen,
   });
 
   factory NotificationModel.fromEntity({
@@ -21,6 +23,7 @@ class NotificationModel {
       notificationImageUrl: notificationEntity.notificationImage,
       notificationBody: notificationEntity.notificationBody,
       notificationId: notificationEntity.notificationId,
+      notificationSeen: notificationEntity.notificationSeen,
     );
   }
 
@@ -30,6 +33,7 @@ class NotificationModel {
       "notificationBody": notificationBody,
       "notificationDate": notificationDate,
       "notificationId": notificationId,
+      "notificationSeen": notificationSeen,
     };
   }
 }

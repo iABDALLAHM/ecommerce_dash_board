@@ -13,6 +13,7 @@ class OrderEntity {
   final String orderNumber;
   final OrderStatusEntity orderStatusEntity;
   final CardEntity cardEntity;
+  final String fcmToken;
 
   OrderEntity({
     required this.cartEntity,
@@ -23,6 +24,6 @@ class OrderEntity {
     required this.orderNumber,
     required this.orderStatusEntity,
     required this.totalPrice,
-    required this.cardEntity,
+    required this.cardEntity, required this.fcmToken,
   });
 }

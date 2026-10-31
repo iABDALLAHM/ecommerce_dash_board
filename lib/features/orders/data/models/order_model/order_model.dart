@@ -15,6 +15,7 @@ class OrderModel {
   final String orderNumber;
   final OrderStatusModel orderStatusModel;
   final CardModel cardModel;
+  final String fcmToken;
 
   OrderModel({
     required this.totalPrice,
@@ -26,6 +27,7 @@ class OrderModel {
     required this.orderStatusModel,
     required this.cardModel,
     required this.cartModel,
+    required this.fcmToken,
   });
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
@@ -43,6 +45,7 @@ class OrderModel {
       orderNumber: json["orderNumber"],
       orderStatusModel: OrderStatusModel.fromJson(json["orderStatusModel"]),
       cartModel: CartModel.fromJson(json["cartModel"]),
+      fcmToken: json["fcmToken"],
     );
   }
 
@@ -57,6 +60,7 @@ class OrderModel {
       orderStatusEntity: orderStatusModel.toEntity(),
       totalPrice: totalPrice,
       cardEntity: cardModel.toEntity(),
+      fcmToken: fcmToken,
     );
   }
 }

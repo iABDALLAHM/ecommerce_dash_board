@@ -21,13 +21,13 @@ class CardModel {
 
   factory CardModel.fromJson(Map<String, dynamic> json) {
     return CardModel(
-      cardHolderName: json["cardHolderName"],
-      cardNumber: json["cardNumber"],
-      cardCvv: json["cardCvv"],
-      cardExpiredDate: json["cardExpiredDate"],
-      cardImageType: json["cardImageType"],
-      markAsDefault: json["markAsDefault"],
-      cardHolderId: json["cardHolderId"],
+      cardHolderName: json["cardHolderName"] ?? "",
+      cardNumber: json["cardNumber"] ?? "",
+      cardCvv: json["cardCvv"] ?? "",
+      cardExpiredDate: json["cardExpiredDate"] ?? "",
+      cardImageType: json["cardImageType"] ?? "",
+      markAsDefault: json["markAsDefault"] ?? "",
+      cardHolderId: json["cardHolderId"] ?? "",
     );
   }
 

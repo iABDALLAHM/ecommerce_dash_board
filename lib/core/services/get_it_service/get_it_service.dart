@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_dash_board/core/services/notification_sender_service/firebase_notification_sender_service.dart';
+import 'package:ecommerce_dash_board/core/services/notification_sender_service/notification_sender_service.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/data/repositories/featured_products_repository/featured_products_repository_implementation.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/domain/repositories/featured_products_repository/featured_products_repository.dart';
 import 'package:ecommerce_dash_board/features/add_notification/data/repositories/notification_repository/notification_repository_implementation.dart';
@@ -31,7 +33,9 @@ void initGetIt() {
   );
 
   getIt.registerSingleton<NotificationRepository>(
-    NotificationRepositoryImplementation(databaseService: getIt<DatabaseService>()),
+    NotificationRepositoryImplementation(
+      databaseService: getIt<DatabaseService>(),
+    ),
   );
 
   getIt.registerSingleton<ProductsRepostory>(
@@ -41,9 +45,13 @@ void initGetIt() {
   getIt.registerSingleton<ImagesRepository>(
     ImagesRepositoryImplementation(storageService: getIt<StorageService>()),
   );
-  
+
   getIt.registerSingleton<FeaturedProductsRepository>(
-    FeaturedProductsRepositoryImplementation(databaseService: getIt<DatabaseService>()),
+    FeaturedProductsRepositoryImplementation(
+      databaseService: getIt<DatabaseService>(),
+    ),
+  );
+  getIt.registerLazySingleton<NotificationSenderService>(
+    () => FirebaseNotificationSenderService(),
   );
 }
-

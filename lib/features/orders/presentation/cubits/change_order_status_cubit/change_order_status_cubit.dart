@@ -1,3 +1,6 @@
+import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
+import 'package:ecommerce_dash_board/core/services/notification_sender_service/notification_sender_service.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,14 +12,19 @@ class ChangeOrderStatusCubit extends Cubit<ChangeOrderStatusStates> {
 
   final OrderRepository _orderRepository;
 
-  Future<void> acceptOrder({required String orderNumber}) async {
+  Future<void> acceptOrder({required OrderEntity orderEntity}) async {
     emit(LoadingOrderStatusState());
     var result = await _orderRepository.changeOrderStatus(
       data: {
         "orderStatusModel.acceptOrder": true,
         "orderStatusModel.acceptedAt": DateTime.now(),
       },
-      orderNumber: orderNumber,
+      orderNumber: orderEntity.orderNumber,
+    );
+    await getIt<NotificationSenderService>().sendOrderStatusNotification(
+      fcmToken: orderEntity.fcmToken,
+      orderId: orderEntity.orderNumber,
+      newStatus: "processing",
     );
     result.fold(
       (failure) =>
@@ -25,15 +33,21 @@ class ChangeOrderStatusCubit extends Cubit<ChangeOrderStatusStates> {
     );
   }
 
-  Future<void> shippedOrder({required String orderNumber}) async {
+  Future<void> shippedOrder({required OrderEntity orderEntity}) async {
     emit(LoadingOrderStatusState());
     var result = await _orderRepository.changeOrderStatus(
       data: {
         "orderStatusModel.orderShipped": true,
         "orderStatusModel.shippedAt": DateTime.now(),
       },
-      orderNumber: orderNumber,
+      orderNumber: orderEntity.orderNumber,
     );
+    await getIt<NotificationSenderService>().sendOrderStatusNotification(
+      fcmToken: orderEntity.fcmToken,
+      orderId: orderEntity.orderNumber,
+      newStatus: "shipping",
+    );
+
     result.fold(
       (failure) =>
           emit(FailureOrderStatusState(errorMessage: failure.errorMessage)),
@@ -41,14 +55,19 @@ class ChangeOrderStatusCubit extends Cubit<ChangeOrderStatusStates> {
     );
   }
 
-  Future<void> outOfDelivery({required String orderNumber}) async {
+  Future<void> outOfDelivery({required OrderEntity orderEntity}) async {
     emit(LoadingOrderStatusState());
     var result = await _orderRepository.changeOrderStatus(
       data: {
         "orderStatusModel.outOfDelivery": true,
         "orderStatusModel.outOfDeliveryAt": DateTime.now(),
       },
-      orderNumber: orderNumber,
+      orderNumber: orderEntity.orderNumber,
+    );
+    await getIt<NotificationSenderService>().sendOrderStatusNotification(
+      fcmToken: orderEntity.fcmToken,
+      orderId: orderEntity.orderNumber,
+      newStatus: "shipping",
     );
     result.fold(
       (failure) =>
@@ -57,14 +76,19 @@ class ChangeOrderStatusCubit extends Cubit<ChangeOrderStatusStates> {
     );
   }
 
-  Future<void> deliverdOrder({required String orderNumber}) async {
+  Future<void> deliverdOrder({required OrderEntity orderEntity}) async {
     emit(LoadingOrderStatusState());
     var result = await _orderRepository.changeOrderStatus(
       data: {
         "orderStatusModel.orderDelivered": true,
         "orderStatusModel.deliverdAt": DateTime.now(),
       },
-      orderNumber: orderNumber,
+      orderNumber: orderEntity.orderNumber,
+    );
+    await getIt<NotificationSenderService>().sendOrderStatusNotification(
+      fcmToken: orderEntity.fcmToken,
+      orderId: orderEntity.orderNumber,
+      newStatus: "delivered",
     );
     result.fold(
       (failure) =>

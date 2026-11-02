@@ -21,7 +21,7 @@ class OrdersListViewBlocBuilder extends StatelessWidget {
         } else if (state is LoadingGetOrdersState) {
           return Center(child: Text("جاري تحميل المنتجات"));
         }
-        return SizedBox();
+        return Center(child: Text("لا يوجد منتجات"));
       },
     );
   }

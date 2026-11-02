@@ -1,7 +1,9 @@
 import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_user_entity/order_and_user_entity.dart';
+import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_status_entity/order_status_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart';
+import 'package:ecommerce_dash_board/features/orders/presentation/enums/order_status_enum.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/custom_drop_down_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,11 +16,10 @@ class OrderStatusOptions extends StatefulWidget {
 }
 
 class _OrderStatusOptionsState extends State<OrderStatusOptions> {
-  OrderStatus? selectedValue = OrderStatus.pending;
+  OrderStatus? selectedValue;
 
   @override
   Widget build(BuildContext context) {
-    var orderNumber = widget.orderAndUserEntity.orderEntity.orderNumber;
     var orderStatus = widget.orderAndUserEntity.orderEntity.orderStatusEntity;
 
     return DropdownButton(
@@ -29,13 +30,14 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
           value: OrderStatus.pending,
           child: Text("الحالية: قيد الإنتظار"),
         ),
+
         DropdownMenuItem(
           value: OrderStatus.accepted,
           onTap: () {
             _handleAcceptOrderState(
               orderStatus: orderStatus,
               context: context,
-              orderNumber: orderNumber,
+              orderEntity: widget.orderAndUserEntity.orderEntity,
             );
           },
           child: CustomDropDownItem(
@@ -49,7 +51,7 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
             _handleShippedOrder(
               orderStatus: orderStatus,
               context: context,
-              orderNumber: orderNumber,
+              orderEntity: widget.orderAndUserEntity.orderEntity,
             );
           },
           child: CustomDropDownItem(
@@ -63,7 +65,7 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
             _handleOutOfDeliveryOrder(
               orderStatus: orderStatus,
               context: context,
-              orderNumber: orderNumber,
+              orderEntity: widget.orderAndUserEntity.orderEntity,
             );
           },
           child: CustomDropDownItem(
@@ -77,7 +79,7 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
             _handelDeliverdOrder(
               orderStatus: orderStatus,
               context: context,
-              orderNumber: orderNumber,
+              orderEntity: widget.orderAndUserEntity.orderEntity,
             );
           },
           child: CustomDropDownItem(
@@ -95,17 +97,14 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
   void _handelDeliverdOrder({
     required OrderStatusEntity orderStatus,
     required BuildContext context,
-    required String orderNumber,
+    required OrderEntity orderEntity,
   }) {
     if (orderStatus.acceptOrder == true &&
         orderStatus.orderShipped == true &&
         orderStatus.outOfDelivery == true &&
         orderStatus.orderDelivered != true) {
-      setState(() {
-        selectedValue = OrderStatus.delivered;
-      });
       context.read<ChangeOrderStatusCubit>().deliverdOrder(
-        orderNumber: orderNumber,
+        orderEntity: orderEntity,
       );
     } else if (orderStatus.orderDelivered == true) {
       showSnackBar(context, message: "تمت العملية من قبل");
@@ -117,16 +116,13 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
   void _handleOutOfDeliveryOrder({
     required OrderStatusEntity orderStatus,
     required BuildContext context,
-    required String orderNumber,
+    required OrderEntity orderEntity,
   }) {
     if (orderStatus.acceptOrder == true &&
         orderStatus.orderShipped == true &&
         orderStatus.outOfDelivery != true) {
-      setState(() {
-        selectedValue = OrderStatus.outOfDelivery;
-      });
       context.read<ChangeOrderStatusCubit>().outOfDelivery(
-        orderNumber: orderNumber,
+        orderEntity: orderEntity,
       );
     } else if (orderStatus.outOfDelivery == true) {
       showSnackBar(context, message: "تمت العملية من قبل");
@@ -138,15 +134,11 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
   void _handleShippedOrder({
     required OrderStatusEntity orderStatus,
     required BuildContext context,
-    required String orderNumber,
+    required OrderEntity orderEntity,
   }) {
     if (orderStatus.acceptOrder == true && orderStatus.orderShipped != true) {
-      setState(() {
-        selectedValue = OrderStatus.shipped;
-      });
-
       context.read<ChangeOrderStatusCubit>().shippedOrder(
-        orderNumber: orderNumber,
+        orderEntity: orderEntity,
       );
     } else if (orderStatus.orderShipped == true) {
       showSnackBar(context, message: "تمت العملية من قبل");
@@ -158,19 +150,14 @@ class _OrderStatusOptionsState extends State<OrderStatusOptions> {
   void _handleAcceptOrderState({
     required BuildContext context,
     required OrderStatusEntity orderStatus,
-    required String orderNumber,
+    required OrderEntity orderEntity,
   }) {
     if (orderStatus.acceptOrder != true) {
-      setState(() {
-        selectedValue = OrderStatus.accepted;
-      });
       context.read<ChangeOrderStatusCubit>().acceptOrder(
-        orderNumber: orderNumber,
+        orderEntity: orderEntity,
       );
     } else if (orderStatus.acceptOrder == true) {
       showSnackBar(context, message: "تمت العملية من قبل");
     }
   }
 }
-
-enum OrderStatus { accepted, shipped, outOfDelivery, delivered, pending }

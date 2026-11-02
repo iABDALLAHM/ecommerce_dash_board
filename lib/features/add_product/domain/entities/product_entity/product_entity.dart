@@ -1,5 +1,5 @@
 class ProductEntity {
-  final String productName;
+  final Map<String, String> productName;
   final num productPrice;
   final String productImage;
   final String productCode;

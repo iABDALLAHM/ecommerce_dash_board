@@ -1,8 +1,7 @@
-
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity/product_entity.dart';
 
 class ProductModel {
-  final String productName;
+  final Map<String, String> productName;
   final num productPrice;
   final String productCode;
   final String description;
@@ -26,7 +25,7 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      productName: json["productName"],
+      productName: Map<String, String>.from(json['productName'] ?? {}),
       productPrice: json["productPrice"],
       productCode: json["productCode"],
       description: json["productDiscription"],

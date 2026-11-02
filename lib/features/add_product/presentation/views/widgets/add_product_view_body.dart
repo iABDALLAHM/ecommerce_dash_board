@@ -25,7 +25,9 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool isFeatured = false;
   bool isOrganic = false;
-  String productName = "";
+  String productNameAr = "";
+  String productNameEn = "";
+
   String productCode = "";
   String productDescrition = "";
   num productPrice = 0;
@@ -55,11 +57,25 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               child: Column(
                 children: [
                   const SizedBox(height: 16),
-                  CustomTextFormField(
-                    hintText: "اسم المنتج",
-                    onSaved: (value) {
-                      productName = value ?? "";
-                    },
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextFormField(
+                          hintText: "اسم المنتج بالعربي",
+                          onSaved: (value) {
+                            productNameAr = value ?? "";
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextFormField(
+                          hintText: "اسم المنتج بالإنجليزي",
+                          onSaved: (value) {
+                            productNameEn = value ?? "";
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8),
                   CustomTextFormField(
@@ -131,7 +147,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                           formKey.currentState!.save();
                           final ProductEntity productEntity = ProductEntity(
                             isOrganicProduct: isOrganic,
-                            productName: productName,
+
                             productPrice: productPrice,
                             productImage: imagePath,
                             productCode: productCode,
@@ -139,6 +155,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                             expirationYears: expirationMonths,
                             numberOfCalories: numberOfCalories,
                             unitAmount: quantity,
+                            productName: {
+                              "productName_ar": productNameAr
+                                  .trim()
+                                  .toLowerCase(),
+                              "productName_en": productNameEn
+                                  .trim()
+                                  .toLowerCase(),
+                            },
                           );
                           triggerAddProductCubit(productEntity: productEntity);
                         } else {

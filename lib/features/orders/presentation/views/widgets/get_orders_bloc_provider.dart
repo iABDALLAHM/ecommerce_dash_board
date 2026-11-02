@@ -17,12 +17,12 @@ class GetOrdersBlocProvider extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => GetStreamOrdersCubit(
-            orderRepository: getIt.get<OrderRepository>(),
+            orderRepository: getIt<OrderRepository>(),
           ),
         ),
         BlocProvider(
           create: (context) => ChangeOrderStatusCubit(
-            orderRepository: getIt.get<OrderRepository>(),
+            orderRepository: getIt<OrderRepository>(),
           ),
         ),
         BlocProvider(create: (context) => GetImageCubit()),

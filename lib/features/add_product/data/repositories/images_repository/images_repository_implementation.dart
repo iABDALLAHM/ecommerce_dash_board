@@ -6,7 +6,9 @@ import 'package:ecommerce_dash_board/core/errors/failure.dart';
 import 'package:ecommerce_dash_board/core/errors/server_failure.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: ImagesRepository)
 class ImagesRepositoryImplementation implements ImagesRepository {
   final StorageService storageService;
 

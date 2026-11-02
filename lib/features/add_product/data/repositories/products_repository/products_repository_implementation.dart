@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/errors/failure.dart';
@@ -9,7 +8,9 @@ import 'package:ecommerce_dash_board/features/add_product/domain/repositories/pr
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity/product_entity.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: ProductsRepostory)
 class ProductsRepositoryImplementation implements ProductsRepostory {
   final DatabaseService databaseService;
 

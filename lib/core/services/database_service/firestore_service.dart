@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/models/query_prams.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: DatabaseService)
 class FirestoreService implements DatabaseService {
   final FirebaseFirestore _firestore;
 

@@ -16,8 +16,8 @@ class AddNotificationViewBlocProvider extends StatelessWidget {
         BlocProvider(create: (context) => GetImageCubit()),
         BlocProvider(
           create: (context) => AddNotificationCubit(
-            notificationRepo: getIt.get<NotificationRepository>(),
-            imagesRepo: getIt.get<ImagesRepository>(),
+            notificationRepo: getIt<NotificationRepository>(),
+            imagesRepo: getIt<ImagesRepository>(),
           ),
         ),
       ],

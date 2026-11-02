@@ -16,8 +16,8 @@ class AddFeaturedProductBlocProvider extends StatelessWidget {
         BlocProvider(create: (context) => GetImageCubit()),
         BlocProvider(
           create: (context) => AddFeaturedProductCubit(
-            imageRepo: getIt.get<ImagesRepository>(),
-            featuredProductRepository: getIt.get<FeaturedProductsRepository>(),
+            imageRepo: getIt<ImagesRepository>(),
+            featuredProductRepository: getIt<FeaturedProductsRepository>(),
           ),
         ),
       ],

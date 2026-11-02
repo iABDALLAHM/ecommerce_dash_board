@@ -3,7 +3,9 @@ import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_u
 import 'package:ecommerce_dash_board/features/orders/orders.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/get_stream_orders_cubit/get_stream_orders_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class GetStreamOrdersCubit extends Cubit<GetStreamOrdersStates> {
   GetStreamOrdersCubit({required this.orderRepository})
     : super(LoadingGetOrdersState()) {

@@ -6,7 +6,9 @@ import 'package:ecommerce_dash_board/features/add_featured_product/domain/reposi
 import 'package:ecommerce_dash_board/features/add_featured_product/presentation/cubits/add_Featured_product_cubit/add_featured_product_state.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/repositories/images_repository/images_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class AddFeaturedProductCubit extends Cubit<AddFeaturedProductState> {
   AddFeaturedProductCubit({
     required FeaturedProductsRepository featuredProductRepository,
@@ -52,7 +54,6 @@ class AddFeaturedProductCubit extends Cubit<AddFeaturedProductState> {
             emit(SuccessAddFeaturedProductState());
           },
         );
-        
       },
     );
   }

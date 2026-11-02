@@ -5,7 +5,9 @@ import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/add_product/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class AddProductCubit extends Cubit<AddProductStates> {
   AddProductCubit({required this.imagesRepo, required this.productsRepo})
     : super(InitialAddProductState());
@@ -44,7 +46,7 @@ class AddProductCubit extends Cubit<AddProductStates> {
         print(
           "📦 Updated Product Image: ${updatedProduct.productImage}",
         ); // ← Debug 3
-        
+
         result.fold(
           (failure) =>
               emit(FailureAddProductState(errorMessage: failure.errorMessage)),

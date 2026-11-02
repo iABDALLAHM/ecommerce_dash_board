@@ -12,7 +12,9 @@ import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_u
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/user_entity/user_entity.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: OrderRepository)
 class OrdersRepositoryImplementation implements OrderRepository {
   final DatabaseService databaseService;
 

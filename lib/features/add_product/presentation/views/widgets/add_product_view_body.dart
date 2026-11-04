@@ -67,6 +67,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                           },
                         ),
                       ),
+                      const SizedBox(width: 5),
                       Expanded(
                         child: CustomTextFormField(
                           hintText: "اسم المنتج بالإنجليزي",

@@ -50,7 +50,7 @@ class CustomProductWidget extends StatelessWidget {
                     style: AppStyles.textStyle13Bold,
                   ),
                   TextSpan(
-                    text: "${cartItemEntity.productEntity.productName} ",
+                    text: "${cartItemEntity.productEntity.productName["productName_ar"]} ",
                     style: TextStyle(color: Color(0xff64748B)),
                   ),
                 ],

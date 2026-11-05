@@ -3,7 +3,9 @@ import 'package:ecommerce_dash_board/core/services/notification_sender_service/n
 import 'package:flutter/services.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: NotificationSenderService)
 class FirebaseNotificationSenderService implements NotificationSenderService {
   static const List<String> _scopes = [
     'https://www.googleapis.com/auth/firebase.messaging',

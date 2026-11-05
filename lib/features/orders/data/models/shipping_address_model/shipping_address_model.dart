@@ -7,6 +7,7 @@ class ShippingAddressModel {
   final String address;
   final String addressDetails;
   final String city;
+  final String userId;
 
   ShippingAddressModel({
     required this.name,
@@ -15,6 +16,7 @@ class ShippingAddressModel {
     required this.address,
     required this.addressDetails,
     required this.city,
+    required this.userId,
   });
 
   factory ShippingAddressModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class ShippingAddressModel {
       address: json["address"],
       addressDetails: json["addressDetails"],
       city: json["city"],
+      userId: json["userId"],
     );
   }
 
@@ -36,6 +39,7 @@ class ShippingAddressModel {
       address: address,
       addressDetails: addressDetails,
       city: city,
+      userId: userId,
     );
   }
 }

@@ -5,6 +5,7 @@ class ShippingAddressEntity {
   final String address;
   final String addressDetails;
   final String city;
+  final String userId;
 
   ShippingAddressEntity({
     required this.name,
@@ -12,6 +13,6 @@ class ShippingAddressEntity {
     required this.phone,
     required this.address,
     required this.addressDetails,
-    required this.city,
+    required this.city, required this.userId,
   });
 }

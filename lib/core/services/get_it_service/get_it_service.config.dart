@@ -17,6 +17,10 @@ import 'package:ecommerce_dash_board/core/services/database_service/database_ser
     as _i110;
 import 'package:ecommerce_dash_board/core/services/database_service/firestore_service.dart'
     as _i329;
+import 'package:ecommerce_dash_board/core/services/notification_sender_service/firebase_notification_sender_service.dart'
+    as _i985;
+import 'package:ecommerce_dash_board/core/services/notification_sender_service/notification_sender_service.dart'
+    as _i819;
 import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart'
     as _i117;
 import 'package:ecommerce_dash_board/core/services/storage_service/supabase_storage_service.dart'
@@ -68,6 +72,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => registerModule.firebaseFirestore,
     );
     gh.singleton<_i454.Supabase>(() => registerModule.supabase);
+    gh.lazySingleton<_i819.NotificationSenderService>(
+      () => _i985.FirebaseNotificationSenderService(),
+    );
     gh.lazySingleton<_i110.DatabaseService>(
       () => _i329.FirestoreService(firestore: gh<_i974.FirebaseFirestore>()),
     );

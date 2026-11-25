@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_states.dart';
@@ -15,16 +13,12 @@ class OrdersViewBlocListener extends StatelessWidget {
       listener: (context, state) {
         if (state is AcceptedOrderStatusState) {
           showSnackBar(context, message: "OrderAccepted");
-          log("OrderAccepted");
         } else if (state is ShippedOrderStatusState) {
           showSnackBar(context, message: "OrderShipped");
-          log("OrderShipped");
         } else if (state is OutOfDeliveryOrderStatusState) {
           showSnackBar(context, message: "OrderOutOfDeliverd");
-          log("OrderOutOfDeliverd");
         } else if (state is OrderDeliverdStatusState) {
           showSnackBar(context, message: "OrderDeliverd");
-          log("OrderDeliverd");
         }
       },
       child: child,

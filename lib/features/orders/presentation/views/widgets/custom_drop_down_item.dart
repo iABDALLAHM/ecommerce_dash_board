@@ -4,10 +4,10 @@ class CustomDropDownItem extends StatelessWidget {
   const CustomDropDownItem({
     super.key,
     required this.title,
-    required this.status,
+     this.status,
   });
   final String title;
-  final bool status;
+  final bool? status;
 
   @override
   Widget build(BuildContext context) {

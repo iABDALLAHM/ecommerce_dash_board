@@ -12,7 +12,6 @@ class FilterSection extends StatelessWidget {
         children: [
           Text("البحث", style: AppStyles.textStyle19Bold),
           const SizedBox(width: 20),
-
           Icon(Icons.shuffle),
         ],
       ),

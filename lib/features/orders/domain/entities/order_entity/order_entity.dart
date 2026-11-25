@@ -24,6 +24,21 @@ class OrderEntity {
     required this.orderNumber,
     required this.orderStatusEntity,
     required this.totalPrice,
-    required this.cardEntity, required this.fcmToken,
+    required this.cardEntity,
+    required this.fcmToken,
   });
+
+  String get currentStatusText {
+    if (orderStatusEntity.orderDelivered) {
+      return "تم التسليم";
+    } else if (orderStatusEntity.outOfDelivery) {
+      return "في الطريق";
+    } else if (orderStatusEntity.orderShipped) {
+      return "تم شحنه";
+    } else if (orderStatusEntity.acceptOrder) {
+      return "تم قبول الطلب";
+    } else {
+      return "قيد الإنتظار";
+    }
+  }
 }

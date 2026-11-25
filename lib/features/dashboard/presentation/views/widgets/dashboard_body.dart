@@ -1,13 +1,21 @@
-
 import 'package:ecommerce_dash_board/core/utils/app_routes.dart';
+import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/get_orders_cubit/get_orders_cubit.dart';
+import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/get_orders_cubit/get_orders_states.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_action_card.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/state_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
-class DashBoardBody extends StatelessWidget {
+class DashBoardBody extends StatefulWidget {
   const DashBoardBody({super.key});
 
+  @override
+  State<DashBoardBody> createState() => _DashBoardBodyState();
+}
+
+class _DashBoardBodyState extends State<DashBoardBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,38 +25,75 @@ class DashBoardBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Row(
-              children: [
-                Expanded(
-                  child: StateCard(
-                    borderColor: Color(0xffD1FAE5),
-                    cardColor: Color(0xffECFDF5),
-                    title: 'الطلبات اليوم',
-                    stateIcon: Icon(
-                      Icons.shopping_bag_outlined,
-                      color: Color(0xff059669),
-                    ),
-                    iconBackgroundColor: Color(0xffD1FAE5),
-                    subTitle: '48',
+            BlocBuilder<GetOrdersCubit, GetOrdersStates>(
+              builder: (context, state) {
+                if (state is GetOrdersSuccessState) {
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: StateCard(
+                          borderColor: Color(0xffD1FAE5),
+                          cardColor: Color(0xffECFDF5),
+                          title: 'الطلبات اليوم',
+                          stateIcon: Icon(
+                            Icons.shopping_bag_outlined,
+                            color: Color(0xff059669),
+                          ),
+                          iconBackgroundColor: Color(0xffD1FAE5),
+                          subTitle: state.todayOrders.length.toString(),
+                        ),
+                      ),
+                      Expanded(
+                        child: StateCard(
+                          borderColor: Color(0xffFEF3C7),
+                          cardColor: Color(0xffFFFBEB),
+                          title: 'إجمالي المنتجات',
+                          stateIcon: Icon(
+                            Icons.view_in_ar_outlined,
+                            color: Color(0xffD97706),
+                          ),
+                          iconBackgroundColor: Color(0xffFEF3C7),
+                          subTitle: state.allOrders.length.toString(),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return Skeletonizer(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: StateCard(
+                          borderColor: Color(0xffD1FAE5),
+                          cardColor: Color(0xffECFDF5),
+                          title: 'الطلبات اليوم',
+                          stateIcon: Icon(
+                            Icons.shopping_bag_outlined,
+                            color: Color(0xff059669),
+                          ),
+                          iconBackgroundColor: Color(0xffD1FAE5),
+                          subTitle: "",
+                        ),
+                      ),
+                      Expanded(
+                        child: StateCard(
+                          borderColor: Color(0xffFEF3C7),
+                          cardColor: Color(0xffFFFBEB),
+                          title: 'إجمالي المنتجات',
+                          stateIcon: Icon(
+                            Icons.view_in_ar_outlined,
+                            color: Color(0xffD97706),
+                          ),
+                          iconBackgroundColor: Color(0xffFEF3C7),
+                          subTitle: "",
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Expanded(
-                  child: StateCard(
-                    borderColor: Color(0xffFEF3C7),
-                    cardColor: Color(0xffFFFBEB),
-                    title: 'إجمالي المنتجات',
-                    stateIcon: Icon(
-                      Icons.view_in_ar_outlined,
-                      color: Color(0xffD97706),
-                    ),
-                    iconBackgroundColor: Color(0xffFEF3C7),
-                    subTitle: "124",
-                  ),
-                ),
-              ],
+                );
+              },
             ),
             const SizedBox(height: 20),
-
             Text(
               "الإجراءات والعمليات",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

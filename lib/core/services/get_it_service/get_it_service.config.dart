@@ -47,9 +47,11 @@ import 'package:ecommerce_dash_board/features/add_product/domain/repositories/pr
     as _i205;
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart'
     as _i378;
-import 'package:ecommerce_dash_board/features/orders/data/repositories/orders_repository/orders_repository_implementation.dart'
+import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/get_orders_cubit/get_orders_cubit.dart'
+    as _i401;
+import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository_implementation.dart'
     as _i258;
-import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart'
+import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository.dart'
     as _i631;
 import 'package:ecommerce_dash_board/features/orders/orders.dart' as _i236;
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart'
@@ -90,6 +92,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i258.OrdersRepositoryImplementation(
         databaseService: gh<_i110.DatabaseService>(),
       ),
+    );
+    gh.factory<_i401.GetOrdersCubit>(
+      () => _i401.GetOrdersCubit(orderRepository: gh<_i236.OrderRepository>()),
     );
     gh.factory<_i169.GetStreamOrdersCubit>(
       () => _i169.GetStreamOrdersCubit(

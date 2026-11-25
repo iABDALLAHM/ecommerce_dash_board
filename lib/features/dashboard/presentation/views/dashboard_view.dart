@@ -2,6 +2,7 @@ import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widge
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_dark_mode_button.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_language_button.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_body.dart';
+import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
 
 class DashboardView extends StatelessWidget {
@@ -9,7 +10,12 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: buildDashboardViewAppBar(), body: DashBoardBody());
+    return DashboardViewBlocProvider(
+      child: Scaffold(
+        appBar: buildDashboardViewAppBar(),
+        body: DashBoardBody(),
+      ),
+    );
   }
 
   AppBar buildDashboardViewAppBar() => AppBar(

@@ -1,7 +1,7 @@
 import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/core/services/notification_sender_service/notification_sender_service.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
+import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';

@@ -10,7 +10,7 @@ import 'package:ecommerce_dash_board/features/orders/data/models/order_model/ord
 import 'package:ecommerce_dash_board/features/orders/data/models/user_model/user_model.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_user_entity/order_and_user_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/repositories/orders_repository/orders_repository.dart';
+import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/user_entity/user_entity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -72,6 +72,23 @@ class OrdersRepositoryImplementation implements OrderRepository {
       log(
         "error happend in OrdersRepoImplementation in changeOrderStatus method",
       );
+      return Left(ServerFailure(errorMessage: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<OrderEntity>>> getOrders() async {
+    try {
+      var data = await databaseService.getData(
+        path: BackendEndPoints.ordersCollection,
+      );
+      List<OrderEntity> ordersList = [];
+
+      for (var order in data) {
+        ordersList.add(OrderModel.fromJson(order).toEntity());
+      }
+      return Right(ordersList);
+    } on CustomException catch (e) {
       return Left(ServerFailure(errorMessage: e.exceptionMeassge));
     }
   }

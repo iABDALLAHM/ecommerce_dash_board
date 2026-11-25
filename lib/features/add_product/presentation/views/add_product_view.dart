@@ -1,6 +1,7 @@
-import 'package:ecommerce_dash_board/features/add_product/presentation/function/build_add_product_app_bar.dart';
+import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
+import 'package:ecommerce_dash_board/core/widgets/custom_arrow_back.dart';
+import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/add_product_body.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/add_product_view_bloc_provider.dart';
-import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/add_product_view_body.dart';
 import 'package:flutter/material.dart';
 
 class AddProductView extends StatelessWidget {
@@ -10,9 +11,15 @@ class AddProductView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AddProductViewBlocProvider(
       child: Scaffold(
-        appBar: buildAddProductAppBar(context),
-        body: SafeArea(child: AddProductViewBody()),
+        appBar: buildAddProductAppBar(),
+        body: SafeArea(child: AddProductBody()),
       ),
     );
   }
+
+  AppBar buildAddProductAppBar() => AppBar(
+    centerTitle: true,
+    leading: CustomArrowBack(),
+    title: Text("إضافة منتج جديد", style: AppStyles.textStyle23Bold),
+  );
 }

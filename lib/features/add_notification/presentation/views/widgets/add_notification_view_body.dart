@@ -9,7 +9,6 @@ import 'package:ecommerce_dash_board/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_dash_board/features/add_notification/domain/entities/notification_entity/notification_entity.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/cubits/add_notification_cubit/add_notification_cubit.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/cubits/add_notification_cubit/add_notification_state.dart';
-import 'package:ecommerce_dash_board/core/widgets/image_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -56,7 +55,6 @@ class _AddNotificationViewBodyState extends State<AddNotificationViewBody> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    ImageField(),
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 54,
@@ -64,24 +62,7 @@ class _AddNotificationViewBodyState extends State<AddNotificationViewBody> {
                       child: CustomButton(
                         text: "إضافة",
                         onPressed: () {
-                          String imagePath = context
-                              .read<GetImageCubit>()
-                              .state
-                              .image;
-
                           if (formKey.currentState!.validate()) {
-                            formKey.currentState!.save();
-                            final NotificationEntity notification =
-                                NotificationEntity(
-                                  notificationDate: DateTime.now(),
-                                  notificationImage: imagePath,
-                                  notificationBody: notificationBody,
-                                  notificationId: generateNotificationNumber(),
-                                  notificationSeen: false,
-                                );
-                            triggerAddNotificationCubit(
-                              notification: notification,
-                            );
                           } else {
                             autovalidateMode = AutovalidateMode.always;
                             setState(() {});

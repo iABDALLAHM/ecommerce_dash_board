@@ -1,17 +1,13 @@
-class GetImageState {
-  final bool isLoading;
-  final String image;
-  GetImageState({required this.image, required this.isLoading});
+abstract class GetImageState {}
 
-  GetImageState copyWith({String? image, bool? isLoading}) {
-    return GetImageState(
-      isLoading: isLoading ?? this.isLoading,
-      image: image ?? this.image,
-    );
-  }
+final class GetImageInitialState extends GetImageState {}
 
-  @override
-  String toString() {
-    return "ImageState: isLoading:$isLoading, image:$image";
-  }
+final class GetImageSuccessState extends GetImageState {
+  final String imagePath;
+
+  GetImageSuccessState({required this.imagePath});
 }
+
+final class GetImageLoadingState extends GetImageState {}
+
+final class GetImageFailureState extends GetImageState {}

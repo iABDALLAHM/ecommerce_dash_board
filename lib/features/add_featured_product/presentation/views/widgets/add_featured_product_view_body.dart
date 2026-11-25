@@ -1,7 +1,6 @@
 import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_button.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_progress_widget.dart';
-import 'package:ecommerce_dash_board/core/widgets/image_field.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/domain/entities/featured_product_entity/featured_product_entity.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/presentation/cubits/add_Featured_product_cubit/add_featured_product_cubit.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/presentation/cubits/add_Featured_product_cubit/add_featured_product_state.dart';
@@ -24,23 +23,12 @@ class AddFeaturedProductViewBody extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ImageField(),
+                  // ImageField(),
                   const SizedBox(height: 20),
                   SizedBox(
                     height: 59,
                     width: double.infinity,
-                    child: CustomButton(
-                      text: "إضافة",
-                      onPressed: () {
-                        var image = context.read<GetImageCubit>().state.image;
-                        final FeaturedProductEntity featuredProductEntity =
-                        
-                            FeaturedProductEntity(image: image, id: "324234");
-                        context
-                            .read<AddFeaturedProductCubit>()
-                            .addFeaturedProduct(product: featuredProductEntity);
-                      },
-                    ),
+                    child: CustomButton(text: "إضافة", onPressed: () {}),
                   ),
                 ],
               ),

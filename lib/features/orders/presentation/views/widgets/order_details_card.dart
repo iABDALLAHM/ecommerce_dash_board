@@ -23,7 +23,14 @@ class OrderDetailsCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Color(0xffFDE68A)),
             ),
-            child: Icon(Icons.image),
+            child: ClipOval(
+              child: Image.network(
+                fit: BoxFit.cover,
+                cartItemEntity.productEntity.productImage,
+                width: 40,
+                height: 40,
+              ),
+            ),
           ),
           const SizedBox(width: 12),
           Column(

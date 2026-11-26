@@ -1,22 +1,31 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/core/utils/app_routes.dart';
 import 'package:ecommerce_dash_board/firebase_options.dart';
-import 'package:ecommerce_dash_board/generated/l10n.dart';
+import 'package:ecommerce_dash_board/generated/codegen_loader.g.dart';
 import 'package:ecommerce_dash_board/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseApiKey);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   initGetIt();
   Bloc.observer = SimpleBlocObserver();
-  runApp(const EcommerceDashboard());
+  runApp(
+    EasyLocalization(
+      supportedLocales: [Locale("ar"), Locale("en")],
+      path: 'assets/translations',
+      fallbackLocale: Locale("ar"),
+      assetLoader: CodegenLoader(),
+      child: EcommerceDashboard(),
+    ),
+  );
 }
 
 class EcommerceDashboard extends StatelessWidget {
@@ -31,14 +40,9 @@ class EcommerceDashboard extends StatelessWidget {
       ),
       routerConfig: AppRoutes.router,
       debugShowCheckedModeBanner: false,
-      locale: const Locale("ar"),
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
     );
   }
 }

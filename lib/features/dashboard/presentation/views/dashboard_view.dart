@@ -27,10 +27,8 @@ class DashboardView extends StatelessWidget {
     title: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CustomAdminImage(),
-
+        Expanded(child: CustomAdminImage()),
         const SizedBox(width: 10),
-
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

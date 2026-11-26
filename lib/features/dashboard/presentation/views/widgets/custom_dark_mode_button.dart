@@ -8,8 +8,8 @@ class CustomDarkModeButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        margin: EdgeInsets.only(left: 10),
-        padding: EdgeInsets.all(10),
+        margin: EdgeInsetsDirectional.only(end: 5),
+        padding: EdgeInsets.all(11),
         decoration: ShapeDecoration(
           color: Color(0xffF1F5F9),
           shape: RoundedRectangleBorder(

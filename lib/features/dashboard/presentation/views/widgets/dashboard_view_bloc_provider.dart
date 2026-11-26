@@ -1,3 +1,4 @@
+import 'package:ecommerce_dash_board/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_dash_board/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/get_orders_cubit/get_orders_cubit.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/sign_out_cubit/sign_out_cubit.dart';
@@ -14,6 +15,7 @@ class DashboardViewBlocProvider extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => getIt<GetOrdersCubit>()..getOrders()),
         BlocProvider(create: (context) => getIt<SignOutCubit>()),
+        BlocProvider(create: (context) => getIt<GetUserDataCubit>()),
       ],
       child: child,
     );

@@ -11,6 +11,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
+import 'package:ecommerce_dash_board/core/cubits/get_user_data_cubit/get_user_data_cubit.dart'
+    as _i643;
 import 'package:ecommerce_dash_board/core/modules/register_module.dart'
     as _i610;
 import 'package:ecommerce_dash_board/core/repositories/auth_repository/auth_repository.dart'
@@ -25,6 +27,10 @@ import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_
     as _i975;
 import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository_implementation.dart'
     as _i8;
+import 'package:ecommerce_dash_board/core/repositories/user_repository/user_repository.dart'
+    as _i193;
+import 'package:ecommerce_dash_board/core/repositories/user_repository/user_repository_implementation.dart'
+    as _i1017;
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart'
     as _i110;
 import 'package:ecommerce_dash_board/core/services/database_service/firestore_service.dart'
@@ -153,9 +159,20 @@ extension GetItInjectableX on _i174.GetIt {
         secureStorageRepository: gh<_i995.SecureStorageRepository>(),
       ),
     );
+    gh.lazySingleton<_i193.UserRepository>(
+      () => _i1017.UserRepositoryImplementation(
+        databaseService: gh<_i110.DatabaseService>(),
+      ),
+    );
     gh.lazySingleton<_i975.OrderRepository>(
       () => _i8.OrdersRepositoryImplementation(
         databaseService: gh<_i110.DatabaseService>(),
+      ),
+    );
+    gh.factory<_i643.GetUserDataCubit>(
+      () => _i643.GetUserDataCubit(
+        userRepository: gh<_i193.UserRepository>(),
+        secureStorageRepository: gh<_i995.SecureStorageRepository>(),
       ),
     );
     gh.factory<_i401.GetOrdersCubit>(

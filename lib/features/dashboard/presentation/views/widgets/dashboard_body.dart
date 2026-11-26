@@ -1,3 +1,4 @@
+import 'package:ecommerce_dash_board/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_dash_board/core/utils/app_routes.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/get_orders_cubit/get_orders_cubit.dart';
@@ -21,6 +22,13 @@ class DashBoardBody extends StatefulWidget {
 }
 
 class _DashBoardBodyState extends State<DashBoardBody> {
+
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DashboardBlocListener(

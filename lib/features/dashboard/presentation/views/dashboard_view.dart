@@ -1,10 +1,14 @@
-
+import 'package:ecommerce_dash_board/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
+import 'package:ecommerce_dash_board/core/cubits/get_user_data_cubit/get_user_data_state.dart';
+import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_admin_image.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_dark_mode_button.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_language_button.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_body.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -32,9 +36,33 @@ class DashboardView extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "مرحباً بك مجدداً",
-              style: TextStyle(fontSize: 15, color: Color(0xff94A3B8)),
+            BlocBuilder<GetUserDataCubit, GetUserDataState>(
+              builder: (context, state) {
+                if (state is SuccessGetUserDataState) {
+                  return Row(
+                    children: [
+                      Text(
+                        "مرحباً بك مجدداً :",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xff94A3B8),
+                        ),
+                      ),
+                      const SizedBox(width: 2),
+                      Text(
+                        state.userEntity.name,
+                        style: AppStyles.textStyle16Bold,
+                      ),
+                    ],
+                  );
+                }
+                return Skeletonizer(
+                  child: Text(
+                    "مرحباً بك مجدداً ",
+                    style: TextStyle(fontSize: 15, color: Color(0xff94A3B8)),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 6),
             Row(

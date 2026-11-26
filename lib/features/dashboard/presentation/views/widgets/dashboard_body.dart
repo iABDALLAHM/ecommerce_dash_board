@@ -32,6 +32,11 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                     children: [
                       Expanded(
                         child: StateCard(
+                          onTap: () {
+                            if (state.todayOrders.isNotEmpty) {
+                              context.push(AppRoutes.orders);
+                            }
+                          },
                           borderColor: Color(0xffD1FAE5),
                           cardColor: Color(0xffECFDF5),
                           title: 'الطلبات اليوم',
@@ -54,6 +59,7 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                           ),
                           iconBackgroundColor: Color(0xffFEF3C7),
                           subTitle: state.allOrders.length.toString(),
+                          onTap: () {},
                         ),
                       ),
                     ],
@@ -73,6 +79,7 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                           ),
                           iconBackgroundColor: Color(0xffD1FAE5),
                           subTitle: "",
+                          onTap: () {},
                         ),
                       ),
                       Expanded(
@@ -86,6 +93,7 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                           ),
                           iconBackgroundColor: Color(0xffFEF3C7),
                           subTitle: "",
+                          onTap: () {},
                         ),
                       ),
                     ],

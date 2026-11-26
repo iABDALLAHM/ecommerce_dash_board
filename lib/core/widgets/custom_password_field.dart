@@ -13,6 +13,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: TextInputAction.next,
       onSaved: widget.onSaved,
       obscureText: isVisible,
       validator: (value) {
@@ -26,6 +27,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
         errorStyle: TextStyle(fontSize: 0),
         filled: true,
         fillColor: Color(0xffF9FAFA),
+        prefixIcon: Icon(Icons.lock, color: Color(0xff64748B)),
         suffixIcon: GestureDetector(
           onTap: () {
             isVisible = !isVisible;
@@ -35,7 +37,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
               ? Icon(Icons.visibility_off, color: Color(0xffC9CECF))
               : Icon(Icons.remove_red_eye, color: Color(0xffC9CECF)),
         ),
-        hintText: "كلمة المرور",
+        hintText: "••••••••",
         hintStyle: AppStyles.textStyle13Bold.copyWith(color: Color(0xff949D9E)),
         border: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),
@@ -49,7 +51,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   OutlineInputBorder buildOutlineInputBorder({
     Color color = const Color(0xffE6E9EA),
   }) => OutlineInputBorder(
-    borderRadius: BorderRadius.circular(4),
+    borderRadius: BorderRadius.circular(15),
     borderSide: BorderSide(color: color, width: 1),
   );
 }

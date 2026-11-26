@@ -1,6 +1,6 @@
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_admin_image.dart';
-import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_dark_mode_button.dart';
-import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_language_button.dart';
+import 'package:ecommerce_dash_board/core/widgets/custom_dark_mode_button.dart';
+import 'package:ecommerce_dash_board/core/widgets/custom_language_button.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_body.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_view_bloc_provider.dart';
 import 'package:flutter/material.dart';

@@ -34,8 +34,8 @@ class _CustomLanguageButtonState extends State<CustomLanguageButton> {
           ),
         ),
         child: currentLang == "ar"
-            ? Text("EN", style: AppStyles.textStyle13Bold)
-            : Text("عربي", style: AppStyles.textStyle13Bold),
+            ? Center(child: Text("EN", style: AppStyles.textStyle13Bold))
+            : Center(child: Text("عربي", style: AppStyles.textStyle13Bold)),
       ),
     );
   }

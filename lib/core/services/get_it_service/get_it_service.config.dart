@@ -13,6 +13,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:ecommerce_dash_board/core/modules/register_module.dart'
     as _i610;
+import 'package:ecommerce_dash_board/core/repositories/auth_repository/auth_repository.dart'
+    as _i278;
+import 'package:ecommerce_dash_board/core/repositories/auth_repository/auth_repository_implementation.dart'
+    as _i561;
+import 'package:ecommerce_dash_board/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart'
+    as _i995;
+import 'package:ecommerce_dash_board/core/repositories/flutter_secure_storage_repository/secure_storage_repository_implementation.dart'
+    as _i903;
 import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository.dart'
     as _i975;
 import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository_implementation.dart'
@@ -25,6 +33,10 @@ import 'package:ecommerce_dash_board/core/services/notification_sender_service/f
     as _i985;
 import 'package:ecommerce_dash_board/core/services/notification_sender_service/notification_sender_service.dart'
     as _i819;
+import 'package:ecommerce_dash_board/core/services/secure_storage_service/flutter_secure_service.dart'
+    as _i3;
+import 'package:ecommerce_dash_board/core/services/secure_storage_service/flutter_secure_storage_service.dart'
+    as _i380;
 import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart'
     as _i117;
 import 'package:ecommerce_dash_board/core/services/storage_service/supabase_storage_service.dart'
@@ -51,13 +63,25 @@ import 'package:ecommerce_dash_board/features/add_product/domain/repositories/pr
     as _i205;
 import 'package:ecommerce_dash_board/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart'
     as _i378;
+import 'package:ecommerce_dash_board/features/auth/data/services/auth_service/auth_service.dart'
+    as _i85;
+import 'package:ecommerce_dash_board/features/auth/data/services/auth_service/firebase_auth_service.dart'
+    as _i48;
+import 'package:ecommerce_dash_board/features/auth/presentation/cubits/login_cubit/login_cubit.dart'
+    as _i1043;
 import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/get_orders_cubit/get_orders_cubit.dart'
     as _i401;
+import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/sign_out_cubit/sign_out_cubit.dart'
+    as _i798;
 import 'package:ecommerce_dash_board/features/orders/orders.dart' as _i236;
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart'
     as _i551;
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/get_stream_orders_cubit/get_orders_and_user_data_cubit.dart'
     as _i321;
+import 'package:ecommerce_dash_board/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart'
+    as _i115;
+import 'package:firebase_auth/firebase_auth.dart' as _i59;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:supabase_flutter/supabase_flutter.dart' as _i454;
@@ -73,12 +97,35 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i974.FirebaseFirestore>(
       () => registerModule.firebaseFirestore,
     );
+    gh.singleton<_i59.FirebaseAuth>(() => registerModule.firebaseAuth);
     gh.singleton<_i454.Supabase>(() => registerModule.supabase);
+    gh.singleton<_i558.FlutterSecureStorage>(
+      () => registerModule.secureStorage,
+    );
+    gh.lazySingleton<_i3.FlutterSecureService>(
+      () => _i380.FlutterSecureStorageService(
+        storage: gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
+    gh.lazySingleton<_i995.SecureStorageRepository>(
+      () => _i903.SecureStorageRepositoryImplementation(
+        flutterSecureService: gh<_i3.FlutterSecureService>(),
+      ),
+    );
     gh.lazySingleton<_i819.NotificationSenderService>(
       () => _i985.FirebaseNotificationSenderService(),
     );
+    gh.lazySingleton<_i85.AuthService>(
+      () => _i48.FirebaseAuthService(firebaseAuth: gh<_i59.FirebaseAuth>()),
+    );
     gh.lazySingleton<_i110.DatabaseService>(
       () => _i329.FirestoreService(firestore: gh<_i974.FirebaseFirestore>()),
+    );
+    gh.lazySingleton<_i278.AuthRepository>(
+      () => _i561.AuthRepositoryImplementation(
+        authService: gh<_i85.AuthService>(),
+        databaseService: gh<_i110.DatabaseService>(),
+      ),
     );
     gh.lazySingleton<_i117.StorageService>(
       () => _i810.SupabaseStorageService(supabase: gh<_i454.Supabase>()),
@@ -86,6 +133,24 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i297.ImagesRepository>(
       () => _i999.ImagesRepositoryImplementation(
         storageService: gh<_i117.StorageService>(),
+      ),
+    );
+    gh.factory<_i1043.LoginCubit>(
+      () => _i1043.LoginCubit(
+        authRepository: gh<_i278.AuthRepository>(),
+        secureStorageRepository: gh<_i995.SecureStorageRepository>(),
+      ),
+    );
+    gh.factory<_i798.SignOutCubit>(
+      () => _i798.SignOutCubit(
+        authRepository: gh<_i278.AuthRepository>(),
+        secureStorageRepository: gh<_i995.SecureStorageRepository>(),
+      ),
+    );
+    gh.factory<_i115.SplashCubit>(
+      () => _i115.SplashCubit(
+        authRepository: gh<_i278.AuthRepository>(),
+        secureStorageRepository: gh<_i995.SecureStorageRepository>(),
       ),
     );
     gh.lazySingleton<_i975.OrderRepository>(

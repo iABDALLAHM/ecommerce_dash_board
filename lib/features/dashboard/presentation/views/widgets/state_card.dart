@@ -8,12 +8,14 @@ class StateCard extends StatelessWidget {
     required this.title,
     required this.stateIcon,
     required this.iconBackgroundColor,
-    required this.subTitle, required this.onTap,
+    required this.subTitle,
+    required this.onTap,
   });
   final Color borderColor, cardColor, iconBackgroundColor;
   final String title, subTitle;
   final Widget stateIcon;
   final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(

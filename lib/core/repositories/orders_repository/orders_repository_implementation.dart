@@ -7,11 +7,11 @@ import 'package:ecommerce_dash_board/core/models/query_prams.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/orders/data/models/order_model/order_model.dart';
-import 'package:ecommerce_dash_board/features/orders/data/models/user_model/user_model.dart';
+import 'package:ecommerce_dash_board/core/models/user_model/user_model.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_user_entity/order_and_user_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/entities/user_entity/user_entity.dart';
+import 'package:ecommerce_dash_board/core/entities/user_entity/user_entity.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: OrderRepository)

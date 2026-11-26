@@ -1,4 +1,5 @@
 import 'package:ecommerce_dash_board/features/auth/presentation/views/widgets/login_body.dart';
+import 'package:ecommerce_dash_board/features/auth/presentation/views/widgets/login_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -6,6 +7,8 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: LoginBody()));
+    return LoginViewBlocProvider(
+      child: Scaffold(body: SafeArea(child: LoginBody())),
+    );
   }
 }

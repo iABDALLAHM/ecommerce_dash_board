@@ -1,5 +1,3 @@
-
-
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +15,7 @@ class LoginHeader extends StatelessWidget {
             border: Border.all(width: 2, color: Color(0xff6EE7B7)),
             borderRadius: BorderRadius.circular(18),
           ),
-          child: Icon(Icons.lock, color: Color(0xff059669)),
+          child: Icon(Icons.security_outlined, color: Color(0xff059669)),
         ),
         const SizedBox(height: 14),
         Container(

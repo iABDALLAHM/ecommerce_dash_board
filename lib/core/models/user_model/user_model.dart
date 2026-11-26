@@ -1,12 +1,14 @@
-import 'package:ecommerce_dash_board/features/orders/domain/entities/user_entity/user_entity.dart';
+import 'package:ecommerce_dash_board/core/entities/user_entity/user_entity.dart';
 
 class UserModel {
   final String name;
   final String email;
   final String uId;
   final String userImage;
+  String? role;
 
   UserModel({
+    this.role,
     required this.name,
     required this.email,
     required this.uId,
@@ -24,6 +26,7 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
+      role: json["role"] ?? "",
       name: json["name"],
       email: json["email"],
       uId: json["uId"],

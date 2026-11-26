@@ -148,4 +148,19 @@ class FirestoreService implements DatabaseService {
       );
     }
   }
+
+  @override
+  Future<dynamic> checkUserData({
+    required String path,
+    required String documentId,
+  }) async {
+    try {
+      final doc = await _firestore.collection(path).doc(documentId).get();
+      return doc.data();
+    } on CustomException catch (e) {
+      throw CustomException(
+        exceptionMeassge: "حدث خطأ أثناء جلب البيانات من قاعدة البيانات $e",
+      );
+    }
+  }
 }

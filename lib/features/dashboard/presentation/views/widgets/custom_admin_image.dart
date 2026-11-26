@@ -15,7 +15,7 @@ class CustomAdminImage extends StatelessWidget {
           side: BorderSide(color: AppColors.primaryColor, width: 3),
         ),
       ),
-      child: Icon(Icons.person),
+      child: Center(child: Icon(Icons.person)),
     );
   }
 }

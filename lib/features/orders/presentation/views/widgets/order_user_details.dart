@@ -1,6 +1,6 @@
 
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
-import 'package:ecommerce_dash_board/features/orders/domain/entities/user_entity/user_entity.dart';
+import 'package:ecommerce_dash_board/core/entities/user_entity/user_entity.dart';
 import 'package:flutter/material.dart';
 
 class OrderUserDetails extends StatelessWidget {

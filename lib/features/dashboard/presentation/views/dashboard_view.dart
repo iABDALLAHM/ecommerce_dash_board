@@ -1,3 +1,4 @@
+
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_admin_image.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_dark_mode_button.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_language_button.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return DashboardViewBlocProvider(

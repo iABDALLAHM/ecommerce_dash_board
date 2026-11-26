@@ -3,8 +3,10 @@ class UserEntity {
   final String email;
   final String uId;
   final String userImage;
+  String? role;
 
   UserEntity({
+    this.role,
     required this.name,
     required this.email,
     required this.uId,
@@ -12,6 +14,12 @@ class UserEntity {
   });
 
   UserEntity toEntity() {
-    return UserEntity(name: name, email: email, uId: uId, userImage: userImage);
+    return UserEntity(
+      name: name,
+      email: email,
+      uId: uId,
+      userImage: userImage,
+      role: role,
+    );
   }
 }

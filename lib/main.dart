@@ -11,12 +11,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
+  Bloc.observer = SimpleBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseApiKey);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   initGetIt();
-  Bloc.observer = SimpleBlocObserver();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale("ar"), Locale("en")],

@@ -4,7 +4,7 @@ import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_u
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
 
 abstract class OrderRepository {
-  Stream<List<OrderAndUserEntity>> getStreamOrders();
+  Future<Either<Failure, List<OrderAndUserEntity>>> getOrdersAndUserData();
   Future<Either<Failure, void>> changeOrderStatus({
     required Map<String, dynamic> data,
     required String orderNumber,

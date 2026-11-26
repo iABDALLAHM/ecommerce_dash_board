@@ -13,6 +13,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:ecommerce_dash_board/core/modules/register_module.dart'
     as _i610;
+import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository.dart'
+    as _i975;
+import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository_implementation.dart'
+    as _i8;
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart'
     as _i110;
 import 'package:ecommerce_dash_board/core/services/database_service/firestore_service.dart'
@@ -49,15 +53,11 @@ import 'package:ecommerce_dash_board/features/add_product/presentation/manager/a
     as _i378;
 import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/get_orders_cubit/get_orders_cubit.dart'
     as _i401;
-import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository_implementation.dart'
-    as _i258;
-import 'package:ecommerce_dash_board/core/repositories/orders_repository/orders_repository.dart'
-    as _i631;
 import 'package:ecommerce_dash_board/features/orders/orders.dart' as _i236;
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart'
     as _i551;
-import 'package:ecommerce_dash_board/features/orders/presentation/cubits/get_stream_orders_cubit/get_stream_orders_cubit.dart'
-    as _i169;
+import 'package:ecommerce_dash_board/features/orders/presentation/cubits/get_stream_orders_cubit/get_orders_and_user_data_cubit.dart'
+    as _i321;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:supabase_flutter/supabase_flutter.dart' as _i454;
@@ -88,16 +88,16 @@ extension GetItInjectableX on _i174.GetIt {
         storageService: gh<_i117.StorageService>(),
       ),
     );
-    gh.lazySingleton<_i631.OrderRepository>(
-      () => _i258.OrdersRepositoryImplementation(
+    gh.lazySingleton<_i975.OrderRepository>(
+      () => _i8.OrdersRepositoryImplementation(
         databaseService: gh<_i110.DatabaseService>(),
       ),
     );
     gh.factory<_i401.GetOrdersCubit>(
       () => _i401.GetOrdersCubit(orderRepository: gh<_i236.OrderRepository>()),
     );
-    gh.factory<_i169.GetStreamOrdersCubit>(
-      () => _i169.GetStreamOrdersCubit(
+    gh.factory<_i321.GetOrdersAndUserDataCubit>(
+      () => _i321.GetOrdersAndUserDataCubit(
         orderRepository: gh<_i236.OrderRepository>(),
       ),
     );
@@ -130,7 +130,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i551.ChangeOrderStatusCubit>(
       () => _i551.ChangeOrderStatusCubit(
-        orderRepository: gh<_i631.OrderRepository>(),
+        orderRepository: gh<_i975.OrderRepository>(),
       ),
     );
     gh.factory<_i775.AddNotificationCubit>(

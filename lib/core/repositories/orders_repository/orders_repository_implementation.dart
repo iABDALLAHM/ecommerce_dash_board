@@ -21,28 +21,32 @@ class OrdersRepositoryImplementation implements OrderRepository {
   OrdersRepositoryImplementation({required this.databaseService});
 
   @override
-  Stream<List<OrderAndUserEntity>> getStreamOrders() {
-    return databaseService
-        .getStreamData(path: BackendEndPoints.ordersCollection)
-        .asyncMap((ordersList) async {
-          List<OrderAndUserEntity> result = [];
+  Future<Either<Failure, List<OrderAndUserEntity>>>
+  getOrdersAndUserData() async {
+    try {
+      var result = await databaseService.getData(
+        path: BackendEndPoints.ordersCollection,
+      );
+      List<OrderAndUserEntity> listOfOrders = [];
 
-          for (var orderJson in ordersList) {
-            OrderEntity order = OrderModel.fromJson(orderJson).toEntity();
+      for (var orderJson in result) {
+        OrderEntity order = OrderModel.fromJson(orderJson).toEntity();
 
-            var userData = await databaseService.getSingleData(
-              path: BackendEndPoints.usersCollection,
-              documentId: order.uId,
-            );
+        var userData = await databaseService.getSingleData(
+          path: BackendEndPoints.usersCollection,
+          documentId: order.uId,
+        );
 
-            UserEntity user = UserModel.fromJson(userData).toEntity();
+        UserEntity user = UserModel.fromJson(userData).toEntity();
 
-            result.add(
-              OrderAndUserEntity(orderEntity: order, userEntity: user),
-            );
-          }
-          return result;
-        });
+        listOfOrders.add(
+          OrderAndUserEntity(orderEntity: order, userEntity: user),
+        );
+      }
+      return Right(listOfOrders);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(errorMessage: e.exceptionMeassge));
+    }
   }
 
   @override

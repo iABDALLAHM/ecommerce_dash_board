@@ -109,6 +109,75 @@ class CodegenLoader extends AssetLoader{
       "updateData": "تعذر تحديث البيانات",
       "saveData": "تعذر حفظ البيانات"
     }
+  },
+  "orders": {
+    "title": "الطلبات",
+    "search": "البحث",
+    "empty": "لا توجد طلبات",
+    "statusLabel": "حالة الطلب",
+    "userId": "معرّف المستخدم",
+    "orderNumber": "رقم الطلب",
+    "totalPrice": "السعر الإجمالي",
+    "cashPayment": "الدفع نقداً",
+    "orderDate": "تاريخ الطلب",
+    "items": "المنتجات المطلوبة",
+    "totalValue": "{amount} {currency}",
+    "currency": "جنيه",
+    "dateValue": "{day} {month} {year}",
+    "user": {
+      "orderFrom": "طلب من",
+      "name": "الاسم"
+    },
+    "address": {
+      "title": "تفاصيل العنوان",
+      "address": "العنوان",
+      "apartment": "رقم الشقة",
+      "city": "المدينة",
+      "recipient": "المستلم",
+      "phone": "رقم الهاتف"
+    },
+    "product": {
+      "code": "كود المنتج",
+      "name": "اسم المنتج",
+      "price": "سعر المنتج",
+      "quantity": "كمية المنتج"
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "accepted": "تم قبول الطلب",
+      "shipped": "تم شحنه",
+      "outForDelivery": "في الطريق",
+      "delivered": "تم التسليم",
+      "current": "الحالة الحالية: {status}"
+    },
+    "payment": {
+      "cash": "نقداً",
+      "notCash": "غير نقدي"
+    },
+    "months": {
+      "january": "يناير",
+      "february": "فبراير",
+      "march": "مارس",
+      "april": "أبريل",
+      "may": "مايو",
+      "june": "يونيو",
+      "july": "يوليو",
+      "august": "أغسطس",
+      "september": "سبتمبر",
+      "october": "أكتوبر",
+      "november": "نوفمبر",
+      "december": "ديسمبر"
+    },
+    "seeMore": "عرض التفاصيل",
+    "seeLess": "إخفاء التفاصيل",
+    "messages": {
+      "accepted": "تم قبول الطلب بنجاح",
+      "shipped": "تم شحن الطلب بنجاح",
+      "outForDelivery": "الطلب في الطريق إلى العميل",
+      "delivered": "تم تسليم الطلب بنجاح",
+      "alreadyProcessed": "تم تحديث هذه الحالة مسبقاً",
+      "completePrevious": "يرجى إكمال الحالات السابقة أولاً"
+    }
   }
 };
 static const Map<String,dynamic> _en = {
@@ -205,6 +274,75 @@ static const Map<String,dynamic> _en = {
       "searchData": "Unable to search for data",
       "updateData": "Unable to update data",
       "saveData": "Unable to save data"
+    }
+  },
+  "orders": {
+    "title": "Orders",
+    "search": "Search",
+    "empty": "No orders found",
+    "statusLabel": "Order Status",
+    "userId": "User ID",
+    "orderNumber": "Order Number",
+    "totalPrice": "Total Price",
+    "cashPayment": "Cash Payment",
+    "orderDate": "Order Date",
+    "items": "Items Ordered",
+    "totalValue": "{amount} {currency}",
+    "currency": "EGP",
+    "dateValue": "{day} {month}, {year}",
+    "user": {
+      "orderFrom": "Order placed by",
+      "name": "Name"
+    },
+    "address": {
+      "title": "Shipping Address",
+      "address": "Address",
+      "apartment": "Apartment",
+      "city": "City",
+      "recipient": "Recipient",
+      "phone": "Phone"
+    },
+    "product": {
+      "code": "Product Code",
+      "name": "Product Name",
+      "price": "Product Price",
+      "quantity": "Quantity"
+    },
+    "status": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "shipped": "Shipped",
+      "outForDelivery": "Out for delivery",
+      "delivered": "Delivered",
+      "current": "Current status: {status}"
+    },
+    "payment": {
+      "cash": "Cash",
+      "notCash": "Non-cash"
+    },
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "seeMore": "View Details",
+    "seeLess": "Hide Details",
+    "messages": {
+      "accepted": "Order accepted successfully",
+      "shipped": "Order shipped successfully",
+      "outForDelivery": "The order is on its way to the customer",
+      "delivered": "Order delivered successfully",
+      "alreadyProcessed": "This status has already been updated",
+      "completePrevious": "Please complete the previous steps first"
     }
   }
 };

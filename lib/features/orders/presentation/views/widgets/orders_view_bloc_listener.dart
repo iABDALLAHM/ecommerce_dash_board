@@ -2,6 +2,8 @@ import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_states.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/get_stream_orders_cubit/get_orders_and_user_data_cubit.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,17 +15,31 @@ class OrdersViewBlocListener extends StatelessWidget {
     return BlocListener<ChangeOrderStatusCubit, ChangeOrderStatusStates>(
       listener: (context, state) {
         if (state is AcceptedOrderStatusState) {
-          showSnackBar(context, message: "OrderAccepted");
+          showSnackBar(
+            context,
+            message: LocaleKeys.orders_messages_accepted.tr(),
+          );
           context.read<GetOrdersAndUserDataCubit>().getOrdersAndUserData();
         } else if (state is ShippedOrderStatusState) {
-          showSnackBar(context, message: "OrderShipped");
+          showSnackBar(
+            context,
+            message: LocaleKeys.orders_messages_shipped.tr(),
+          );
           context.read<GetOrdersAndUserDataCubit>().getOrdersAndUserData();
         } else if (state is OutOfDeliveryOrderStatusState) {
-          showSnackBar(context, message: "OrderOutOfDeliverd");
+          showSnackBar(
+            context,
+            message: LocaleKeys.orders_messages_outForDelivery.tr(),
+          );
           context.read<GetOrdersAndUserDataCubit>().getOrdersAndUserData();
         } else if (state is OrderDeliverdStatusState) {
-          showSnackBar(context, message: "OrderDeliverd");
+          showSnackBar(
+            context,
+            message: LocaleKeys.orders_messages_delivered.tr(),
+          );
           context.read<GetOrdersAndUserDataCubit>().getOrdersAndUserData();
+        } else if (state is FailureOrderStatusState) {
+          showSnackBar(context, message: state.errorMessage.tr());
         }
       },
       child: child,

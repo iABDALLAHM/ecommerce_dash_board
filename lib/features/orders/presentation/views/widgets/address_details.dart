@@ -1,6 +1,7 @@
-
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/shipping_address_entity/shipping_address_entity.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AddressDetails extends StatelessWidget {
@@ -23,7 +24,7 @@ class AddressDetails extends StatelessWidget {
               Icon(Icons.location_on_rounded, color: Color(0xff1D4ED8)),
               const SizedBox(width: 5),
               Text(
-                "تفاصيل العنوان:",
+                LocaleKeys.orders_address_title.tr(),
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: Color(0xff1D4ED8),
                 ),
@@ -36,7 +37,7 @@ class AddressDetails extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: "العنوان: ",
+                  text: "${LocaleKeys.orders_address_address.tr()}: ",
                   style: AppStyles.textStyle13Regular.copyWith(
                     color: Color(0xff64748B),
                   ),
@@ -55,7 +56,7 @@ class AddressDetails extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "رقم الشقة: ",
+                      text: "${LocaleKeys.orders_address_apartment.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),
@@ -73,7 +74,7 @@ class AddressDetails extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "المدينة: ",
+                      text: "${LocaleKeys.orders_address_city.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),
@@ -94,7 +95,7 @@ class AddressDetails extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "المستلم: ",
+                      text: "${LocaleKeys.orders_address_recipient.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),
@@ -111,7 +112,7 @@ class AddressDetails extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "الرقم: ",
+                      text: "${LocaleKeys.orders_address_phone.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),
@@ -130,5 +131,3 @@ class AddressDetails extends StatelessWidget {
     );
   }
 }
-
-

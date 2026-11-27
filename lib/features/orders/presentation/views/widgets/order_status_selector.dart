@@ -1,9 +1,10 @@
-
 import 'package:ecommerce_dash_board/core/function/show_snack_bar.dart';
 import 'package:ecommerce_dash_board/features/orders/data/models/status_style_model/status_style_model.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_status_entity/order_status_entity.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/cubits/change_order_status_cubit/change_order_status_cubit.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -81,7 +82,7 @@ class OrderStatusSelector extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  status,
+                  _localizedStatus(status),
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
@@ -120,7 +121,9 @@ class OrderStatusSelector extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              "الحالية: $currentStatus",
+              LocaleKeys.orders_status_current.tr(
+                namedArgs: {'status': _localizedStatus(currentStatus)},
+              ),
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
@@ -152,9 +155,15 @@ class OrderStatusSelector extends StatelessWidget {
         orderEntity: orderEntity,
       );
     } else if (orderStatus.orderDelivered == true) {
-      showSnackBar(context, message: "تمت العملية من قبل");
+      showSnackBar(
+        context,
+        message: LocaleKeys.orders_messages_alreadyProcessed.tr(),
+      );
     } else {
-      showSnackBar(context, message: "اكمل الحالات السابقة اولا");
+      showSnackBar(
+        context,
+        message: LocaleKeys.orders_messages_completePrevious.tr(),
+      );
     }
   }
 
@@ -170,9 +179,15 @@ class OrderStatusSelector extends StatelessWidget {
         orderEntity: orderEntity,
       );
     } else if (orderStatus.outOfDelivery == true) {
-      showSnackBar(context, message: "تمت العملية من قبل");
+      showSnackBar(
+        context,
+        message: LocaleKeys.orders_messages_alreadyProcessed.tr(),
+      );
     } else {
-      showSnackBar(context, message: "اكمل الحالات السابقة اولا");
+      showSnackBar(
+        context,
+        message: LocaleKeys.orders_messages_completePrevious.tr(),
+      );
     }
   }
 
@@ -186,9 +201,15 @@ class OrderStatusSelector extends StatelessWidget {
         orderEntity: orderEntity,
       );
     } else if (orderStatus.orderShipped == true) {
-      showSnackBar(context, message: "تمت العملية من قبل");
+      showSnackBar(
+        context,
+        message: LocaleKeys.orders_messages_alreadyProcessed.tr(),
+      );
     } else {
-      showSnackBar(context, message: "اكمل الحالات السابقة اولا");
+      showSnackBar(
+        context,
+        message: LocaleKeys.orders_messages_completePrevious.tr(),
+      );
     }
   }
 
@@ -202,7 +223,10 @@ class OrderStatusSelector extends StatelessWidget {
         orderEntity: orderEntity,
       );
     } else if (orderStatus.acceptOrder == true) {
-      showSnackBar(context, message: "تمت العملية من قبل");
+      showSnackBar(
+        context,
+        message: LocaleKeys.orders_messages_alreadyProcessed.tr(),
+      );
     }
   }
 
@@ -243,6 +267,21 @@ class OrderStatusSelector extends StatelessWidget {
           dotColor: Color(0xFFF59E0B),
           textColor: Color(0xFF92400E),
         );
+    }
+  }
+
+  String _localizedStatus(String status) {
+    switch (status) {
+      case "تم قبول الطلب":
+        return LocaleKeys.orders_status_accepted.tr();
+      case "تم شحنه":
+        return LocaleKeys.orders_status_shipped.tr();
+      case "في الطريق":
+        return LocaleKeys.orders_status_outForDelivery.tr();
+      case "تم التسليم":
+        return LocaleKeys.orders_status_delivered.tr();
+      default:
+        return LocaleKeys.orders_status_pending.tr();
     }
   }
 

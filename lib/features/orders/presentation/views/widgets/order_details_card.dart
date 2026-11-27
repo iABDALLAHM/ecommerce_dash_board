@@ -1,5 +1,7 @@
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/cart_item_entity/cart_item_entity.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OrderDetailsCard extends StatelessWidget {
@@ -7,6 +9,11 @@ class OrderDetailsCard extends StatelessWidget {
   final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
+    final productNames = cartItemEntity.productEntity.productName;
+    final productName = context.locale.languageCode == "ar"
+        ? productNames["productName_ar"]
+        : productNames["productName_en"] ?? productNames["productName_ar"];
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
       decoration: BoxDecoration(
@@ -40,7 +47,7 @@ class OrderDetailsCard extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "كود المنتج: ",
+                      text: "${LocaleKeys.orders_product_code.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),
@@ -56,15 +63,13 @@ class OrderDetailsCard extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "اسم المنتج: ",
+                      text: "${LocaleKeys.orders_product_name.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),
                     ),
                     TextSpan(
-                      text: cartItemEntity
-                          .productEntity
-                          .productName["productName_ar"],
+                      text: productName,
                       style: AppStyles.textStyle13Bold,
                     ),
                   ],
@@ -74,7 +79,7 @@ class OrderDetailsCard extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "سعر المنتج: ",
+                      text: "${LocaleKeys.orders_product_price.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),
@@ -91,7 +96,7 @@ class OrderDetailsCard extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "كمية المنتج: ",
+                      text: "${LocaleKeys.orders_product_quantity.tr()}: ",
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff64748B),
                       ),

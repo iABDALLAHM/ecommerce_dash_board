@@ -93,5 +93,74 @@
       "updateData": "Unable to update data",
       "saveData": "Unable to save data"
     }
+  },
+  "orders": {
+    "title": "Orders",
+    "search": "Search",
+    "empty": "No orders found",
+    "statusLabel": "Order Status",
+    "userId": "User ID",
+    "orderNumber": "Order Number",
+    "totalPrice": "Total Price",
+    "cashPayment": "Cash Payment",
+    "orderDate": "Order Date",
+    "items": "Items Ordered",
+    "totalValue": "{amount} {currency}",
+    "currency": "EGP",
+    "dateValue": "{day} {month}, {year}",
+    "user": {
+      "orderFrom": "Order placed by",
+      "name": "Name"
+    },
+    "address": {
+      "title": "Shipping Address",
+      "address": "Address",
+      "apartment": "Apartment",
+      "city": "City",
+      "recipient": "Recipient",
+      "phone": "Phone"
+    },
+    "product": {
+      "code": "Product Code",
+      "name": "Product Name",
+      "price": "Product Price",
+      "quantity": "Quantity"
+    },
+    "status": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "shipped": "Shipped",
+      "outForDelivery": "Out for delivery",
+      "delivered": "Delivered",
+      "current": "Current status: {status}"
+    },
+    "payment": {
+      "cash": "Cash",
+      "notCash": "Non-cash"
+    },
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "seeMore": "View Details",
+    "seeLess": "Hide Details",
+    "messages": {
+      "accepted": "Order accepted successfully",
+      "shipped": "Order shipped successfully",
+      "outForDelivery": "The order is on its way to the customer",
+      "delivered": "Order delivered successfully",
+      "alreadyProcessed": "This status has already been updated",
+      "completePrevious": "Please complete the previous steps first"
+    }
   }
 }

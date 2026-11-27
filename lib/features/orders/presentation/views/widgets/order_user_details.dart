@@ -1,6 +1,7 @@
-
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/core/entities/user_entity/user_entity.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OrderUserDetails extends StatelessWidget {
@@ -40,12 +41,15 @@ class OrderUserDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "الأوردر من: ",
+                LocaleKeys.orders_user_orderFrom.tr(),
                 style: TextStyle(fontSize: 11, color: Color(0xff94A3B8)),
               ),
               Row(
                 children: [
-                  Text("الإسم: ", style: AppStyles.textStyle13Bold),
+                  Text(
+                    "${LocaleKeys.orders_user_name.tr()}: ",
+                    style: AppStyles.textStyle13Bold,
+                  ),
                   Text(
                     userEntity.name,
                     style: AppStyles.textStyle13Bold.copyWith(
@@ -57,7 +61,7 @@ class OrderUserDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "الإيميل: ",
+                    "${LocaleKeys.common_email.tr()}: ",
                     style: TextStyle(fontSize: 11, color: Color(0xff64748B)),
                   ),
                   Text(

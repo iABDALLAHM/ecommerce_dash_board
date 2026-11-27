@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_dash_board/core/function/get_specific_date.dart';
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/features/orders/domain/entities/order_and_user_entity/order_and_user_entity.dart';
@@ -7,6 +6,8 @@ import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_details_card.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_status_selector.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/order_user_details.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OrderCard extends StatefulWidget {
@@ -42,7 +43,7 @@ class _OrderCardState extends State<OrderCard> {
           Row(
             children: [
               Text(
-                "حالة الطلب:",
+                LocaleKeys.orders_statusLabel.tr(),
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: Color(0xff64748B),
                 ),
@@ -63,7 +64,7 @@ class _OrderCardState extends State<OrderCard> {
           Row(
             children: [
               Text(
-                "الرقم الخاص بالمستخدم:",
+                LocaleKeys.orders_userId.tr(),
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: Color(0xff64748B),
                 ),
@@ -76,7 +77,7 @@ class _OrderCardState extends State<OrderCard> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  " ${widget.orderAndUserEntity.userEntity.uId}",
+                  widget.orderAndUserEntity.userEntity.uId,
                   style: AppStyles.textStyle13Bold.copyWith(
                     color: Color(0xff334155),
                   ),
@@ -91,16 +92,22 @@ class _OrderCardState extends State<OrderCard> {
             children: [
               Expanded(
                 child: OrderDetails(
-                  title: "رقم الأوردر:",
+                  title: LocaleKeys.orders_orderNumber.tr(),
                   subTitle: widget.orderAndUserEntity.orderEntity.orderNumber,
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: OrderDetails(
-                  title: "السعر الكلي:",
-                  subTitle:
-                      "${widget.orderAndUserEntity.orderEntity.totalPrice.toInt()} جنيه",
+                  title: LocaleKeys.orders_totalPrice.tr(),
+                  subTitle: LocaleKeys.orders_totalValue.tr(
+                    namedArgs: {
+                      'amount': widget.orderAndUserEntity.orderEntity.totalPrice
+                          .toInt()
+                          .toString(),
+                      'currency': LocaleKeys.orders_currency.tr(),
+                    },
+                  ),
                 ),
               ),
             ],
@@ -110,15 +117,16 @@ class _OrderCardState extends State<OrderCard> {
             children: [
               Expanded(
                 child: OrderDetails(
-                  title: "الدفع كاش:",
+                  title: LocaleKeys.orders_cashPayment.tr(),
                   subTitle: widget.orderAndUserEntity.orderEntity.payWithCash
-                      .toString(),
+                      ? LocaleKeys.orders_payment_cash.tr()
+                      : LocaleKeys.orders_payment_notCash.tr(),
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: OrderDetails(
-                  title: "تاريخ الأوردر:",
+                  title: LocaleKeys.orders_orderDate.tr(),
                   subTitle: getSpecificDate(
                     date: widget.orderAndUserEntity.orderEntity.date,
                   ),
@@ -138,7 +146,10 @@ class _OrderCardState extends State<OrderCard> {
                           .shippingAddressEntity,
                     ),
                     const SizedBox(height: 14),
-                    Text("المطلوب :", style: AppStyles.textStyle13Bold),
+                    Text(
+                      LocaleKeys.orders_items.tr(),
+                      style: AppStyles.textStyle13Bold,
+                    ),
                     const SizedBox(height: 8),
                     ListOfOrders(
                       items: widget
@@ -164,7 +175,7 @@ class _OrderCardState extends State<OrderCard> {
                           seeMore = false;
                           setState(() {});
                         },
-                        label: Text("SeeLess"),
+                        label: Text(LocaleKeys.orders_seeLess.tr()),
                       ),
                     ),
                   ],
@@ -185,7 +196,7 @@ class _OrderCardState extends State<OrderCard> {
                       seeMore = true;
                       setState(() {});
                     },
-                    label: Text("SeeMore"),
+                    label: Text(LocaleKeys.orders_seeMore.tr()),
                   ),
                 ),
         ],

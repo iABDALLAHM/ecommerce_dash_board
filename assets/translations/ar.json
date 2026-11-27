@@ -93,5 +93,74 @@
       "updateData": "تعذر تحديث البيانات",
       "saveData": "تعذر حفظ البيانات"
     }
+  },
+  "orders": {
+    "title": "الطلبات",
+    "search": "البحث",
+    "empty": "لا توجد طلبات",
+    "statusLabel": "حالة الطلب",
+    "userId": "معرّف المستخدم",
+    "orderNumber": "رقم الطلب",
+    "totalPrice": "السعر الإجمالي",
+    "cashPayment": "الدفع نقداً",
+    "orderDate": "تاريخ الطلب",
+    "items": "المنتجات المطلوبة",
+    "totalValue": "{amount} {currency}",
+    "currency": "جنيه",
+    "dateValue": "{day} {month} {year}",
+    "user": {
+      "orderFrom": "طلب من",
+      "name": "الاسم"
+    },
+    "address": {
+      "title": "تفاصيل العنوان",
+      "address": "العنوان",
+      "apartment": "رقم الشقة",
+      "city": "المدينة",
+      "recipient": "المستلم",
+      "phone": "رقم الهاتف"
+    },
+    "product": {
+      "code": "كود المنتج",
+      "name": "اسم المنتج",
+      "price": "سعر المنتج",
+      "quantity": "كمية المنتج"
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "accepted": "تم قبول الطلب",
+      "shipped": "تم شحنه",
+      "outForDelivery": "في الطريق",
+      "delivered": "تم التسليم",
+      "current": "الحالة الحالية: {status}"
+    },
+    "payment": {
+      "cash": "نقداً",
+      "notCash": "غير نقدي"
+    },
+    "months": {
+      "january": "يناير",
+      "february": "فبراير",
+      "march": "مارس",
+      "april": "أبريل",
+      "may": "مايو",
+      "june": "يونيو",
+      "july": "يوليو",
+      "august": "أغسطس",
+      "september": "سبتمبر",
+      "october": "أكتوبر",
+      "november": "نوفمبر",
+      "december": "ديسمبر"
+    },
+    "seeMore": "عرض التفاصيل",
+    "seeLess": "إخفاء التفاصيل",
+    "messages": {
+      "accepted": "تم قبول الطلب بنجاح",
+      "shipped": "تم شحن الطلب بنجاح",
+      "outForDelivery": "الطلب في الطريق إلى العميل",
+      "delivered": "تم تسليم الطلب بنجاح",
+      "alreadyProcessed": "تم تحديث هذه الحالة مسبقاً",
+      "completePrevious": "يرجى إكمال الحالات السابقة أولاً"
+    }
   }
 }

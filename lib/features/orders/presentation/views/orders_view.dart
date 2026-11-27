@@ -3,6 +3,8 @@ import 'package:ecommerce_dash_board/core/widgets/custom_arrow_back.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/get_orders_bloc_provider.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/orders_body.dart';
 import 'package:ecommerce_dash_board/features/orders/presentation/views/widgets/orders_view_bloc_listener.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OrdersView extends StatelessWidget {
@@ -22,7 +24,10 @@ class OrdersView extends StatelessWidget {
     return AppBar(
       leading: CustomArrowBack(),
       centerTitle: true,
-      title: Text("الأوردرات", style: AppStyles.textStyle23Bold),
+      title: Text(
+        LocaleKeys.orders_title.tr(),
+        style: AppStyles.textStyle23Bold,
+      ),
     );
   }
 }

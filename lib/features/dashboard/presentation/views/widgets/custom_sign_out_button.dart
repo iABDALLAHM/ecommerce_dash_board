@@ -1,5 +1,7 @@
 import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/show_sign_out_dialog.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +32,9 @@ class CustomSignOutButton extends StatelessWidget {
           },
         );
       },
-      label: Text("تسجيل الخروج من لوحة التحكم"),
+      label: Text(LocaleKeys.dashboard_signOut.tr(
+        context: context
+      )),
       icon: Icon(Icons.logout_outlined),
     );
   }

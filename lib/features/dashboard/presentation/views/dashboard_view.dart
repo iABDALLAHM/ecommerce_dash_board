@@ -1,11 +1,12 @@
 import 'package:ecommerce_dash_board/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_dash_board/core/cubits/get_user_data_cubit/get_user_data_state.dart';
-import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_admin_image.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_dark_mode_button.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_language_button.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_body.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_view_bloc_provider.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -16,13 +17,13 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return DashboardViewBlocProvider(
       child: Scaffold(
-        appBar: buildDashboardViewAppBar(),
+        appBar: buildDashboardViewAppBar(context: context),
         body: DashBoardBody(),
       ),
     );
   }
 
-  AppBar buildDashboardViewAppBar() => AppBar(
+  AppBar buildDashboardViewAppBar({required BuildContext context}) => AppBar(
     actions: [
       CustomLanguageButton(),
       const SizedBox(width: 10),
@@ -42,23 +43,21 @@ class DashboardView extends StatelessWidget {
                   return Row(
                     children: [
                       Text(
-                        "مرحباً بك مجدداً :",
+                        LocaleKeys.dashboard_welcomeBack.tr(
+                          context: context,
+                          namedArgs: {'name': state.userEntity.name},
+                        ),
                         style: TextStyle(
                           fontSize: 15,
                           color: Color(0xff94A3B8),
                         ),
-                      ),
-                      const SizedBox(width: 2),
-                      Text(
-                        state.userEntity.name,
-                        style: AppStyles.textStyle16Bold,
                       ),
                     ],
                   );
                 }
                 return Skeletonizer(
                   child: Text(
-                    "مرحباً بك مجدداً ",
+                    LocaleKeys.dashboard_welcomeLoading.tr(),
                     style: TextStyle(fontSize: 15, color: Color(0xff94A3B8)),
                   ),
                 );
@@ -69,7 +68,7 @@ class DashboardView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "لوحة الإدارة",
+                  LocaleKeys.dashboard_title.tr(),
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 15),
@@ -83,7 +82,7 @@ class DashboardView extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    "مسؤول",
+                    LocaleKeys.dashboard_role.tr(context: context),
                     style: TextStyle(
                       color: Color(0xff047857),
                       fontSize: 15,

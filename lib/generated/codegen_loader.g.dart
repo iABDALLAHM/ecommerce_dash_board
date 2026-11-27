@@ -40,6 +40,34 @@ class CodegenLoader extends AssetLoader{
       "unauthorized": "هذا الحساب ليس لديه صلاحية الدخول إلى لوحة الإدارة",
       "generalError": "حدث خطأ، يرجى المحاولة مرة أخرى"
     }
+  },
+  "dashboard": {
+    "welcomeBack": "مرحباً بعودتك، {name}",
+    "welcomeLoading": "مرحباً بعودتك",
+    "title": "لوحة الإدارة",
+    "role": "مسؤول",
+    "todayOrders": "الطلبات اليوم",
+    "totalProducts": "إجمالي المنتجات",
+    "actionsTitle": "الإجراءات والعمليات",
+    "actions": {
+      "addProduct": "إضافة منتج جديد",
+      "addProductDescription": "إضافة فاكهة أو خضار جديدة مع السعر والتفاصيل",
+      "manageOrders": "إدارة الطلبات",
+      "manageOrdersDescription": "متابعة وتحديث حالات طلبات الزبائن والشحن",
+      "featuredProducts": "إضافة المنتجات المميزة",
+      "featuredProductsDescription": "رفع وتحديث بانرات العروض المميزة في الصفحة الرئيسية",
+      "sendNotification": "إرسال إشعار ترويجي",
+      "sendNotificationDescription": "إرسال رسائل وحملات تسويقية وتنبيهات لجميع المستخدمين"
+    },
+    "signOut": "تسجيل الخروج من لوحة التحكم",
+    "signOutDialog": {
+      "title": "هل ترغب في تسجيل الخروج؟",
+      "message": "ستحتاج إلى تسجيل الدخول مرة أخرى للوصول إلى لوحة الإدارة",
+      "decline": "لا أرغب"
+    },
+    "messages": {
+      "signOutSuccess": "تم تسجيل الخروج بنجاح"
+    }
   }
 };
 static const Map<String,dynamic> _en = {
@@ -67,6 +95,34 @@ static const Map<String,dynamic> _en = {
       "networkError": "Unable to connect. Please check your network connection",
       "unauthorized": "This account does not have permission to access the dashboard",
       "generalError": "An error occurred. Please try again"
+    }
+  },
+  "dashboard": {
+    "welcomeBack": "Welcome back, {name}",
+    "welcomeLoading": "Welcome back",
+    "title": "Admin Dashboard",
+    "role": "Admin",
+    "todayOrders": "Today's Orders",
+    "totalProducts": "Total Products",
+    "actionsTitle": "Actions",
+    "actions": {
+      "addProduct": "Add New Product",
+      "addProductDescription": "Add a new fruit or vegetable with price and details",
+      "manageOrders": "Manage Orders",
+      "manageOrdersDescription": "Monitor and update customer orders and shipping",
+      "featuredProducts": "Featured Products",
+      "featuredProductsDescription": "Update promotional banners on the homepage",
+      "sendNotification": "Send Promotional Notification",
+      "sendNotificationDescription": "Send marketing messages and alerts to all users"
+    },
+    "signOut": "Sign out of the dashboard",
+    "signOutDialog": {
+      "title": "Sign out?",
+      "message": "You will need to sign in again to access the dashboard",
+      "decline": "Cancel"
+    },
+    "messages": {
+      "signOutSuccess": "Signed out successfully"
     }
   }
 };

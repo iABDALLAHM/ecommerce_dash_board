@@ -24,5 +24,33 @@
       "unauthorized": "This account does not have permission to access the dashboard",
       "generalError": "An error occurred. Please try again"
     }
+  },
+  "dashboard": {
+    "welcomeBack": "Welcome back, {name}",
+    "welcomeLoading": "Welcome back",
+    "title": "Admin Dashboard",
+    "role": "Admin",
+    "todayOrders": "Today's Orders",
+    "totalProducts": "Total Products",
+    "actionsTitle": "Actions",
+    "actions": {
+      "addProduct": "Add New Product",
+      "addProductDescription": "Add a new fruit or vegetable with price and details",
+      "manageOrders": "Manage Orders",
+      "manageOrdersDescription": "Monitor and update customer orders and shipping",
+      "featuredProducts": "Featured Products",
+      "featuredProductsDescription": "Update promotional banners on the homepage",
+      "sendNotification": "Send Promotional Notification",
+      "sendNotificationDescription": "Send marketing messages and alerts to all users"
+    },
+    "signOut": "Sign out of the dashboard",
+    "signOutDialog": {
+      "title": "Sign out?",
+      "message": "You will need to sign in again to access the dashboard",
+      "decline": "Cancel"
+    },
+    "messages": {
+      "signOutSuccess": "Signed out successfully"
+    }
   }
 }

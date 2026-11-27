@@ -9,6 +9,8 @@ import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widge
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/custom_sign_out_button.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/dashboard_bloc_listener.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/views/widgets/state_card.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +24,6 @@ class DashBoardBody extends StatefulWidget {
 }
 
 class _DashBoardBodyState extends State<DashBoardBody> {
-
   @override
   void initState() {
     context.read<GetUserDataCubit>().getUserData();
@@ -57,7 +58,7 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                                   },
                                   borderColor: Color(0xffD1FAE5),
                                   cardColor: Color(0xffECFDF5),
-                                  title: 'الطلبات اليوم',
+                                  title: LocaleKeys.dashboard_todayOrders.tr(context: context),
                                   stateIcon: Icon(
                                     Icons.shopping_bag_outlined,
                                     color: Color(0xff059669),
@@ -70,7 +71,8 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                                 child: StateCard(
                                   borderColor: Color(0xffFEF3C7),
                                   cardColor: Color(0xffFFFBEB),
-                                  title: 'إجمالي المنتجات',
+                                  title: LocaleKeys.dashboard_totalProducts
+                                      .tr(),
                                   stateIcon: Icon(
                                     Icons.view_in_ar_outlined,
                                     color: Color(0xffD97706),
@@ -90,7 +92,7 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                                 child: StateCard(
                                   borderColor: Color(0xffD1FAE5),
                                   cardColor: Color(0xffECFDF5),
-                                  title: 'الطلبات اليوم',
+                                  title: LocaleKeys.dashboard_todayOrders.tr(),
                                   stateIcon: Icon(
                                     Icons.shopping_bag_outlined,
                                     color: Color(0xff059669),
@@ -104,7 +106,8 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                                 child: StateCard(
                                   borderColor: Color(0xffFEF3C7),
                                   cardColor: Color(0xffFFFBEB),
-                                  title: 'إجمالي المنتجات',
+                                  title: LocaleKeys.dashboard_totalProducts
+                                      .tr(),
                                   stateIcon: Icon(
                                     Icons.view_in_ar_outlined,
                                     color: Color(0xffD97706),
@@ -121,7 +124,7 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      "الإجراءات والعمليات",
+                      LocaleKeys.dashboard_actionsTitle.tr(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -132,8 +135,10 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                     CustomActionCard(
                       color: Color(0xffD1FAE5),
                       iconColor: Color(0xff047857),
-                      title: "إضافة منتج جديد",
-                      subTitle: "إضافة فاكهة أو خضار جديدة مع السعر والتفاصيل",
+                      title: LocaleKeys.dashboard_actions_addProduct.tr(),
+                      subTitle: LocaleKeys
+                          .dashboard_actions_addProductDescription
+                          .tr(),
                       onTap: () {
                         context.push(AppRoutes.addProduct);
                       },
@@ -145,8 +150,10 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                     CustomActionCard(
                       color: Color(0xffDBEAFE),
                       iconColor: Color(0xff1D4ED8),
-                      title: "إدارة الطلبات (Orders)",
-                      subTitle: "متابعة وتحديث حالات طلبات الزبائن والشحن",
+                      title: LocaleKeys.dashboard_actions_manageOrders.tr(),
+                      subTitle: LocaleKeys
+                          .dashboard_actions_manageOrdersDescription
+                          .tr(context: context),
                       onTap: () {
                         context.push(AppRoutes.orders);
                       },
@@ -157,9 +164,10 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                     CustomActionCard(
                       color: Color(0xffFEF3C7),
                       iconColor: Color(0xffB45309),
-                      title: "إضافة المنتجات المميزة",
-                      subTitle:
-                          "رفع وتحديث بانرات العروض المميزة في الصفحة الرئيسية",
+                      title: LocaleKeys.dashboard_actions_featuredProducts.tr(),
+                      subTitle: LocaleKeys
+                          .dashboard_actions_featuredProductsDescription
+                          .tr(),
                       onTap: () {
                         context.push(AppRoutes.addFeaturedProduct);
                       },
@@ -170,9 +178,10 @@ class _DashBoardBodyState extends State<DashBoardBody> {
                     CustomActionCard(
                       color: Color(0xffF3E8FF),
                       iconColor: Color(0xff7E22CE),
-                      title: "إرسال إشعار ترويجي",
-                      subTitle:
-                          "إرسال رسائل وحملات تسويقية وتنبيهات لجميع المستخدمين",
+                      title: LocaleKeys.dashboard_actions_sendNotification.tr(),
+                      subTitle: LocaleKeys
+                          .dashboard_actions_sendNotificationDescription
+                          .tr(),
                       onTap: () {
                         context.push(AppRoutes.addNotification);
                       },

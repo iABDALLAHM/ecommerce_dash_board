@@ -1,5 +1,7 @@
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/features/dashboard/presentation/cubits/sign_out_cubit/sign_out_cubit.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -31,7 +33,7 @@ class ShowSignOutDialog extends StatelessWidget {
                       color: Color(0xffF1F5F9),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    alignment: Alignment.centerRight,
+                    alignment: AlignmentDirectional.centerEnd,
                     child: Icon(Icons.close, size: 30),
                   ),
                 ),
@@ -48,11 +50,14 @@ class ShowSignOutDialog extends StatelessWidget {
               child: Icon(Icons.logout_rounded, color: Color(0xff059669)),
             ),
             const SizedBox(height: 16),
-            Text("هل ترغب في تسجيل الخروج؟", style: AppStyles.textStyle19Bold),
+            Text(
+              LocaleKeys.dashboard_signOutDialog_title.tr(context: context),
+              style: AppStyles.textStyle19Bold,
+            ),
             const SizedBox(height: 7),
             Text(
               textAlign: TextAlign.center,
-              "ستحتاج إلى تسجيل الدخول مرة أخرى للوصول إلى لوحة الإدارة",
+              LocaleKeys.dashboard_signOutDialog_message.tr(),
               style: AppStyles.textStyle13Regular.copyWith(
                 color: Color(0xff64748B),
               ),
@@ -74,7 +79,10 @@ class ShowSignOutDialog extends StatelessWidget {
                       onPressed: () {
                         context.read<SignOutCubit>().signOut();
                       },
-                      child: Text("تأكيد", style: AppStyles.textStyle13Bold),
+                      child: Text(
+                        LocaleKeys.common_confirm.tr(),
+                        style: AppStyles.textStyle13Bold,
+                      ),
                     ),
                   ),
                 ),
@@ -94,7 +102,10 @@ class ShowSignOutDialog extends StatelessWidget {
                         backgroundColor: Colors.white,
                         foregroundColor: Color(0xff059669),
                       ),
-                      child: Text("لا أرغب", style: AppStyles.textStyle13Bold),
+                      child: Text(
+                        LocaleKeys.dashboard_signOutDialog_decline.tr(),
+                        style: AppStyles.textStyle13Bold,
+                      ),
                     ),
                   ),
                 ),

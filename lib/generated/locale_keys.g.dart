@@ -26,5 +26,29 @@ abstract class  LocaleKeys {
   static const login_messages_generalError = 'login.messages.generalError';
   static const login_messages = 'login.messages';
   static const login = 'login';
+  static const dashboard_welcomeBack = 'dashboard.welcomeBack';
+  static const dashboard_welcomeLoading = 'dashboard.welcomeLoading';
+  static const dashboard_title = 'dashboard.title';
+  static const dashboard_role = 'dashboard.role';
+  static const dashboard_todayOrders = 'dashboard.todayOrders';
+  static const dashboard_totalProducts = 'dashboard.totalProducts';
+  static const dashboard_actionsTitle = 'dashboard.actionsTitle';
+  static const dashboard_actions_addProduct = 'dashboard.actions.addProduct';
+  static const dashboard_actions_addProductDescription = 'dashboard.actions.addProductDescription';
+  static const dashboard_actions_manageOrders = 'dashboard.actions.manageOrders';
+  static const dashboard_actions_manageOrdersDescription = 'dashboard.actions.manageOrdersDescription';
+  static const dashboard_actions_featuredProducts = 'dashboard.actions.featuredProducts';
+  static const dashboard_actions_featuredProductsDescription = 'dashboard.actions.featuredProductsDescription';
+  static const dashboard_actions_sendNotification = 'dashboard.actions.sendNotification';
+  static const dashboard_actions_sendNotificationDescription = 'dashboard.actions.sendNotificationDescription';
+  static const dashboard_actions = 'dashboard.actions';
+  static const dashboard_signOut = 'dashboard.signOut';
+  static const dashboard_signOutDialog_title = 'dashboard.signOutDialog.title';
+  static const dashboard_signOutDialog_message = 'dashboard.signOutDialog.message';
+  static const dashboard_signOutDialog_decline = 'dashboard.signOutDialog.decline';
+  static const dashboard_signOutDialog = 'dashboard.signOutDialog';
+  static const dashboard_messages_signOutSuccess = 'dashboard.messages.signOutSuccess';
+  static const dashboard_messages = 'dashboard.messages';
+  static const dashboard = 'dashboard';
 
 }

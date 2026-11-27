@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
 
 class SwitchCard extends StatefulWidget {
   const SwitchCard({super.key, required this.onChange});
@@ -23,9 +25,9 @@ class _SwitchCardState extends State<SwitchCard> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("منتج عضوي 100%؟"),
+              Text(LocaleKeys.addProduct_organic.tr()),
               const SizedBox(height: 6),
-              Text("بدون مبيدات أو مواد كيميائية"),
+              Text(LocaleKeys.addProduct_organicDescription.tr()),
             ],
           ),
           Spacer(),

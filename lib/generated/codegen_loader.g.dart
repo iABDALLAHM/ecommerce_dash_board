@@ -68,6 +68,47 @@ class CodegenLoader extends AssetLoader{
     "messages": {
       "signOutSuccess": "تم تسجيل الخروج بنجاح"
     }
+  },
+  "addProduct": {
+    "title": "إضافة منتج جديد",
+    "imageTitle": "صورة المنتج",
+    "selectImage": "اضغط لاختيار صورة المنتج",
+    "imageFormat": "PNG أو JPG بحد أقصى 5 ميجابايت",
+    "nameAr": "الاسم بالعربي",
+    "nameEn": "الاسم بالإنجليزي",
+    "nameArHint": "مثال: فراولة",
+    "nameEnHint": "مثال: Strawberry",
+    "price": "سعر المنتج",
+    "priceHint": "{price}",
+    "sku": "كود المنتج (SKU)",
+    "skuHint": "strw-01",
+    "expiration": "مدة الصلاحية",
+    "expirationHint": "{months}",
+    "calories": "السعرات الحرارية",
+    "caloriesHint": "{calories}",
+    "quantity": "الكمية المتوفرة",
+    "quantityHint": "{quantity}",
+    "description": "وصف المنتج",
+    "descriptionHint": "اكتب تفاصيل ومصدر الفاكهة الطازجة...",
+    "organic": "منتج عضوي 100%",
+    "organicDescription": "بدون مبيدات أو مواد كيميائية",
+    "addButton": "إضافة المنتج للمتجر",
+    "messages": {
+      "success": "تمت إضافة المنتج بنجاح",
+      "imageRequired": "يرجى اختيار صورة المنتج",
+      "fieldsRequired": "يرجى تعبئة الحقول المطلوبة",
+      "generalError": "حدث خطأ، يرجى المحاولة مرة أخرى"
+    }
+  },
+  "database": {
+    "messages": {
+      "addData": "تعذرت إضافة البيانات إلى قاعدة البيانات",
+      "getData": "تعذر جلب البيانات من قاعدة البيانات",
+      "getSingleData": "تعذر جلب العنصر المحدد",
+      "searchData": "تعذر البحث عن البيانات",
+      "updateData": "تعذر تحديث البيانات",
+      "saveData": "تعذر حفظ البيانات"
+    }
   }
 };
 static const Map<String,dynamic> _en = {
@@ -123,6 +164,47 @@ static const Map<String,dynamic> _en = {
     },
     "messages": {
       "signOutSuccess": "Signed out successfully"
+    }
+  },
+  "addProduct": {
+    "title": "Add New Product",
+    "imageTitle": "Product Image",
+    "selectImage": "Tap to select a product image",
+    "imageFormat": "PNG or JPG, up to 5 MB",
+    "nameAr": "Arabic Name",
+    "nameEn": "English Name",
+    "nameArHint": "Example: Strawberry",
+    "nameEnHint": "Example: Strawberry",
+    "price": "Product Price",
+    "priceHint": "{price}",
+    "sku": "Product Code (SKU)",
+    "skuHint": "strw-01",
+    "expiration": "Shelf Life",
+    "expirationHint": "{months}",
+    "calories": "Calories",
+    "caloriesHint": "{calories}",
+    "quantity": "Available Quantity",
+    "quantityHint": "{quantity}",
+    "description": "Product Description",
+    "descriptionHint": "Enter the details and source of the fresh produce...",
+    "organic": "100% Organic",
+    "organicDescription": "No pesticides or chemicals",
+    "addButton": "Add Product to Store",
+    "messages": {
+      "success": "Product added successfully",
+      "imageRequired": "Please select a product image",
+      "fieldsRequired": "Please complete all required fields",
+      "generalError": "An error occurred. Please try again"
+    }
+  },
+  "database": {
+    "messages": {
+      "addData": "Unable to add data to the database",
+      "getData": "Unable to retrieve data from the database",
+      "getSingleData": "Unable to retrieve the selected item",
+      "searchData": "Unable to search for data",
+      "updateData": "Unable to update data",
+      "saveData": "Unable to save data"
     }
   }
 };

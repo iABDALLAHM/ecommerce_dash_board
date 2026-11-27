@@ -9,6 +9,8 @@ import 'package:ecommerce_dash_board/features/add_product/domain/entities/produc
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/custom_add_product_button.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/get_product_image_card.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/switch_card.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -42,10 +44,13 @@ class _AddProductBodyState extends State<AddProductBody> {
     return BlocConsumer<AddProductCubit, AddProductStates>(
       listener: (context, state) {
         if (state is SuccessAddProductState) {
-          showSnackBar(context, message: "تم اضافة المنتج بنجاح");
+          showSnackBar(
+            context,
+            message: LocaleKeys.addProduct_messages_success.tr(),
+          );
           context.pop();
         } else if (state is FailureAddProductState) {
-          showSnackBar(context, message: state.errorMessage);
+          showSnackBar(context, message: state.errorMessage.tr());
         }
       },
       builder: (context, state) {
@@ -61,7 +66,10 @@ class _AddProductBodyState extends State<AddProductBody> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 20),
-                    Text("صورة المنتج", style: AppStyles.textStyle13Bold),
+                    Text(
+                      LocaleKeys.addProduct_imageTitle.tr(),
+                      style: AppStyles.textStyle13Bold,
+                    ),
                     const SizedBox(height: 10),
                     BlocListener<GetImageCubit, GetImageState>(
                       listener: (context, state) {
@@ -78,10 +86,10 @@ class _AddProductBodyState extends State<AddProductBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("الاسم بالعربي"),
+                              Text(LocaleKeys.addProduct_nameAr.tr()),
                               const SizedBox(height: 6),
                               CustomTextFormField(
-                                hintText: "مثال: فراولة",
+                                hintText: LocaleKeys.addProduct_nameArHint.tr(),
                                 onSaved: (value) {
                                   productNameAr = value ?? "";
                                 },
@@ -94,10 +102,10 @@ class _AddProductBodyState extends State<AddProductBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("الاسم بالإنجليزي"),
+                              Text(LocaleKeys.addProduct_nameEn.tr()),
                               const SizedBox(height: 6),
                               CustomTextFormField(
-                                hintText: "Strawberry",
+                                hintText: LocaleKeys.addProduct_nameEnHint.tr(),
                                 onSaved: (value) {
                                   productNameEn = value ?? "";
                                 },
@@ -114,11 +122,13 @@ class _AddProductBodyState extends State<AddProductBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("سعر المنتج (جنيه)"),
+                              Text(LocaleKeys.addProduct_price.tr()),
                               const SizedBox(height: 6),
                               CustomTextFormField(
                                 inputType: TextInputType.number,
-                                hintText: "30",
+                                hintText: LocaleKeys.addProduct_priceHint.tr(
+                                  namedArgs: {'price': '30'},
+                                ),
                                 onSaved: (value) {
                                   productPrice = num.parse(value!);
                                 },
@@ -131,10 +141,10 @@ class _AddProductBodyState extends State<AddProductBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("كود المنتج (SKU)"),
+                              Text(LocaleKeys.addProduct_sku.tr()),
                               const SizedBox(height: 6),
                               CustomTextFormField(
-                                hintText: "strw-01",
+                                hintText: LocaleKeys.addProduct_skuHint.tr(),
                                 onSaved: (value) {
                                   productCode = value?.toLowerCase() ?? "";
                                 },
@@ -151,12 +161,13 @@ class _AddProductBodyState extends State<AddProductBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("الصلاحية (بالأشهر/سنة)"),
+                              Text(LocaleKeys.addProduct_expiration.tr()),
                               const SizedBox(height: 6),
                               CustomTextFormField(
                                 inputType: TextInputType.number,
 
-                                hintText: "1 سنة",
+                                hintText: LocaleKeys.addProduct_expirationHint
+                                    .tr(namedArgs: {'months': '1'}),
                                 onSaved: (value) {
                                   expirationMonths = int.parse(value!);
                                 },
@@ -169,12 +180,14 @@ class _AddProductBodyState extends State<AddProductBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("السعرات الحرارية"),
+                              Text(LocaleKeys.addProduct_calories.tr()),
                               const SizedBox(height: 6),
                               CustomTextFormField(
                                 inputType: TextInputType.number,
 
-                                hintText: "350 سعرة",
+                                hintText: LocaleKeys.addProduct_caloriesHint.tr(
+                                  namedArgs: {'calories': '350'},
+                                ),
                                 onSaved: (value) {
                                   numberOfCalories = int.parse(value!);
                                 },
@@ -185,22 +198,24 @@ class _AddProductBodyState extends State<AddProductBody> {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    Text("الكمية المتوفرة (بالكيلو)"),
+                    Text(LocaleKeys.addProduct_quantity.tr()),
                     const SizedBox(height: 6),
                     CustomTextFormField(
                       inputType: TextInputType.number,
 
-                      hintText: "100 كجم",
+                      hintText: LocaleKeys.addProduct_quantityHint.tr(
+                        namedArgs: {'quantity': '100'},
+                      ),
                       onSaved: (value) {
                         quantity = int.parse(value!);
                       },
                     ),
                     const SizedBox(height: 16),
-                    Text("وصف المنتج"),
+                    Text(LocaleKeys.addProduct_description.tr()),
                     const SizedBox(height: 6),
                     CustomTextFormField(
                       maxLines: 4,
-                      hintText: "اكتب تفاصيل ومصدر الفاكهة الطازجة...",
+                      hintText: LocaleKeys.addProduct_descriptionHint.tr(),
                       onSaved: (value) {
                         productDescrition = value ?? "";
                       },
@@ -245,14 +260,18 @@ class _AddProductBodyState extends State<AddProductBody> {
                             } else {
                               showSnackBar(
                                 context,
-                                message: "املأ صورة المنتج",
+                                message: LocaleKeys
+                                    .addProduct_messages_imageRequired
+                                    .tr(),
                               );
                             }
                           } else {
                             autovalidateMode = AutovalidateMode.always;
                             showSnackBar(
                               context,
-                              message: "املأ الحقول الفارغة",
+                              message: LocaleKeys
+                                  .addProduct_messages_fieldsRequired
+                                  .tr(),
                             );
                             setState(() {});
                           }

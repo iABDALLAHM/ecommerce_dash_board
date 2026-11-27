@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
 
 class CustomAddProductButton extends StatelessWidget {
   const CustomAddProductButton({super.key, required this.onPressed});
@@ -11,7 +13,7 @@ class CustomAddProductButton extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       onPressed: onPressed,
-      label: Text("إضافة المنتج للمتجر"),
+      label: Text(LocaleKeys.addProduct_addButton.tr()),
       icon: Icon(Icons.add_rounded),
     );
   }

@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_state.dart';
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,7 +52,6 @@ class GetProductImageCard extends StatelessWidget {
               InkWell(
                 onTap: () {
                   context.read<GetImageCubit>().pickImage();
-
                 },
                 child: Container(
                   padding: EdgeInsets.all(8),
@@ -63,11 +64,11 @@ class GetProductImageCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                "اضغط لاختيار صورة المنتج",
+                LocaleKeys.addProduct_selectImage.tr(),
                 style: AppStyles.textStyle13Bold,
               ),
               Text(
-                "PNG, JPG حتى 5 ميجابايت",
+                LocaleKeys.addProduct_imageFormat.tr(),
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: Color(0xff64748B),
                 ),

@@ -2,6 +2,8 @@ import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_arrow_back.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/add_product_body.dart';
 import 'package:ecommerce_dash_board/features/add_product/presentation/views/widgets/add_product_view_bloc_provider.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AddProductView extends StatelessWidget {
@@ -20,6 +22,9 @@ class AddProductView extends StatelessWidget {
   AppBar buildAddProductAppBar() => AppBar(
     centerTitle: true,
     leading: CustomArrowBack(),
-    title: Text("إضافة منتج جديد", style: AppStyles.textStyle23Bold),
+    title: Text(
+      LocaleKeys.addProduct_title.tr(),
+      style: AppStyles.textStyle23Bold,
+    ),
   );
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart' as b;
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -25,7 +26,7 @@ class SupabaseStorageService implements StorageService {
       return imageUrl;
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "فشل رفع الملف إلى التخزين السحابي، حاول مرة أخرى",
+        exceptionMeassge: LocaleKeys.addProduct_messages_generalError,
       );
     }
   }

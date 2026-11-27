@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/models/query_prams.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: DatabaseService)
@@ -20,7 +21,7 @@ class FirestoreService implements DatabaseService {
       await _firestore.collection(path).add(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء إضافة البيانات إلى قاعدة البيانات",
+        exceptionMeassge: LocaleKeys.database_messages_addData,
       );
     }
   }
@@ -32,7 +33,7 @@ class FirestoreService implements DatabaseService {
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء جلب البيانات من قاعدة البيانات",
+        exceptionMeassge: LocaleKeys.database_messages_getData,
       );
     }
   }
@@ -47,7 +48,7 @@ class FirestoreService implements DatabaseService {
       return data.data();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء جلب عنصر محدد من قاعدة البيانات",
+        exceptionMeassge: LocaleKeys.database_messages_getSingleData,
       );
     }
   }
@@ -62,7 +63,7 @@ class FirestoreService implements DatabaseService {
       await _firestore.collection(path).doc(documentId).set(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء حفظ البيانات في المستند",
+        exceptionMeassge: LocaleKeys.database_messages_saveData,
       );
     }
   }
@@ -100,7 +101,7 @@ class FirestoreService implements DatabaseService {
       return result.docs.first.id;
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء البحث عن البيانات $e",
+        exceptionMeassge: LocaleKeys.database_messages_searchData,
       );
     }
   }
@@ -114,7 +115,9 @@ class FirestoreService implements DatabaseService {
     try {
       await _firestore.collection(path).doc(documentId).update(data);
     } catch (e) {
-      throw CustomException(exceptionMeassge: "حدث خطأ اثناء تحديث البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.database_messages_updateData,
+      );
     }
   }
 
@@ -127,7 +130,7 @@ class FirestoreService implements DatabaseService {
       });
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء جلب البيانات من قاعدة البيانات",
+        exceptionMeassge: LocaleKeys.database_messages_getData,
       );
     }
   }
@@ -144,7 +147,7 @@ class FirestoreService implements DatabaseService {
       });
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء جلب البيانات من قاعدة البيانات",
+        exceptionMeassge: LocaleKeys.database_messages_getData,
       );
     }
   }
@@ -157,9 +160,9 @@ class FirestoreService implements DatabaseService {
     try {
       final doc = await _firestore.collection(path).doc(documentId).get();
       return doc.data();
-    } on CustomException catch (e) {
+    } on CustomException {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء جلب البيانات من قاعدة البيانات $e",
+        exceptionMeassge: LocaleKeys.database_messages_getData,
       );
     }
   }

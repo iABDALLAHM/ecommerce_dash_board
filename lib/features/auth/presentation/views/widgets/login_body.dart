@@ -6,6 +6,8 @@ import 'package:ecommerce_dash_board/features/auth/presentation/cubits/login_cub
 import 'package:ecommerce_dash_board/features/auth/presentation/cubits/login_cubit/login_states.dart';
 import 'package:ecommerce_dash_board/features/auth/presentation/views/widgets/login_card.dart';
 import 'package:ecommerce_dash_board/features/auth/presentation/views/widgets/login_header.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -19,9 +21,12 @@ class LoginBody extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccessState) {
           context.go(AppRoutes.dashboard);
-          showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+          showSnackBar(
+            context,
+            message: LocaleKeys.login_messages_success.tr(),
+          );
         } else if (state is LoginFailureState) {
-          showSnackBar(context, message: state.errorMessage);
+          showSnackBar(context, message: state.errorMessage.tr());
         }
       },
       builder: (context, state) {

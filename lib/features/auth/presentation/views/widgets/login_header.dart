@@ -1,4 +1,6 @@
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class LoginHeader extends StatelessWidget {
@@ -26,18 +28,18 @@ class LoginHeader extends StatelessWidget {
             borderRadius: BorderRadius.circular(18),
           ),
           child: Text(
-            "بوابة المسؤولين",
+            LocaleKeys.login_adminPortal.tr(context: context),
             style: AppStyles.textStyle13Bold.copyWith(color: Color(0xff059669)),
           ),
         ),
         const SizedBox(height: 11),
         Text(
-          "تسجيل الدخول للوحة الإدارة",
+          LocaleKeys.login_title.tr(),
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 11),
         Text(
-          "مخصص للمسؤولين فقط. أدخل بيانات حسابك للمتابعة",
+          LocaleKeys.login_subtitle.tr(),
           style: TextStyle(
             fontSize: 13,
             color: Color(0xff64748B),

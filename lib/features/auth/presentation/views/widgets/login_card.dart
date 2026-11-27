@@ -2,6 +2,8 @@ import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_dash_board/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_dash_board/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +36,10 @@ class _LoginCardState extends State<LoginCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("البريد الإلكتروني", style: AppStyles.textStyle13Bold),
+            Text(
+              LocaleKeys.common_email.tr(context: context),
+              style: AppStyles.textStyle13Bold,
+            ),
             const SizedBox(height: 8),
             CustomTextFormField(
               hintText: "admin@store.com",
@@ -44,7 +49,10 @@ class _LoginCardState extends State<LoginCard> {
               prefixIcon: Icon(Icons.email, color: Color(0xff64748B)),
             ),
             const SizedBox(height: 15),
-            Text("كلمة المرور", style: AppStyles.textStyle13Bold),
+            Text(
+              LocaleKeys.common_password.tr(),
+              style: AppStyles.textStyle13Bold,
+            ),
             const SizedBox(height: 8),
             CustomPasswordField(
               onSaved: (value) {
@@ -58,7 +66,7 @@ class _LoginCardState extends State<LoginCard> {
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    "نسيت كلمة المرور؟",
+                    LocaleKeys.login_forgotPassword.tr(),
                     style: TextStyle(color: Color(0xff059669)),
                   ),
                 ),
@@ -89,7 +97,10 @@ class _LoginCardState extends State<LoginCard> {
                     setState(() {});
                   }
                 },
-                child: Text("تسجيل الدخول", style: AppStyles.textStyle13Bold),
+                child: Text(
+                  LocaleKeys.login_loginButton.tr(),
+                  style: AppStyles.textStyle13Bold,
+                ),
               ),
             ),
           ],

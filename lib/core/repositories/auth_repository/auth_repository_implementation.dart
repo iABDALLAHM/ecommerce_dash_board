@@ -9,6 +9,7 @@ import 'package:ecommerce_dash_board/core/services/database_service/database_ser
 import 'package:ecommerce_dash_board/core/utils/backend_end_points.dart';
 import 'package:ecommerce_dash_board/features/auth/data/services/auth_service/auth_service.dart';
 import 'package:ecommerce_dash_board/core/repositories/auth_repository/auth_repository.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AuthRepository)
@@ -33,9 +34,7 @@ class AuthRepositoryImplementation implements AuthRepository {
       );
       if (result == null) {
         return Left(
-          ServerFailure(
-            errorMessage: "هذا الحساب ليس لديه صلاحية الدخول للوحة الإدارة",
-          ),
+          ServerFailure(errorMessage: LocaleKeys.login_messages_unauthorized),
         );
       }
       UserEntity userEntity = UserModel.fromJson(result).toEntity();

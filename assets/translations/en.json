@@ -1,1 +1,28 @@
-{}
+{
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "loading": "Loading",
+    "error": "Error"
+  },
+  "login": {
+    "adminPortal": "Admin Portal",
+    "title": "Sign in to the dashboard",
+    "subtitle": "For administrators only. Enter your account details to continue",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Sign In",
+    "messages": {
+      "success": "Signed in successfully",
+      "emailRequired": "Please enter your email",
+      "passwordRequired": "Please enter your password",
+      "invalidCredentials": "Email or password is incorrect",
+      "userNotFound": "This user does not exist",
+      "wrongPassword": "Password is incorrect",
+      "networkError": "Unable to connect. Please check your network connection",
+      "unauthorized": "This account does not have permission to access the dashboard",
+      "generalError": "An error occurred. Please try again"
+    }
+  }
+}

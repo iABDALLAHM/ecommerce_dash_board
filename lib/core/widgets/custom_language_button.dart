@@ -2,27 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomLanguageButton extends StatefulWidget {
+class CustomLanguageButton extends StatelessWidget {
   const CustomLanguageButton({super.key});
 
   @override
-  State<CustomLanguageButton> createState() => _CustomLanguageButtonState();
-}
-
-class _CustomLanguageButtonState extends State<CustomLanguageButton> {
-  String? currentLang;
-  @override
   Widget build(BuildContext context) {
-    currentLang = context.locale.languageCode;
+    final isArabic = context.locale.languageCode == 'ar';
     return GestureDetector(
-      onTap: () {
-        if (context.locale.languageCode == "ar") {
-          currentLang = "en";
-          context.setLocale(Locale(currentLang!));
-        } else {
-          currentLang = "ar";
-          context.setLocale(Locale(currentLang!));
-        }
+      onTap: () async {
+        await context.setLocale(Locale(isArabic ? 'en' : 'ar'));
       },
       child: Container(
         padding: EdgeInsets.all(14),
@@ -33,7 +21,7 @@ class _CustomLanguageButtonState extends State<CustomLanguageButton> {
             side: BorderSide(color: Color(0xffE2E8F0)),
           ),
         ),
-        child: currentLang == "ar"
+        child: isArabic
             ? Center(child: Text("EN", style: AppStyles.textStyle13Bold))
             : Center(child: Text("عربي", style: AppStyles.textStyle13Bold)),
       ),

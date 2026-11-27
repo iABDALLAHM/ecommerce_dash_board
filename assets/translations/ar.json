@@ -162,5 +162,38 @@
       "alreadyProcessed": "تم تحديث هذه الحالة مسبقاً",
       "completePrevious": "يرجى إكمال الحالات السابقة أولاً"
     }
+  },
+  "addFeaturedProduct": {
+    "title": "إضافة بانر مميز",
+    "imageTitle": "رفع صورة بانر مميز جديد",
+    "selectImage": "اضغط لاختيار صورة البانر",
+    "imageRequirements": "المقاس الموصى به: {width} × {height} بكسل (JPG أو WebP)",
+    "publishButton": "نشر البانر المميز",
+    "messages": {
+      "success": "تمت إضافة البانر المميز بنجاح",
+      "imageRequired": "يرجى إرفاق صورة البانر",
+      "generalError": "حدث خطأ، يرجى المحاولة مرة أخرى"
+    }
+  },
+  "addNotification": {
+    "title": "إرسال إشعار للمستخدمين",
+    "notificationTitle": "عنوان الإشعار",
+    "titleHint": "وصلت تخفيضات نهاية الأسبوع! 🔥",
+    "message": "نص الرسالة",
+    "messageHint": "استمتع بخصم يصل إلى {discount}% على تشكيلة مختارة من الفواكه الطازجة. اطلب الآن واستلم طلبك خلال {minutes} دقيقة!",
+    "imageOptional": "صورة مرفقة بالإشعار (اختيارية)",
+    "selectImage": "اضغط لرفع صورة ترويجية",
+    "sendButton": "إرسال الإشعار الآن"
+  },
+  "splash": {
+    "title": "لوحة الإدارة",
+    "adminPortal": "بوابة المسؤولين"
+  },
+  "secureStorage": {
+    "messages": {
+      "deleteData": "تعذر حذف البيانات من التخزين الآمن",
+      "getData": "تعذر جلب البيانات من التخزين الآمن",
+      "saveData": "تعذر حفظ البيانات في التخزين الآمن"
+    }
   }
 }

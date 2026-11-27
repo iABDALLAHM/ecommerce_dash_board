@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_dash_board/constants.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/services/storage_service/storage_service.dart';
@@ -26,7 +27,7 @@ class SupabaseStorageService implements StorageService {
       return imageUrl;
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.addProduct_messages_generalError,
+        exceptionMeassge: LocaleKeys.addProduct_messages_generalError.tr(),
       );
     }
   }

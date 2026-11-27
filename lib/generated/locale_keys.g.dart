@@ -148,5 +148,32 @@ abstract class  LocaleKeys {
   static const orders_messages_completePrevious = 'orders.messages.completePrevious';
   static const orders_messages = 'orders.messages';
   static const orders = 'orders';
+  static const addFeaturedProduct_title = 'addFeaturedProduct.title';
+  static const addFeaturedProduct_imageTitle = 'addFeaturedProduct.imageTitle';
+  static const addFeaturedProduct_selectImage = 'addFeaturedProduct.selectImage';
+  static const addFeaturedProduct_imageRequirements = 'addFeaturedProduct.imageRequirements';
+  static const addFeaturedProduct_publishButton = 'addFeaturedProduct.publishButton';
+  static const addFeaturedProduct_messages_success = 'addFeaturedProduct.messages.success';
+  static const addFeaturedProduct_messages_imageRequired = 'addFeaturedProduct.messages.imageRequired';
+  static const addFeaturedProduct_messages_generalError = 'addFeaturedProduct.messages.generalError';
+  static const addFeaturedProduct_messages = 'addFeaturedProduct.messages';
+  static const addFeaturedProduct = 'addFeaturedProduct';
+  static const addNotification_title = 'addNotification.title';
+  static const addNotification_notificationTitle = 'addNotification.notificationTitle';
+  static const addNotification_titleHint = 'addNotification.titleHint';
+  static const addNotification_message = 'addNotification.message';
+  static const addNotification_messageHint = 'addNotification.messageHint';
+  static const addNotification_imageOptional = 'addNotification.imageOptional';
+  static const addNotification_selectImage = 'addNotification.selectImage';
+  static const addNotification_sendButton = 'addNotification.sendButton';
+  static const addNotification = 'addNotification';
+  static const splash_title = 'splash.title';
+  static const splash_adminPortal = 'splash.adminPortal';
+  static const splash = 'splash';
+  static const secureStorage_messages_deleteData = 'secureStorage.messages.deleteData';
+  static const secureStorage_messages_getData = 'secureStorage.messages.getData';
+  static const secureStorage_messages_saveData = 'secureStorage.messages.saveData';
+  static const secureStorage_messages = 'secureStorage.messages';
+  static const secureStorage = 'secureStorage';
 
 }

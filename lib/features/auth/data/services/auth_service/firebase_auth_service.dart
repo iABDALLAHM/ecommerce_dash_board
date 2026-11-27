@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/features/auth/data/services/auth_service/auth_service.dart';
 import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
@@ -26,23 +27,23 @@ class FirebaseAuthService implements AuthService {
       );
       if (e.code == 'user-not-found') {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.login_messages_userNotFound,
+          exceptionMeassge: LocaleKeys.login_messages_userNotFound.tr(),
         );
       } else if (e.code == 'wrong-password') {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.login_messages_wrongPassword,
+          exceptionMeassge: LocaleKeys.login_messages_wrongPassword.tr(),
         );
       } else if (e.code == "network-request-failed") {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.login_messages_networkError,
+          exceptionMeassge: LocaleKeys.login_messages_networkError.tr(),
         );
       } else if (e.code == "invalid-credential") {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.login_messages_invalidCredentials,
+          exceptionMeassge: LocaleKeys.login_messages_invalidCredentials.tr(),
         );
       } else {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.login_messages_generalError,
+          exceptionMeassge: LocaleKeys.login_messages_generalError.tr(),
         );
       }
     } catch (e) {
@@ -50,7 +51,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signIn method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.login_messages_generalError,
+        exceptionMeassge: LocaleKeys.login_messages_generalError.tr(),
       );
     }
   }
@@ -64,7 +65,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signOut method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.login_messages_generalError,
+        exceptionMeassge: LocaleKeys.login_messages_generalError.tr(),
       );
     }
   }
@@ -76,7 +77,7 @@ class FirebaseAuthService implements AuthService {
 
       if (userId == null) {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.login_messages_generalError,
+          exceptionMeassge: LocaleKeys.login_messages_generalError.tr(),
         );
       }
       return userId.uid;
@@ -85,7 +86,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in getCurrentUserId method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.login_messages_generalError,
+        exceptionMeassge: LocaleKeys.login_messages_generalError.tr(),
       );
     }
   }

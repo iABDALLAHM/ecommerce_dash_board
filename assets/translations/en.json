@@ -162,5 +162,38 @@
       "alreadyProcessed": "This status has already been updated",
       "completePrevious": "Please complete the previous steps first"
     }
+  },
+  "addFeaturedProduct": {
+    "title": "Add Featured Banner",
+    "imageTitle": "Upload a New Featured Banner",
+    "selectImage": "Tap to choose a banner image",
+    "imageRequirements": "Recommended size: {width} × {height} px (JPG or WebP)",
+    "publishButton": "Publish Featured Banner",
+    "messages": {
+      "success": "Featured banner added successfully",
+      "imageRequired": "Please attach a banner image",
+      "generalError": "An error occurred. Please try again"
+    }
+  },
+  "addNotification": {
+    "title": "Send a Notification",
+    "notificationTitle": "Notification Title",
+    "titleHint": "Weekend deals are here! 🔥",
+    "message": "Message",
+    "messageHint": "Enjoy up to {discount}% off a handpicked selection of fresh fruit. Order now and get it delivered in {minutes} minutes!",
+    "imageOptional": "Notification Image (Optional)",
+    "selectImage": "Tap to upload a promotional image",
+    "sendButton": "Send Notification Now"
+  },
+  "splash": {
+    "title": "Admin Dashboard",
+    "adminPortal": "Admin Portal"
+  },
+  "secureStorage": {
+    "messages": {
+      "deleteData": "Unable to delete data from secure storage",
+      "getData": "Unable to retrieve data from secure storage",
+      "saveData": "Unable to save data to secure storage"
+    }
   }
 }

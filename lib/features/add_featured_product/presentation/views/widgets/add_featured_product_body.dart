@@ -8,6 +8,8 @@ import 'package:ecommerce_dash_board/features/add_featured_product/presentation/
 import 'package:ecommerce_dash_board/features/add_featured_product/presentation/cubits/add_Featured_product_cubit/add_featured_product_state.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/presentation/views/widgets/add_featured_product_bloc_listener.dart';
 import 'package:ecommerce_dash_board/features/add_featured_product/presentation/views/widgets/get_featured_product_image.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +36,7 @@ class _AddFeaturedProductBodyState extends State<AddFeaturedProductBody> {
                 children: [
                   const SizedBox(height: 15),
                   Text(
-                    "رفع صورة بانر مميز جديد",
+                    LocaleKeys.addFeaturedProduct_imageTitle.tr(),
                     style: AppStyles.textStyle13Bold,
                   ),
                   const SizedBox(height: 8),
@@ -71,12 +73,17 @@ class _AddFeaturedProductBodyState extends State<AddFeaturedProductBody> {
                                 product: featuredProductEntity,
                               );
                         } else {
-                          showSnackBar(context, message: "ارفق صورة المنتج");
+                          showSnackBar(
+                            context,
+                            message: LocaleKeys
+                                .addFeaturedProduct_messages_imageRequired
+                                .tr(),
+                          );
                         }
                       },
                       icon: Icon(Icons.check_rounded),
                       label: Text(
-                        "نشر البانر المميز",
+                        LocaleKeys.addFeaturedProduct_publishButton.tr(),
                         style: AppStyles.textStyle16Bold,
                       ),
                     ),

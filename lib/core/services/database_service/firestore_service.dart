@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/models/query_prams.dart';
 import 'package:ecommerce_dash_board/core/services/database_service/database_service.dart';
@@ -21,7 +22,7 @@ class FirestoreService implements DatabaseService {
       await _firestore.collection(path).add(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_addData,
+        exceptionMeassge: LocaleKeys.database_messages_addData.tr(),
       );
     }
   }
@@ -33,7 +34,7 @@ class FirestoreService implements DatabaseService {
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_getData,
+        exceptionMeassge: LocaleKeys.database_messages_getData.tr(),
       );
     }
   }
@@ -48,7 +49,7 @@ class FirestoreService implements DatabaseService {
       return data.data();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_getSingleData,
+        exceptionMeassge: LocaleKeys.database_messages_getSingleData.tr(),
       );
     }
   }
@@ -63,7 +64,7 @@ class FirestoreService implements DatabaseService {
       await _firestore.collection(path).doc(documentId).set(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_saveData,
+        exceptionMeassge: LocaleKeys.database_messages_saveData.tr(),
       );
     }
   }
@@ -101,7 +102,7 @@ class FirestoreService implements DatabaseService {
       return result.docs.first.id;
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_searchData,
+        exceptionMeassge: LocaleKeys.database_messages_searchData.tr(),
       );
     }
   }
@@ -116,7 +117,7 @@ class FirestoreService implements DatabaseService {
       await _firestore.collection(path).doc(documentId).update(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_updateData,
+        exceptionMeassge: LocaleKeys.database_messages_updateData.tr(),
       );
     }
   }
@@ -130,7 +131,7 @@ class FirestoreService implements DatabaseService {
       });
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_getData,
+        exceptionMeassge: LocaleKeys.database_messages_getData.tr(),
       );
     }
   }
@@ -147,7 +148,7 @@ class FirestoreService implements DatabaseService {
       });
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_getData,
+        exceptionMeassge: LocaleKeys.database_messages_getData.tr(),
       );
     }
   }
@@ -162,7 +163,7 @@ class FirestoreService implements DatabaseService {
       return doc.data();
     } on CustomException {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.database_messages_getData,
+        exceptionMeassge: LocaleKeys.database_messages_getData.tr(),
       );
     }
   }

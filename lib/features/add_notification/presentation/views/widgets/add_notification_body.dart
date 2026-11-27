@@ -1,5 +1,7 @@
 import 'package:ecommerce_dash_board/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_dash_board/features/add_notification/presentation/views/widgets/get_notification_image.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AddNotificationBody extends StatefulWidget {
@@ -23,23 +25,24 @@ class _AddNotificationBodyState extends State<AddNotificationBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Text("عنوان الإشعار"),
+            Text(LocaleKeys.addNotification_notificationTitle.tr()),
             const SizedBox(height: 8),
             CustomTextFormField(
-              hintText: "تخفيضات نهاية الأسبوع وصلت! 🔥",
+              hintText: LocaleKeys.addNotification_titleHint.tr(),
               onSaved: (value) {},
             ),
             const SizedBox(height: 16),
-            Text("نص الرسالة"),
+            Text(LocaleKeys.addNotification_message.tr()),
             const SizedBox(height: 8),
             CustomTextFormField(
               maxLines: 3,
-              hintText:
-                  "استمتع بخصم حتى 30% على تشكيلة الفواكه الطازجة المختارة بعناية. اطلب الآن واستلم في نصف ساعة!",
+              hintText: LocaleKeys.addNotification_messageHint.tr(
+                namedArgs: {'discount': '30', 'minutes': '30'},
+              ),
               onSaved: (value) {},
             ),
             const SizedBox(height: 22),
-            Text("صورة مرفقة مع الإشعار (اختياري)"),
+            Text(LocaleKeys.addNotification_imageOptional.tr()),
             const SizedBox(height: 8),
             GetNotificationImage(),
             const SizedBox(height: 40),
@@ -56,7 +59,7 @@ class _AddNotificationBodyState extends State<AddNotificationBody> {
                   foregroundColor: Colors.white,
                 ),
                 onPressed: () {},
-                label: Text("إرسال الإشعار الآن"),
+                label: Text(LocaleKeys.addNotification_sendButton.tr()),
                 icon: RotatedBox(quarterTurns: 5, child: Icon(Icons.send)),
               ),
             ),

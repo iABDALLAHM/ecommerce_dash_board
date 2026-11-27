@@ -1,5 +1,7 @@
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
 import 'package:ecommerce_dash_board/core/services/secure_storage_service/flutter_secure_service.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +17,9 @@ class FlutterSecureStorageService implements FlutterSecureService {
     try {
       await _storage.deleteAll();
     } catch (e) {
-      throw CustomException(exceptionMeassge: "حدث خطأ اثناء حذف البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.secureStorage_messages_deleteData.tr(),
+      );
     }
   }
 
@@ -24,7 +28,9 @@ class FlutterSecureStorageService implements FlutterSecureService {
     try {
       await _storage.delete(key: key);
     } catch (e) {
-      throw CustomException(exceptionMeassge: "حدث خطأ اثناء حذف البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.secureStorage_messages_deleteData.tr(),
+      );
     }
   }
 
@@ -33,7 +39,9 @@ class FlutterSecureStorageService implements FlutterSecureService {
     try {
       return await _storage.read(key: key) ?? "";
     } catch (e) {
-      throw CustomException(exceptionMeassge: "حدث خطأ اثناء جلب البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.secureStorage_messages_getData.tr(),
+      );
     }
   }
 
@@ -42,7 +50,9 @@ class FlutterSecureStorageService implements FlutterSecureService {
     try {
       await _storage.write(key: key, value: value);
     } catch (e) {
-      throw CustomException(exceptionMeassge: "حدث خطا اثناء حفظ البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.secureStorage_messages_saveData.tr(),
+      );
     }
   }
 }

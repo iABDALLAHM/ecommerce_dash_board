@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_dash_board/core/cubits/get_image_cubit/get_image_state.dart';
 import 'package:ecommerce_dash_board/core/utils/app_styles.dart';
+import 'package:ecommerce_dash_board/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -63,11 +65,13 @@ class GetFeaturedProductImage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                "اضغط لاختيار صورة البانر",
+                LocaleKeys.addFeaturedProduct_selectImage.tr(),
                 style: AppStyles.textStyle13Bold,
               ),
               Text(
-                "المقاس الموصى به: 1080 × 500 بكسل (JPG, WebP)",
+                LocaleKeys.addFeaturedProduct_imageRequirements.tr(
+                  namedArgs: {'width': '1080', 'height': '500'},
+                ),
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: Color(0xff64748B),
                 ),

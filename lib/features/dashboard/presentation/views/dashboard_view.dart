@@ -32,7 +32,7 @@ class DashboardView extends StatelessWidget {
     title: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Expanded(child: CustomAdminImage()),
+        CustomAdminImage(),
         const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ class DashboardView extends StatelessWidget {
               children: [
                 Text(
                   LocaleKeys.dashboard_title.tr(),
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 15),
                 Container(
@@ -85,7 +85,7 @@ class DashboardView extends StatelessWidget {
                     LocaleKeys.dashboard_role.tr(context: context),
                     style: TextStyle(
                       color: Color(0xff047857),
-                      fontSize: 15,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

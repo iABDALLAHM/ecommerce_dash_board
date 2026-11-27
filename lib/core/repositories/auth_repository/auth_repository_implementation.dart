@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_dash_board/core/entities/user_entity/user_entity.dart';
 import 'package:ecommerce_dash_board/core/errors/custom_exception.dart';
@@ -34,7 +35,9 @@ class AuthRepositoryImplementation implements AuthRepository {
       );
       if (result == null) {
         return Left(
-          ServerFailure(errorMessage: LocaleKeys.login_messages_unauthorized),
+          ServerFailure(
+            errorMessage: LocaleKeys.login_messages_unauthorized.tr(),
+          ),
         );
       }
       UserEntity userEntity = UserModel.fromJson(result).toEntity();

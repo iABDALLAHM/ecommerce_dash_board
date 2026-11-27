@@ -178,6 +178,39 @@ class CodegenLoader extends AssetLoader{
       "alreadyProcessed": "تم تحديث هذه الحالة مسبقاً",
       "completePrevious": "يرجى إكمال الحالات السابقة أولاً"
     }
+  },
+  "addFeaturedProduct": {
+    "title": "إضافة بانر مميز",
+    "imageTitle": "رفع صورة بانر مميز جديد",
+    "selectImage": "اضغط لاختيار صورة البانر",
+    "imageRequirements": "المقاس الموصى به: {width} × {height} بكسل (JPG أو WebP)",
+    "publishButton": "نشر البانر المميز",
+    "messages": {
+      "success": "تمت إضافة البانر المميز بنجاح",
+      "imageRequired": "يرجى إرفاق صورة البانر",
+      "generalError": "حدث خطأ، يرجى المحاولة مرة أخرى"
+    }
+  },
+  "addNotification": {
+    "title": "إرسال إشعار للمستخدمين",
+    "notificationTitle": "عنوان الإشعار",
+    "titleHint": "وصلت تخفيضات نهاية الأسبوع! 🔥",
+    "message": "نص الرسالة",
+    "messageHint": "استمتع بخصم يصل إلى {discount}% على تشكيلة مختارة من الفواكه الطازجة. اطلب الآن واستلم طلبك خلال {minutes} دقيقة!",
+    "imageOptional": "صورة مرفقة بالإشعار (اختيارية)",
+    "selectImage": "اضغط لرفع صورة ترويجية",
+    "sendButton": "إرسال الإشعار الآن"
+  },
+  "splash": {
+    "title": "لوحة الإدارة",
+    "adminPortal": "بوابة المسؤولين"
+  },
+  "secureStorage": {
+    "messages": {
+      "deleteData": "تعذر حذف البيانات من التخزين الآمن",
+      "getData": "تعذر جلب البيانات من التخزين الآمن",
+      "saveData": "تعذر حفظ البيانات في التخزين الآمن"
+    }
   }
 };
 static const Map<String,dynamic> _en = {
@@ -343,6 +376,39 @@ static const Map<String,dynamic> _en = {
       "delivered": "Order delivered successfully",
       "alreadyProcessed": "This status has already been updated",
       "completePrevious": "Please complete the previous steps first"
+    }
+  },
+  "addFeaturedProduct": {
+    "title": "Add Featured Banner",
+    "imageTitle": "Upload a New Featured Banner",
+    "selectImage": "Tap to choose a banner image",
+    "imageRequirements": "Recommended size: {width} × {height} px (JPG or WebP)",
+    "publishButton": "Publish Featured Banner",
+    "messages": {
+      "success": "Featured banner added successfully",
+      "imageRequired": "Please attach a banner image",
+      "generalError": "An error occurred. Please try again"
+    }
+  },
+  "addNotification": {
+    "title": "Send a Notification",
+    "notificationTitle": "Notification Title",
+    "titleHint": "Weekend deals are here! 🔥",
+    "message": "Message",
+    "messageHint": "Enjoy up to {discount}% off a handpicked selection of fresh fruit. Order now and get it delivered in {minutes} minutes!",
+    "imageOptional": "Notification Image (Optional)",
+    "selectImage": "Tap to upload a promotional image",
+    "sendButton": "Send Notification Now"
+  },
+  "splash": {
+    "title": "Admin Dashboard",
+    "adminPortal": "Admin Portal"
+  },
+  "secureStorage": {
+    "messages": {
+      "deleteData": "Unable to delete data from secure storage",
+      "getData": "Unable to retrieve data from secure storage",
+      "saveData": "Unable to save data to secure storage"
     }
   }
 };
